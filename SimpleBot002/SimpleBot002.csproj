@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Ecng.Collections">
+      <HintPath>bin\Debug\net5.0\Ecng.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.Common">
+      <HintPath>bin\Debug\net5.0\Ecng.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.ComponentModel">
+      <HintPath>bin\Debug\net5.0\Ecng.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.Configuration">
+      <HintPath>bin\Debug\net5.0\Ecng.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.Net">
+      <HintPath>bin\Debug\net5.0\Ecng.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.Serialization">
+      <HintPath>bin\Debug\net5.0\Ecng.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq">
+      <HintPath>bin\Debug\net5.0\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Algo">
+      <HintPath>bin\Debug\net5.0\StockSharp.Algo.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.BusinessEntities">
+      <HintPath>bin\Debug\net5.0\StockSharp.BusinessEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Community">
+      <HintPath>bin\Debug\net5.0\StockSharp.Community.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Configuration">
+      <HintPath>bin\Debug\net5.0\StockSharp.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Fix">
+      <HintPath>bin\Debug\net5.0\StockSharp.Fix.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Localization">
+      <HintPath>bin\Debug\net5.0\StockSharp.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Logging">
+      <HintPath>bin\Debug\net5.0\StockSharp.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Messages">
+      <HintPath>bin\Debug\net5.0\StockSharp.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Quik">
+      <HintPath>bin\Debug\net5.0\StockSharp.Quik.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.QuikLua">
+      <HintPath>bin\Debug\net5.0\StockSharp.QuikLua.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

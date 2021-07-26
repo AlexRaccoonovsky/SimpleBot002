@@ -127,8 +127,4 @@ namespace SimpleBot001
 
 
 
-
-
-
-
 ## See also

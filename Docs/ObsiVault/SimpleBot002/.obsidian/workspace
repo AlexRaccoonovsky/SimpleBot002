@@ -39,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "_List Of Purposes_:",
+                "query": "SimpleBot001",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -118,14 +118,14 @@
   "active": "c7c91760b2711f10",
   "lastOpenFiles": [
     "DailyNotes/2021-07-26.md",
-    "DailyNotes/2021-07-13.md",
-    "DailyNotes/2021-07-06.md",
-    "Core/GlobalTaskList.md",
+    "DailyNotes/2021-06-16.md",
+    "Core/DailyNotesMOC.md",
     "Core/DraftsTestConnector.md",
-    "Core/ConstructingAndCodingMOC.md",
-    "Core/Environment of SimpleBot001.md",
-    "Core/DesigningMOC.md",
     "DailyNotes/2021-07-01.md",
-    "DailyNotes/2021-06-30.md"
+    "DailyNotes/2021-06-30.md",
+    "DailyNotes/2021-06-25.md",
+    "DailyNotes/2021-06-19.md",
+    "DailyNotes/2021-07-13.md",
+    "DailyNotes/2021-07-06.md"
   ]
 }

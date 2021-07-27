@@ -11,6 +11,6 @@ ___
 # ConstructingAndCodingMOC
 ## Drafts
 _List of the drafts_:
-- [ ] [[DraftsTestConnector | TestConnector]];
+- [x] [[DraftsTestConnector | TestConnector]];
 
 ## See also

@@ -13,44 +13,34 @@ using System.Security;
 using System.Net;
 using StockSharp.Fix;
 using Ecng.Serialization;
+using SimpleBot002.Model;
 
-namespace SimpleBot001
+namespace SimpleBot002
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Connector botconnector;
-            botconnector = new Connector();
-
-           var luaFixMarketDataMessageAdapter = new LuaFixMarketDataMessageAdapter(botconnector.TransactionIdGenerator)
-           {
-               Address = "localhost:5001".To<EndPoint>(),
-               Login = "quik",
-               Password = "quik".To<SecureString>(),
-           };
-           
-           var luaFixTransactionMessageAdapter = new LuaFixTransactionMessageAdapter(botconnector.TransactionIdGenerator)
-           {
-               Address = "localhost:5001".To<EndPoint>(),
-               Login = "quik",
-               Password = "quik".To<SecureString>(),
-           };
-           
-           
-             botconnector.Adapter.InnerAdapters.Add(luaFixMarketDataMessageAdapter);
-             botconnector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
-
-            botconnector.Connected += () => Console.WriteLine("botconnector is CONNECTED!");
-            botconnector.ConnectionError += ConnectExc => Console.WriteLine("Error:" + ConnectExc.ToString());
-            botconnector.Disconnected += () => Console.WriteLine("botconnector is DISCONNECTED!");
-            botconnector.TimeOut += () => Console.WriteLine("Connection time is out...");
+            
+            BotConnector sBotConnector = new BotConnector();
+            
 
 
+            
+             sBotConnector.BotConnected += new BotConnector.BotHandler(MessageShow);
+            //sBotConnector.BotConnected += () => Console.WriteLine("botconnector is CONNECTED!");
+
+            sBotConnector.StartConnector();
+            Console.ReadLine();
+
+            void MessageShow(string message)
+            {
+                Console.WriteLine(message);
+            }
 
 
-            botconnector.Connect();
-            Console.Read();
+            //botconnector.Connect();
+            //Console.Read();
 
 
 

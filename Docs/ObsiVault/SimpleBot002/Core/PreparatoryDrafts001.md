@@ -9,6 +9,8 @@ ___
 
 ___
 # PrepareDrafts
+[[Pasted image 20210726181805.png | SimpleBot002 Structure!]]
+
 [[Pasted image 20210615214117.png | Drafts]]
 
 

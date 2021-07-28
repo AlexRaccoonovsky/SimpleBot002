@@ -14,6 +14,8 @@ using System.Net;
 using StockSharp.Fix;
 using Ecng.Serialization;
 using SimpleBot002.Model;
+using SimpleBot002.DTO;
+
 
 namespace SimpleBot002
 {
@@ -21,26 +23,16 @@ namespace SimpleBot002
     {
         static void Main(string[] args)
         {
-            
-            BotConnector sBotConnector = new BotConnector();
-            
+         // Query alrt = new Query();
+         // Console.WriteLine(alrt.IsPresent);
+         // Console.WriteLine(alrt.messageText);
+         // Console.ReadKey();
+         // BotConnector sBotConnector = new BotConnector();
+         //
+         // sBotConnector.StartConnector();
+         // Console.ReadLine();
 
 
-            
-             sBotConnector.BotConnected += new BotConnector.BotHandler(MessageShow);
-            //sBotConnector.BotConnected += () => Console.WriteLine("botconnector is CONNECTED!");
-
-            sBotConnector.StartConnector();
-            Console.ReadLine();
-
-            void MessageShow(string message)
-            {
-                Console.WriteLine(message);
-            }
-
-
-            //botconnector.Connect();
-            //Console.Read();
 
 
 

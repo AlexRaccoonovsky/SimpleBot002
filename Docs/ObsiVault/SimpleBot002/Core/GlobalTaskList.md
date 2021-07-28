@@ -15,14 +15,14 @@ ___
 ___
 **Constructing:**
 - [x] Segregate Modules_001  (20 min)
-- [ ] Segregate Modules_002  (20 min)
+- [x] Segregate Modules_002  (20 min)
 - [ ] Segregate Modules_003  (20 min)
 - [ ] Interconnect (Main with Model)
 - [ ] Interconnect( Model -> View)
 - [ ] 
 ___
 **Designing:**
-- [ ] Design structure (30min)
+- [x] Design structure (30min)
 - [ ] Design structure (30min)
 - [ ] Design structure (30min)
 - [ ] 

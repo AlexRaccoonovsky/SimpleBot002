@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DailyNotes/2021-07-27.md",
+            "file": "DailyNotes/2021-07-28.md",
             "mode": "source"
           }
         }
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DailyNotes/2021-07-27.md",
+                "file": "DailyNotes/2021-07-28.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DailyNotes/2021-07-27.md"
+                "file": "DailyNotes/2021-07-28.md"
               }
             }
           }
@@ -128,15 +128,15 @@
   },
   "active": "c7c91760b2711f10",
   "lastOpenFiles": [
+    "DailyNotes/2021-07-28.md",
+    "Core/GlobalTaskList.md",
     "DailyNotes/2021-07-27.md",
     "Core/DraftsTestConnector.md",
-    "Core/GlobalTaskList.md",
     "Files/Pasted image 20210726181805.png",
     "Core/PreparatoryDrafts001.md",
     "Core/ConstructingAndCodingMOC.md",
     "Files/Pasted image 20210615214117.png",
     "DailyNotes/2021-07-26.md",
-    "DailyNotes/2021-06-16.md",
-    "Core/DailyNotesMOC.md"
+    "DailyNotes/2021-06-16.md"
   ]
 }

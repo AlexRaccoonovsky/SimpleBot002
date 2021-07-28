@@ -48,46 +48,11 @@ namespace SimpleBot002.Model
             botConnector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
         }
         
-
-
         public void StartConnector()
         {
             CreateConnector();
-
-            if (BotConnected != null)
-                BotConnected("Hi-he-hu");
-            else
-                Console.WriteLine("List of EventConnected is empty");
-            
-            
-            //botConnector += new BotHandler(MessageShow);
-            //sBotConnector.BotConnected += new BotConnector.BotHandler(MessageShow);
-            //this.BotConnected += new BotHandler(MessageShow);
-            // EventInit();
-            //this.BotConnected("Ha-ha-ha");
-            //botConnector.Connected += () => Console.WriteLine("botconnector is CONNECTED!");
             botConnector.Connect();
-            
         }
-
-        void MessageShow(string message)
-        {
-            Console.WriteLine(message);
-        }
-
-
-        public void EventInit()
-        {
-             //botConnector.ConnectionError += ConnectExc => Console.WriteLine("Error:" + ConnectExc.ToString());
-             // 
-             //botConnector.Connected += () => Console.WriteLine("botconnector is CONNECTED!");
-            //  botconnector.Disconnected += () => Console.WriteLine("botconnector is DISCONNECTED!");
-            //  botconnector.TimeOut += () => Console.WriteLine("Connection time is out...");
-        }
-
-
-
-
 
     }
 

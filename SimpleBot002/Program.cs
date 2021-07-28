@@ -27,9 +27,9 @@ namespace SimpleBot002
          // Console.WriteLine(alrt.IsPresent);
          // Console.WriteLine(alrt.messageText);
          // Console.ReadKey();
-         // BotConnector sBotConnector = new BotConnector();
+          BotConnector sBotConnector = new BotConnector();
          //
-         // sBotConnector.StartConnector();
+          sBotConnector.StartConnector();
          // Console.ReadLine();
 
 

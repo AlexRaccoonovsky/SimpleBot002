@@ -21,11 +21,11 @@ namespace SimpleBot002.Model
 
     {
         Connector botConnector;
-        public delegate void BotHandler(string msg);
+        public delegate void ModelEventHandler();
         public event BotHandler BotConnected;
-        
-        
-        void CreateConnector()
+
+
+        void ConfigConnector()
         {
             botConnector = new Connector();
 
@@ -50,7 +50,8 @@ namespace SimpleBot002.Model
         
         public void StartConnector()
         {
-            CreateConnector();
+            ConfigConnector();
+            //botConnector.Connected+=
             botConnector.Connect();
         }
 

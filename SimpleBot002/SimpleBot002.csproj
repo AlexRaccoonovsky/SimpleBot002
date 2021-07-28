@@ -60,7 +60,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="View\" />
   </ItemGroup>
 

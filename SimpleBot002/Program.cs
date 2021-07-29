@@ -26,14 +26,9 @@ namespace SimpleBot002
     {
         static void Main(string[] args)
         {
-            Listener listener = new Listener();
-            listener.StartToListen();
-         // Query alrt = new Query();
-         // Console.WriteLine(alrt.IsPresent);
-         // Console.WriteLine(alrt.messageText);
-         // Console.ReadKey();
+          Listener listener = new Listener();
+          listener.StartToListen();
           BotConnector sBotConnector = new BotConnector();
-         //
           sBotConnector.StartConnector(listener);
           Console.ReadLine();
 

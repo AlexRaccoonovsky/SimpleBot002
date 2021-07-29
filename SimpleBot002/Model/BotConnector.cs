@@ -22,20 +22,9 @@ namespace SimpleBot002.Model
 
     {
         Connector botConnector;
-        
-        //public delegate void MyDelega();
-        Action delega;
-        
-        
-        
-        
-        //public event BotHandler BotConnected;
-
-
-        void ConfigConnector()
+        void ConfigConnector(Listener obj)
         {
             botConnector = new Connector();
-
             var luaFixMarketDataMessageAdapter = new LuaFixMarketDataMessageAdapter(botConnector.TransactionIdGenerator)
             {
                 Address = "localhost:5001".To<EndPoint>(),
@@ -49,27 +38,21 @@ namespace SimpleBot002.Model
                 Login = "quik",
                 Password = "quik".To<SecureString>(),
             };
-
-
+            // botConnector configuration
             botConnector.Adapter.InnerAdapters.Add(luaFixMarketDataMessageAdapter);
             botConnector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
+            // Registration Events of botConnector
+            botConnector.Connected += obj.ControllerEventHandler;
         }
-        
-        public void StartConnector()
+        public void StartConnector(Listener obj)
         {
-            ModelListener modelListener = new ModelListener();
-            modelListener.StartToListen();
-            
-            ConfigConnector();
-            delega = new Action(ExecMeth);
-            delega += new Action(modelListener.delegaController);
-            DisplayDelegateInfo(delega);
-            botConnector.Connected +=delega;
-            //botConnector.Connected += modelListener.delegaController;
-             
+            Listener listener = (Listener) obj;
+            ConfigConnector(listener);
             botConnector.Connect();
 
         }
+
+        // !!!Helper method
         static void DisplayDelegateInfo(Action obj) 
         {
             foreach (Action d in obj.GetInvocationList())
@@ -78,10 +61,7 @@ namespace SimpleBot002.Model
                 Console.WriteLine("Type Name: {0}",d.Target);
             }
         }
-        static void ExecMeth() 
-        {
-            Console.WriteLine("botconnector is CONNECTED!");
-        }
+
     }
 
 }

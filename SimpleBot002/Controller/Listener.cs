@@ -7,17 +7,17 @@ using SimpleBot002.Model;
 
 namespace SimpleBot002.Controller
 {
-    internal class ModelListener
+    public class Listener
     {
-        public Action delegaController { get; set; }
+        public Action ControllerEventHandler { get; set; }
         public void StartToListen()
         {
-            delegaController = new Action(EchoFromControl);
+            ControllerEventHandler = new Action(EchoFromControl);
         }
-
         private void EchoFromControl()
         {
             Console.WriteLine("EchoFromControl: botconnector is CONNECTED!");
         }
+
     }
 }

@@ -15,6 +15,9 @@ using StockSharp.Fix;
 using Ecng.Serialization;
 using SimpleBot002.Model;
 using SimpleBot002.DTO;
+using SimpleBot002.Controller;
+using SimpleBot002.View;
+
 
 
 namespace SimpleBot002
@@ -23,13 +26,15 @@ namespace SimpleBot002
     {
         static void Main(string[] args)
         {
+            Listener listener = new Listener();
+            listener.StartToListen();
          // Query alrt = new Query();
          // Console.WriteLine(alrt.IsPresent);
          // Console.WriteLine(alrt.messageText);
          // Console.ReadKey();
           BotConnector sBotConnector = new BotConnector();
          //
-          sBotConnector.StartConnector();
+          sBotConnector.StartConnector(listener);
           Console.ReadLine();
 
 

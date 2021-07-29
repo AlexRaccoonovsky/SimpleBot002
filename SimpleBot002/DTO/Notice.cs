@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace SimpleBot002.DTO
 {
-    class Notice:Message
+    public class Notice:Message
     {
+        public Notice(string msgText = "EmptyNotice")
+        {
+            messageText = msgText;
+            IsPresent = false;
+        }
         public Notice(string msgText = "EmptyNotice", bool isPresent = false)
         {
             messageText = msgText;

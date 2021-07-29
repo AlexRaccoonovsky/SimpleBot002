@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleBot002.DTO
 {
-    class Query:Message
+    public class Query:Message
     {
         public Query (string msgText = "EmptyQuery", bool isPresent = false)
         {

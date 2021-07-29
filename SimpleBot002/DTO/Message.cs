@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleBot002.DTO
 {
-    abstract class Message
+    public abstract class Message
     {
         public Message(string msgText="Empty",bool isPresent = false)
         {

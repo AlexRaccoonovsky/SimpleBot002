@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleBot002.DTO
 {
-    class Alert:Message
+    public class Alert:Message
     {
         public Alert(string msgText = "EmptyAlert", bool isPresent = false)
         {

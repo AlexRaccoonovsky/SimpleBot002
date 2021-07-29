@@ -29,7 +29,7 @@ namespace SimpleBot002.View
             Console.WriteLine(obj.messageText);
         }
 
-        // !! Need to define class Answer
+        // !! Need to define output class Answer instead void
         public void ShowQuery(Query obj)
         {
             Console.WriteLine("!!!REalize answer");

@@ -9,15 +9,33 @@ namespace SimpleBot002.Controller
 {
     public class Listener
     {
-        public Action ControllerEventHandler { get; set; }
-        public void StartToListen()
+        MessageTextStorage msgTxtStrg = new MessageTextStorage();
+        public static void FixEvent(object sndr, ConnectorArgs arg)
         {
-            ControllerEventHandler = new Action(EchoFromControl);
+            if (sndr is BotConnector)
+            {
+                switch (arg.nameEvent)
+                {
+                    case "Connected": Console.WriteLine("Connnn"); break;
+                    default: throw new ArgumentException("Error!");
+                }
+                
+            }
         }
-        private void EchoFromControl()
-        {
-            Console.WriteLine("EchoFromControl: botconnector is CONNECTED!");
-        }
+
+       //public void ConfigListener(object obj)
+       //{ 
+       //}
+       //
+       //
+       //public void StartToListen()
+       //{
+       //    
+       //}
+       //private void EchoFromControl()
+       //{
+       //    Console.WriteLine("EchoFromControl: botconnector is CONNECTED!");
+       //}
 
     }
 }

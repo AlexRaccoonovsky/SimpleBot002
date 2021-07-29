@@ -21,8 +21,11 @@ namespace SimpleBot002.Model
     public class BotConnector
 
     {
+        public delegate void ConnectorEvent(object sndr, ConnectorArgs nameEvent);
+        public event ConnectorEvent EventConnected;
         Connector botConnector;
-        void ConfigConnector(Listener obj)
+       
+        void ConfigConnector()
         {
             botConnector = new Connector();
             var luaFixMarketDataMessageAdapter = new LuaFixMarketDataMessageAdapter(botConnector.TransactionIdGenerator)
@@ -42,14 +45,18 @@ namespace SimpleBot002.Model
             botConnector.Adapter.InnerAdapters.Add(luaFixMarketDataMessageAdapter);
             botConnector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
             // Registration Events of botConnector
-            botConnector.Connected += obj.ControllerEventHandler;
+            botConnector.Connected += DefineEvent;
         }
-        public void StartConnector(Listener obj)
+        public void StartConnector()
         {
-            Listener listener = (Listener) obj;
-            ConfigConnector(listener);
+            ConfigConnector();
             botConnector.Connect();
+        }
 
+        void  DefineEvent()
+        {
+            if (EventConnected != null)
+                EventConnected(this, new ConnectorArgs("Connected"));
         }
 
         // !!!Helper method

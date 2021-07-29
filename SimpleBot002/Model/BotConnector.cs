@@ -13,6 +13,7 @@ using System.Security;
 using System.Net;
 using StockSharp.Fix;
 using Ecng.Serialization;
+using SimpleBot002.Controller;
 
 
 namespace SimpleBot002.Model
@@ -21,8 +22,14 @@ namespace SimpleBot002.Model
 
     {
         Connector botConnector;
-        public delegate void ModelEventHandler();
-        public event BotHandler BotConnected;
+        
+        //public delegate void MyDelega();
+        Action delega;
+        
+        
+        
+        
+        //public event BotHandler BotConnected;
 
 
         void ConfigConnector()
@@ -50,11 +57,31 @@ namespace SimpleBot002.Model
         
         public void StartConnector()
         {
+            ModelListener modelListener = new ModelListener();
+            modelListener.StartToListen();
+            
             ConfigConnector();
-            //botConnector.Connected+=
+            delega = new Action(ExecMeth);
+            delega += new Action(modelListener.delegaController);
+            DisplayDelegateInfo(delega);
+            botConnector.Connected +=delega;
+            //botConnector.Connected += modelListener.delegaController;
+             
             botConnector.Connect();
-        }
 
+        }
+        static void DisplayDelegateInfo(Action obj) 
+        {
+            foreach (Action d in obj.GetInvocationList())
+            {
+                Console.WriteLine("Method Name: {0}", d.Method);
+                Console.WriteLine("Type Name: {0}",d.Target);
+            }
+        }
+        static void ExecMeth() 
+        {
+            Console.WriteLine("botconnector is CONNECTED!");
+        }
     }
 
 }

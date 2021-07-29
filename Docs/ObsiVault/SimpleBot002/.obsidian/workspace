@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DailyNotes/2021-07-28.md",
+            "file": "Core/GlobalTaskList.md",
             "mode": "source"
           }
         }
@@ -20,7 +20,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Core/GlobalTaskList.md",
+            "file": "Core/DraftsTestConnector.md",
             "mode": "source"
           }
         }
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DailyNotes/2021-07-28.md",
+                "file": "Core/DraftsTestConnector.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DailyNotes/2021-07-28.md"
+                "file": "Core/DraftsTestConnector.md"
               }
             }
           }
@@ -126,17 +126,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "c7c91760b2711f10",
+  "active": "1937854bdf9b8a28",
   "lastOpenFiles": [
+    "Core/DraftsTestConnector.md",
     "DailyNotes/2021-07-28.md",
     "Core/GlobalTaskList.md",
+    "DailyNotes/2021-07-29.md",
     "DailyNotes/2021-07-27.md",
-    "Core/DraftsTestConnector.md",
     "Files/Pasted image 20210726181805.png",
     "Core/PreparatoryDrafts001.md",
     "Core/ConstructingAndCodingMOC.md",
     "Files/Pasted image 20210615214117.png",
-    "DailyNotes/2021-07-26.md",
-    "DailyNotes/2021-06-16.md"
+    "DailyNotes/2021-07-26.md"
   ]
 }

@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleBot002.Model;
 
 namespace SimpleBot002.Controller
 {
-    class ModelListener
+    internal class ModelListener
     {
-        public delegate void ModelEventHandler();
-        public event ModelEventHandler Connected;
+        public Action delegaController { get; set; }
+        public void StartToListen()
+        {
+            delegaController = new Action(EchoFromControl);
+        }
 
+        private void EchoFromControl()
+        {
+            Console.WriteLine("EchoFromControl: botconnector is CONNECTED!");
+        }
     }
 }

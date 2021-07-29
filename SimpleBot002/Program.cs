@@ -30,7 +30,7 @@ namespace SimpleBot002
           BotConnector sBotConnector = new BotConnector();
          //
           sBotConnector.StartConnector();
-         // Console.ReadLine();
+          Console.ReadLine();
 
 
 

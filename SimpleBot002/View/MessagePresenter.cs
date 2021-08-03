@@ -15,7 +15,8 @@ namespace SimpleBot002.View
     {
         public void ShowAlert(Alert obj)
         {
-            Console.WriteLine(obj.messageText);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(obj.messageAlert);
         }
 
         // Check field .Message
@@ -26,12 +27,14 @@ namespace SimpleBot002.View
 
         public void ShowNotice(Notice obj)
         {
-            Console.WriteLine(obj.messageText);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(obj.messageNotice);
         }
 
         // !! Need to define output class Answer instead void
         public void ShowQuery(Query obj)
         {
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("!!!REalize answer");
         }
     }

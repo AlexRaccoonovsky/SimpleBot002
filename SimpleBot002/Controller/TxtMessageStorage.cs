@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SimpleBot002.Controller
 {
-    public class MessageTextStorage
+    public class TxtMessageStorage
     {
-        public int numConnected { get; private set; } = 1;
         public string msgConnected { get; private set; } = "SimpleBot is connected";
+        public string msgWelcome { get; private set; } = "Hi! My name is SimpleBot002. In short Bot.";
     }
 }

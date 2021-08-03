@@ -8,12 +8,20 @@ namespace SimpleBot002.DTO
 {
     public class Alert:Message
     {
-        public Alert(string msgText = "EmptyAlert", bool isPresent = false)
+        public string messageAlert { get; set; }
+        public bool isPresent { get; set; }
+
+        public Alert(string txtAlert = "EmptyAlert")
         {
-            messageText = msgText;
-            IsPresent = isPresent;
+            messageAlert = txtAlert;
+            isPresent = false;
         }
-        public string messageText { get; set; }
-        public bool IsPresent { get; set; }
+
+        public Alert(string txtAlert = "EmptyAlert", bool isPresent = false)
+        {
+            messageAlert = txtAlert;
+            this.isPresent = isPresent;
+        }
+        
     }
 }

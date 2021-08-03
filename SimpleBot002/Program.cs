@@ -26,24 +26,9 @@ namespace SimpleBot002
     {
         static void Main(string[] args)
         {
-            BotConnector sBotConnector = new BotConnector();
-            sBotConnector.StartConnector();
-            //Listener listener = new Listener();
-            sBotConnector.EventConnected += Listener.FixEvent;
-
-
-
-
-            //  Listener listener = new Listener();
-            //  listener.StartToListen();
-            //  BotConnector sBotConnector = new BotConnector();
-            //  sBotConnector.StartConnector(listener);
-            Console.ReadLine();
-
-
-
-
-
+            Dispatcher _dispatcher = new Dispatcher();
+            _dispatcher.Start();
+            Console.ReadKey();
         }
     }
 }

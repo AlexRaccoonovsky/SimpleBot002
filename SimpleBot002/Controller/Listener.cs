@@ -9,7 +9,7 @@ namespace SimpleBot002.Controller
 {
     public class Listener
     {
-        MessageTextStorage msgTxtStrg = new MessageTextStorage();
+        TxtMessageStorage msgTxtStrg = new TxtMessageStorage();
         public static void FixEvent(object sndr, ConnectorArgs arg)
         {
             if (sndr is BotConnector)
@@ -22,20 +22,5 @@ namespace SimpleBot002.Controller
                 
             }
         }
-
-       //public void ConfigListener(object obj)
-       //{ 
-       //}
-       //
-       //
-       //public void StartToListen()
-       //{
-       //    
-       //}
-       //private void EchoFromControl()
-       //{
-       //    Console.WriteLine("EchoFromControl: botconnector is CONNECTED!");
-       //}
-
     }
 }

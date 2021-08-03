@@ -11,7 +11,8 @@ namespace SimpleBot002.DTO
         public Message(string msgText="Empty",bool isPresent = false)
         {
             messageText = msgText;
-            IsPresent = isPresent; }
+            IsPresent = isPresent;
+        }
         public string messageText { get; set; }
         public bool IsPresent { get; set; }
     

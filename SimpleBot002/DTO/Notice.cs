@@ -8,18 +8,19 @@ namespace SimpleBot002.DTO
 {
     public class Notice:Message
     {
-        public Notice(string msgText = "EmptyNotice")
+        public string messageNotice { get; set; }
+        public bool isPresent { get; set; }
+        public Notice(string txtNotice = "EmptyNotice")
         {
-            messageText = msgText;
-            IsPresent = false;
+            messageNotice = txtNotice;
+            isPresent = false;
         }
-        public Notice(string msgText = "EmptyNotice", bool isPresent = false)
+        public Notice(string txtNotice = "EmptyNotice", bool isPresent = false)
         {
-            messageText = msgText;
-            IsPresent = isPresent;
+            messageNotice = txtNotice;
+            this.isPresent = isPresent;
         }
-        public string messageText { get; set; }
-        public bool IsPresent { get; set; }
+        
 
     }
 }

@@ -9,10 +9,15 @@ namespace SimpleBot002.Controller
 {
     static class MessageMaker
     {
-        static Notice CreateNotice(string msg)
+        static Notice CreateNotice(string txtNotice)
         {
-            Notice notice = new Notice(msg);
-            return notice;
+            Notice _notice = new Notice(txtNotice);
+            return _notice;
+        }
+        static Alert CreateAlert(string txtAlert)
+        {
+            Alert _alert = new Alert(txtAlert);
+            return _alert;
         }
 
     }

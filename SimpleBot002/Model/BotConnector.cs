@@ -58,17 +58,5 @@ namespace SimpleBot002.Model
             if (EventConnected != null)
                 EventConnected(this, new ConnectorArgs("Connected"));
         }
-
-        // !!!Helper method
-       //static void DisplayDelegateInfo(Action obj) 
-       //{
-       //    foreach (Action d in obj.GetInvocationList())
-       //    {
-       //        Console.WriteLine("Method Name: {0}", d.Method);
-       //        Console.WriteLine("Type Name: {0}",d.Target);
-       //    }
-       //}
-       //
     }
-
 }

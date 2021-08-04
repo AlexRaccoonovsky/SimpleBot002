@@ -19,7 +19,7 @@ namespace SimpleBot002.Controller
         void RegisterModelEvents()
         {
             // Subscribe Listener of Controller on ConnectedEvent
-            _sBotConnector.EventConnected += Listener.FixEvent;
+            //_sBotConnector.EventConnected += Listener.FixEvent;
         }
         void ConfigEnvironment()
         {
@@ -42,7 +42,9 @@ namespace SimpleBot002.Controller
             _msgPresenter.ShowNotice(WelcomeNotice);
             // Creating question about connecting
             Query _queryConnect = MessageMaker.CreateQuery(_txtMessageStorage.queryConnect);
-            _msgPresenter.ShowQuery(_queryConnect);
+            // Show question about connect
+            Answer ans=_msgPresenter.ShowQuery(_queryConnect);
+            Console.WriteLine(ans.answerParam);
 
             
         }

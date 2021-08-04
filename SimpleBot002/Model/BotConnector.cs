@@ -19,12 +19,10 @@ using SimpleBot002.Controller;
 namespace SimpleBot002.Model
 {
     public class BotConnector
-
     {
         public delegate void ConnectorEvent(object sndr, ConnectorArgs nameEvent);
         public event ConnectorEvent EventConnected;
         Connector botConnector;
-       
         void ConfigConnector()
         {
             botConnector = new Connector();
@@ -34,7 +32,6 @@ namespace SimpleBot002.Model
                 Login = "quik",
                 Password = "quik".To<SecureString>(),
             };
-
             var luaFixTransactionMessageAdapter = new LuaFixTransactionMessageAdapter(botConnector.TransactionIdGenerator)
             {
                 Address = "localhost:5001".To<EndPoint>(),
@@ -52,7 +49,6 @@ namespace SimpleBot002.Model
             ConfigConnector();
             botConnector.Connect();
         }
-
         void  DefineEvent()
         {
             if (EventConnected != null)

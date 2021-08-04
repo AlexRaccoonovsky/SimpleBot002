@@ -45,9 +45,7 @@ namespace SimpleBot002.Controller
             // Show question about connect
             Answer ans=_msgPresenter.ShowQuery(_queryConnect);
             Console.WriteLine(ans.answerParam);
-
-            
-        }
+         }
         public void Start()
         {
             this.ConfigEnvironment();

@@ -13,6 +13,8 @@ namespace SimpleBot002.View
 {
     class MessagePresenter : IView
     {
+        public delegate void ViewEvent(object sndr, ViewArgs viewArg);
+        public event ViewEvent NewAnswer;
         public void ShowAlert(Alert obj)
         {
             Console.ForegroundColor = ConsoleColor.Red;

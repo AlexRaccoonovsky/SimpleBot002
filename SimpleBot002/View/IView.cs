@@ -13,6 +13,6 @@ namespace SimpleBot002.View
         public void ShowAlert(Alert obj);
 
         public void ShowException(Exception obj);
-        public void ShowQuery(Query obj);
+        public Answer ShowQuery(Query obj);
     }
 }

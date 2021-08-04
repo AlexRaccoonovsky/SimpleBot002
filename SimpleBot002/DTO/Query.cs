@@ -8,13 +8,21 @@ namespace SimpleBot002.DTO
 {
     public class Query:Message
     {
-        public Query (string msgText = "EmptyQuery", bool isPresent = false)
-        {
-            messageText = msgText;
-            IsPresent = isPresent;
-        }
         public string messageText { get; set; }
         public bool IsPresent { get; set; }
-        public string Answer { get; set; }
+        public Answer answer { get; set; }
+        public Query(string txtQuery = "EmptyQuery")
+        {
+            messageText = txtQuery;
+            IsPresent = false;
+            answer = null;
+        }
+        public Query (string txtQuery = "EmptyQuery", bool isPresent = false)
+        {
+            messageText = txtQuery;
+            IsPresent = isPresent;
+            answer = null;
+        }
+        
     }
 }

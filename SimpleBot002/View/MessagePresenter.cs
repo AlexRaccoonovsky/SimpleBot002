@@ -31,11 +31,13 @@ namespace SimpleBot002.View
             Console.WriteLine(obj.messageNotice);
         }
 
-        // !! Need to define output class Answer instead void
-        public void ShowQuery(Query obj)
+        public Answer ShowQuery(Query obj)
         {
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("!!!REalize answer");
+            Console.Write(obj.messageText);
+            string ans = Console.ReadLine();
+            Answer _answer = new Answer(ans);
+            return _answer;
         }
     }
 }

@@ -7,17 +7,22 @@ using SimpleBot002.DTO;
 
 namespace SimpleBot002.Controller
 {
-    static class MessageMaker
+    public static class MessageMaker
     {
-        static Notice CreateNotice(string txtNotice)
+        public static Notice CreateNotice(string txtNotice)
         {
             Notice _notice = new Notice(txtNotice);
             return _notice;
         }
-        static Alert CreateAlert(string txtAlert)
+        public static Alert CreateAlert(string txtAlert)
         {
             Alert _alert = new Alert(txtAlert);
             return _alert;
+        }
+        public static Query CreateQuery(string txtQuery)
+        {
+            Query _query = new Query(txtQuery);
+            return _query;
         }
 
     }

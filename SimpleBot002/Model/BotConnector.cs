@@ -23,6 +23,9 @@ namespace SimpleBot002.Model
         public delegate void ConnectorEvent(object sndr, ConnectorArgs nameEvent);
         public event ConnectorEvent EventConnected;
         Connector botConnector;
+        public ConnectionStates connectionState { get; private set; }
+        
+        
         void ConfigConnector()
         {
             botConnector = new Connector();
@@ -42,14 +45,19 @@ namespace SimpleBot002.Model
             botConnector.Adapter.InnerAdapters.Add(luaFixMarketDataMessageAdapter);
             botConnector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
             // Registration Events of botConnector
-            botConnector.Connected += DefineEvent;
+            botConnector.Connected += DefineEventConnected;
         }
         public void StartConnector()
         {
             ConfigConnector();
             botConnector.Connect();
         }
-        void  DefineEvent()
+        public ConnectionStates TestConnectionState()
+        {
+            return botConnector.ConnectionState;
+        }
+    
+        void  DefineEventConnected()
         {
             if (EventConnected != null)
                 EventConnected(this, new ConnectorArgs("Connected"));

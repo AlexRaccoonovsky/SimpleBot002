@@ -8,6 +8,7 @@ namespace SimpleBot002.DTO
 {
     public class Query:Message
     {
+        public string nameEventRelated { get; set; }
         public string messageText { get; set; }
         public bool IsPresent { get; set; }
         public Answer answer { get; set; }

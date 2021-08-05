@@ -14,6 +14,7 @@ namespace SimpleBot002.Controller
         BotConnector _sBotConnector;
         MessagePresenter _msgPresenter;
         TxtMessageStorage _txtMessageStorage;
+        Listener _listener;
                 
         // Registration events of Connector
         void RegisterModelEvents()
@@ -21,7 +22,7 @@ namespace SimpleBot002.Controller
             // Subscribe Listener of Controller on ConnectedEvent
             //_sBotConnector.EventConnected += Listener.FixEvent;
         }
-        void ConfigEnvironment()
+        internal void ConfigEnvironment()
         {
             // Initialize MODEL
             _sBotConnector = new BotConnector();
@@ -29,10 +30,11 @@ namespace SimpleBot002.Controller
             _msgPresenter = new MessagePresenter();
             // Initialize Storage of messages text
             _txtMessageStorage = new TxtMessageStorage();
+            // Initialize listener of dispatcher
+            _listener = new Listener();
             // Register Events of Connector
             this.RegisterModelEvents();
-            // Launching MODEL
-            _sBotConnector.StartConnector();
+         
         }
         void MeetingMode()
         {
@@ -44,12 +46,18 @@ namespace SimpleBot002.Controller
             Query _queryConnect = MessageMaker.CreateQuery(_txtMessageStorage.queryConnect);
             // Show question about connect
             Answer ans=_msgPresenter.ShowQuery(_queryConnect);
-            Console.WriteLine(ans.answerParam);
-         }
+            if (ans.answerParam == "y")
+            {
+                _sBotConnector.StartConnector();
+            }
+            // !!!FarewellMode
+            else {Console.WriteLine("Why?"); }
+        }
         public void Start()
         {
             this.ConfigEnvironment();
             this.MeetingMode();
+            _sBotConnector.EventConnected += _listener.FixConnectorEvent;
 
 
         }

@@ -21,14 +21,12 @@ namespace SimpleBot002.View
             InsertDateTimeNow();
             Console.WriteLine(obj.messageAlert);
         }
-
         // Check field .Message
         public void ShowException(Exception obj)
         {
             InsertDateTimeNow();
             Console.WriteLine(obj.Message);
         }
-
         public void ShowNotice(Notice obj)
         {
             // Change Console color for Notice-message
@@ -37,7 +35,6 @@ namespace SimpleBot002.View
             InsertDateTimeNow();
             Console.WriteLine(obj.messageNotice);
         }
-
         public Answer ShowQuery(Query obj)
         {
             // Change Console color for Query-message
@@ -49,16 +46,19 @@ namespace SimpleBot002.View
             // Processing answer
             string ans = Console.ReadLine();
             // Trimming & lowerCase by AnswerHandler
-            string ansHndlr = AnswerHandler(ans);
+            string ansHndlr = AnswerStrHandler(ans);
+            // Create object of user's answer
             Answer _answer = new Answer(ansHndlr);
+          //// Event New Answer 
+          //if (NewAnswer != null)
+          //    NewAnswer(this, new ViewArgs(obj.nameEventRelated, _answer));
             return _answer;
         }
         void InsertDateTimeNow()
         {
             Console.Write("[{0}] ", DateTime.Now);
         }
-
-        string AnswerHandler(string str)
+        string AnswerStrHandler(string str)
         {
             // Initialize handling string - string after trimming & in 
             string handlstring;

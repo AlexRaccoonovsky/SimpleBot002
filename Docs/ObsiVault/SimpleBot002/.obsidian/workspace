@@ -4,23 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "c7c91760b2711f10",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Core/GlobalTaskList.md",
-            "mode": "source"
-          }
-        }
-      },
-      {
         "id": "1937854bdf9b8a28",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Core/DraftsTestConnector.md",
+            "file": "Core/DraftPull&DefineSecurity.md",
             "mode": "source"
           }
         }
@@ -87,7 +76,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Core/DraftsTestConnector.md",
+                "file": "Core/DraftPull&DefineSecurity.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +104,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Core/DraftsTestConnector.md"
+                "file": "Core/DraftPull&DefineSecurity.md"
               }
             }
           }
@@ -128,15 +117,15 @@
   },
   "active": "1937854bdf9b8a28",
   "lastOpenFiles": [
-    "Core/DraftsTestConnector.md",
-    "DailyNotes/2021-07-28.md",
+    "Core/DraftPull&DefineSecurity.md",
+    "Core/DraftsMOC.md",
+    "Core/ManifestO.md",
+    "Templates/+ DocDraftsTemplate.md",
+    "Core/GlobalInfoList.md",
     "Core/GlobalTaskList.md",
-    "DailyNotes/2021-07-29.md",
-    "DailyNotes/2021-07-27.md",
-    "Files/Pasted image 20210726181805.png",
-    "Core/PreparatoryDrafts001.md",
-    "Core/ConstructingAndCodingMOC.md",
-    "Files/Pasted image 20210615214117.png",
-    "DailyNotes/2021-07-26.md"
+    "Core/DraftsTestConnector.md",
+    "DailyNotes/2021-08-06.md",
+    "Core/Drafts of Connector.md",
+    "Core/PrecedentConditions.md"
   ]
 }

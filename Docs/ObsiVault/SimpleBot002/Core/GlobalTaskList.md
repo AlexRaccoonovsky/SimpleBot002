@@ -17,14 +17,14 @@ ___
 - [x] Segregate Modules_001  (20 min)
 - [x] Segregate Modules_002  (20 min)
 - [x] Segregate Modules_003  (20 min)
-- [ ] Interconnect (Main with Model)
-- [ ] Interconnect( Model -> View)
+- [x] Interconnect (Main with Model)
+- [x] Interconnect( Model -> View)
 - [ ] 
 ___
 **Designing:**
 - [x] Design structure (30min)
-- [ ] Design structure (30min)
-- [ ] Design structure (30min)
+- [x] Design structure (30min)
+- [x] Design structure (30min)
 - [ ] 
 - [ ] 
 - [ ] 
@@ -56,7 +56,7 @@ ___
 - [x] Structure Of Documentation (20 min)
 - [ ] GlobalInfoList_RealUseful?
 - [x] Depict [[Environment of SimpleBot001]]
-- [ ] Create DraftsMOC & Aadd [[DraftsTestConnector]]
+- [x] Create DraftsMOC & Aadd [[DraftsTestConnector]]
 - [ ] 
 - [ ] 
 - [ ] 

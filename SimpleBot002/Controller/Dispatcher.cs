@@ -7,6 +7,7 @@ using StockSharp.Messages;
 using SimpleBot002.Model;
 using SimpleBot002.View;
 using SimpleBot002.DTO;
+using StockSharp.BusinessEntities;
 
 namespace SimpleBot002.Controller
 {
@@ -23,6 +24,8 @@ namespace SimpleBot002.Controller
             // Subscribe Listener of Controller on ConnectedEvent
             //_sBotConnector.EventConnected += Listener.FixEvent;
             _sBotConnector.EventConnected += ConnectedEventHndlr;
+
+            _sBotConnector.SecuritySelected += _listener.FixConnectorEvent;
         }
         internal void ConfigEnvironment()
         {
@@ -52,7 +55,7 @@ namespace SimpleBot002.Controller
             {
                 _sBotConnector.StartConnector();
             }
-            // !!!FarewellMode
+            // !!!ReportingMode
             else {Console.WriteLine("Why?"); }
         }
         void TestConnectionMode()
@@ -66,12 +69,19 @@ namespace SimpleBot002.Controller
             Notice currentState = MessageMaker.CreateNotice(strConState);
             _msgPresenter.ShowNotice(currentState);
         }
+        void PrepareTrading()
+        {
+             _sBotConnector.GetSecurity();
+            //Console.WriteLine("Id: {0}", selectedSecurity.Id);
+            
+        }
 
         public void Start()
         {
             this.ConfigEnvironment();
             this.MeetingMode();
             this.TestConnectionMode();
+            this.PrepareTrading();
           
 
         }

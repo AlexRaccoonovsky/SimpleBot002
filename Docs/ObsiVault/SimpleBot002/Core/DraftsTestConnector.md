@@ -1,5 +1,5 @@
 created:2021-06-25 02:39
-status: #status/active
+status: #status/finished 
 references: 
 ___
 > For what this info? Note of draft about testing starting Connector  S#.API
@@ -11,7 +11,7 @@ ___
 # DraftsTestConnector
 ## Problem's Description
 
-^55e4e0
+
 
 For test Connector was using next libraries:
 - Stocksharp.Algo;

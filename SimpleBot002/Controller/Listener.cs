@@ -19,8 +19,11 @@ namespace SimpleBot002.Controller
                 {
                     case "Connected":
                         MessageMaker.CreateNotice(msgTxtStrg.noticeConnected);
+                    break;
 
-                        break;
+                    case "SecurityIsSelected":
+                        Console.WriteLine("Id:{0}", arg.selectedSecurity);
+                    break;
                     default: throw new ArgumentException("Error!");
                 }
                 

@@ -17,6 +17,7 @@ by type:
 #type/knowledge;
 #type/info;
 #type/moc;
+#type/draft;
 by action's type:
 #action/deployment;
 #action/reposervice;

@@ -22,13 +22,18 @@ namespace SimpleBot002.Model
     public class BotConnector
     {
         public delegate void ConnectorEvent(object sndr, ConnectorArgs nameEvent);
+        public delegate void SecuritySelectedEvents(object sndr, SecurityArgs arg);
+        public delegate void PorfolioSelectedEvent(object sndr, PortfolioArgs arg);
+        
         public event ConnectorEvent EventConnected;
-        public event ConnectorEvent SecuritySelected;
+        public event SecuritySelectedEvents SecuritySelected;
+        public event PorfolioSelectedEvent PortfolioSelected;
 
         Connector botConnector;
         public ConnectionStates connectionState { get; private set; }
         public Security selectedSecurity { get; private set; }
         public string strSecIDDefault { get; private set; } = "SIU1@FORTS";
+        public string strPortfDefault { get; private set; } = "7600oba";
         public Portfolio selectedPortfolio { get; private set; }
 
 
@@ -51,33 +56,59 @@ namespace SimpleBot002.Model
             // Add settings to adapters
             botConnector.Adapter.InnerAdapters.Add(luaFixMarketDataMessageAdapter);
             botConnector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
-            #region "Security configuration"
-            // Security configuration
-            string strSecIDDefault = "SIU1@FORTS";
-            // Create pattern for pull only FUTURE
-                Security secFutures = new Security()
-                {
-                    Type = SecurityTypes.Future,
-                };
-
-            botConnector.LookupSecurities(secFutures);
-            #endregion
+           
+            
             #region"Registration Events of botConnector"
             botConnector.Connected += DefineEventConnected;
             botConnector.LookupSecuritiesResult += BotConnector_LookupSecuritiesResult;
+            botConnector.LookupPortfoliosResult += BotConnector_LookupPortfoliosResult;
             botConnector.PortfolioReceived += BotConnector_PortfoliosReceived;
+            botConnector.OrderRegisterFailed += BotConnector_OrderRegisterFailed;
             #endregion
+        }
+
+        private void BotConnector_LookupPortfoliosResult(PortfolioLookupMessage arg1, IEnumerable<Portfolio> arg2, Exception arg3)
+        {
+            foreach (Portfolio p in arg2)
+            {
+                if (p.Name.Contains(strPortfDefault))
+                    selectedPortfolio = p;
+            }
+
+            if (PortfolioSelected != null)
+                PortfolioSelected(this, new PortfolioArgs("PortfolioSelected", selectedPortfolio));
+
+
+        }
+
+        private void BotConnector_OrderRegisterFailed(OrderFail obj)
+        {
+            Console.WriteLine("OrderFailed");
         }
 
         private void BotConnector_PortfoliosReceived(Subscription arg1, Portfolio arg2)
         {
-            selectedPortfolio = arg2;
-          
-                Console.WriteLine("PortfName:{0}", selectedPortfolio.Name);
-                Console.WriteLine("PortfBoard:{0}", selectedPortfolio.Board);
-                Console.WriteLine("PortfBeginValue:{0}", selectedPortfolio.BeginValue);
+        //selectedPortfolio = arg2;
+        //
+        //  Console.WriteLine("PortfName:{0}", selectedPortfolio.Name);
+        //  Console.WriteLine("PortfBoard:{0}", selectedPortfolio.Board);
+        //  Console.WriteLine("PortfBeginValue:{0}", selectedPortfolio.BeginValue);
+            
                 
         }
+
+        public void SetPortfolio()
+        {
+            string strNameportfolio = "7600oba";
+            Portfolio _portf = new Portfolio()
+            {
+                
+                Name = strNameportfolio,
+            };
+            botConnector.LookupPortfolios(_portf);
+
+        }
+        
 
         public void StartConnector()
         {
@@ -88,11 +119,9 @@ namespace SimpleBot002.Model
         {
             return botConnector.ConnectionState;
         }
-       public void GetSecurity()
+       public void SelectFortsSecurities()
        {
-            // Security configuration
-            string strSecIDDefault = "SIU1@FORTS";
-            // Create pattern for pull only FUTURE
+            // Create pattern for pull only FUTURES
             Security secFutures = new Security()
             {
                 Type = SecurityTypes.Future,
@@ -104,20 +133,32 @@ namespace SimpleBot002.Model
 
         private void BotConnector_LookupSecuritiesResult(SecurityLookupMessage arg1, System.Collections.Generic.IEnumerable<Security> arg2, Exception arg3)
         {
-            Security sec;
-            string strSecIDDefault = "SIU1@FORTS";
-            SecurityId secIDDefault;
             IEnumerable<Security> listOfSec;
             listOfSec = botConnector.Securities;
-            Security chosenSecurity;
+            
             foreach (Security s in listOfSec)
             {
                 if (s.Id.Contains(strSecIDDefault))
                     selectedSecurity = s;
             }
             if (SecuritySelected != null)
-                SecuritySelected(this, new ConnectorArgs("SecurityIsSelected", selectedSecurity));
+                SecuritySelected(this, new SecurityArgs("SecurityIsSelected", selectedSecurity));
          
+        }
+        public void PushOrder(Security sec)
+        {
+           //botConnector.RegisterSecurity(sec);
+           //botConnector.RegisterPortfolio(selectedPortfolio);
+           //botConnector.RegisterMarketDepth(sec);
+           //Order _fOrder = new Order
+           //{
+           //    Security = sec,
+           //    Portfolio = selectedPortfolio,
+           //    Volume = 1,
+           //    Direction = Sides.Buy,
+           //    Price = 73666,
+           //};
+           //botConnector.RegisterOrder(_fOrder);
         }
 
         void  DefineEventConnected()

@@ -25,8 +25,24 @@ namespace SimpleBot002.Controller
             //_sBotConnector.EventConnected += Listener.FixEvent;
             _sBotConnector.EventConnected += ConnectedEventHndlr;
 
-            _sBotConnector.SecuritySelected += _listener.FixConnectorEvent;
+            _sBotConnector.SecuritySelected += SecuritySelectedEventHndlr;
+            _sBotConnector.PortfolioSelected += PortfolioSelectedEventHndlr;
         }
+
+        private void PortfolioSelectedEventHndlr(object sndr, PortfolioArgs arg)
+        {
+            Notice portfIsSelected;
+            portfIsSelected = MessageMaker.CreateNotice(_txtMessageStorage.noticePortfolioSelected + arg.selectPortfolio.Name);
+            _msgPresenter.ShowNotice(portfIsSelected);
+        }
+
+        private void SecuritySelectedEventHndlr(object sndr, SecurityArgs arg)
+        {
+            Notice secIsSelected;
+            secIsSelected = MessageMaker.CreateNotice(_txtMessageStorage.noticeSecuritySelected+arg.selectedSecurity.Id);
+            _msgPresenter.ShowNotice(secIsSelected);
+        }
+
         internal void ConfigEnvironment()
         {
             // Initialize MODEL
@@ -71,8 +87,22 @@ namespace SimpleBot002.Controller
         }
         void PrepareTrading()
         {
-             _sBotConnector.GetSecurity();
+            // Select Default Security
+             _sBotConnector.SelectFortsSecurities();
+            _sBotConnector.SetPortfolio();
+                
             //Console.WriteLine("Id: {0}", selectedSecurity.Id);
+          // _sBotConnector.SetPortfolio();
+          // Console.WriteLine("Portfolio:{0}", _sBotConnector.selectedPortfolio);
+            
+            
+        }
+
+        void PushOrder()
+        {
+            //Security selectedSecurity = _sBotConnector.selectedSecurity;
+            //_sBotConnector.PushOrder(selectedSecurity);
+
             
         }
 
@@ -82,7 +112,7 @@ namespace SimpleBot002.Controller
             this.MeetingMode();
             this.TestConnectionMode();
             this.PrepareTrading();
-          
+            //this.PushOrder();
 
         }
         void ConnectedEventHndlr(object sndr, ConnectorArgs nameEvent)

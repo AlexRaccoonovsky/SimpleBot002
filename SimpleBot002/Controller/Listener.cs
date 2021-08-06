@@ -22,7 +22,7 @@ namespace SimpleBot002.Controller
                     break;
 
                     case "SecurityIsSelected":
-                        Console.WriteLine("Id:{0}", arg.selectedSecurity);
+                        
                     break;
                     default: throw new ArgumentException("Error!");
                 }

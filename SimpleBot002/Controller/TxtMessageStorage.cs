@@ -12,6 +12,8 @@ namespace SimpleBot002.Controller
         public string noticeWelcome { get; private set; } = "Hi! My name is SimpleBot002. Shortly - Bot.";
         public string queryConnect { get; private set; } = "Do you want connect to Quik? (y/n):";
         public string noticeCurrentState { get; private set; } = "Current state of Bot: ";
+        public string noticeSecuritySelected { get; private set; } = "Id of selected security: ";
+        public string noticePortfolioSelected { get; private set; } = "Code of selected portfolio: ";
 
     }
 

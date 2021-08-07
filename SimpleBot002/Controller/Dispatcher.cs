@@ -24,7 +24,6 @@ namespace SimpleBot002.Controller
             // Subscribe Listener of Controller on ConnectedEvent
             //_sBotConnector.EventConnected += Listener.FixEvent;
             _sBotConnector.EventConnected += ConnectedEventHndlr;
-
             _sBotConnector.SecuritySelected += SecuritySelectedEventHndlr;
             _sBotConnector.PortfolioSelected += PortfolioSelectedEventHndlr;
         }
@@ -71,7 +70,7 @@ namespace SimpleBot002.Controller
             {
                 _sBotConnector.StartConnector();
             }
-            // !!!ReportingMode
+            // TODO:!!!ReportingMode
             else {Console.WriteLine("Why?"); }
         }
         void TestConnectionMode()
@@ -88,17 +87,11 @@ namespace SimpleBot002.Controller
         void PrepareTrading()
         {
             // Select Default Security
-             _sBotConnector.SelectFortsSecurities();
+            _sBotConnector.SelectFortsSecurities();
             _sBotConnector.SetPortfolio();
-                
-            //Console.WriteLine("Id: {0}", selectedSecurity.Id);
-          // _sBotConnector.SetPortfolio();
-          // Console.WriteLine("Portfolio:{0}", _sBotConnector.selectedPortfolio);
-            
-            
         }
 
-        void PushOrder()
+        void TraderMode()
         {
             //Security selectedSecurity = _sBotConnector.selectedSecurity;
             //_sBotConnector.PushOrder(selectedSecurity);
@@ -112,7 +105,7 @@ namespace SimpleBot002.Controller
             this.MeetingMode();
             this.TestConnectionMode();
             this.PrepareTrading();
-            //this.PushOrder();
+            this.TraderMode();
 
         }
         void ConnectedEventHndlr(object sndr, ConnectorArgs nameEvent)

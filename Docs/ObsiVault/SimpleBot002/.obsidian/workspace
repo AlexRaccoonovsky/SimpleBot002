@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Core/DraftPull&DefineSecurity.md",
-            "mode": "source"
+            "file": "Core/Requirements.md",
+            "mode": "preview"
           }
         }
       }
@@ -76,7 +76,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Core/DraftPull&DefineSecurity.md",
+                "file": "Core/Requirements.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Core/DraftPull&DefineSecurity.md"
+                "file": "Core/Requirements.md"
               }
             }
           }
@@ -117,15 +117,15 @@
   },
   "active": "1937854bdf9b8a28",
   "lastOpenFiles": [
+    "Core/Requirements.md",
+    "Core/PrecedentConditions.md",
+    "Core/Environment of SimpleBot001.md",
+    "Core/ConstructingAndCodingMOC.md",
+    "DailyNotes/2021-08-07.md",
     "Core/DraftPull&DefineSecurity.md",
     "Core/DraftsMOC.md",
     "Core/ManifestO.md",
     "Templates/+ DocDraftsTemplate.md",
-    "Core/GlobalInfoList.md",
-    "Core/GlobalTaskList.md",
-    "Core/DraftsTestConnector.md",
-    "DailyNotes/2021-08-06.md",
-    "Core/Drafts of Connector.md",
-    "Core/PrecedentConditions.md"
+    "Core/GlobalInfoList.md"
   ]
 }

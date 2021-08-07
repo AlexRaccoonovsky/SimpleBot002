@@ -135,12 +135,11 @@ namespace SimpleBot002.Model
         {
             IEnumerable<Security> listOfSec;
             listOfSec = botConnector.Securities;
-            
             foreach (Security s in listOfSec)
-            {
-                if (s.Id.Contains(strSecIDDefault))
-                    selectedSecurity = s;
-            }
+                    {
+                        if (s.Id.Contains(strSecIDDefault))
+                            selectedSecurity = s;
+                    }
             if (SecuritySelected != null)
                 SecuritySelected(this, new SecurityArgs("SecurityIsSelected", selectedSecurity));
          

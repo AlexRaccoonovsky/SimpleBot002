@@ -5,6 +5,7 @@ using StockSharp.Localization;
 using StockSharp.Logging;
 using StockSharp.BusinessEntities;
 using StockSharp.Algo;
+using StockSharp.Algo.Storages;
 using StockSharp.Messages;
 using StockSharp.Quik;
 using StockSharp.Quik.Lua;
@@ -36,6 +37,9 @@ namespace SimpleBot002.Model
         public string strPortfDefault { get; private set; } = "7600oba";
         public Portfolio selectedPortfolio { get; private set; }
 
+        public IPortfolioProvider portfolioProvider;
+        
+        public IPositionStorage positionStorage;
 
         void ConfigConnector()
         {
@@ -62,23 +66,33 @@ namespace SimpleBot002.Model
             botConnector.Connected += DefineEventConnected;
             botConnector.LookupSecuritiesResult += BotConnector_LookupSecuritiesResult;
             botConnector.LookupPortfoliosResult += BotConnector_LookupPortfoliosResult;
-            botConnector.PortfolioReceived += BotConnector_PortfoliosReceived;
             botConnector.OrderRegisterFailed += BotConnector_OrderRegisterFailed;
             #endregion
         }
 
+       
+
         private void BotConnector_LookupPortfoliosResult(PortfolioLookupMessage arg1, IEnumerable<Portfolio> arg2, Exception arg3)
         {
-            foreach (Portfolio p in arg2)
-            {
-                if (p.Name.Contains(strPortfDefault))
-                    selectedPortfolio = p;
-            }
-
+          //  foreach (Portfolio p in botConnector.Portfolios)
+          //  {
+          //      Console.WriteLine("DATA RECEIVED FROM botConnector.Portfolios:");
+          //      Console.WriteLine("Name: {0}", p.Name);
+          //      Console.WriteLine("Board: {0}", p.Board.ToString());
+          //  }
+              foreach (Portfolio p in botConnector.RegisteredPortfolios)
+              {
+                  Console.WriteLine("DATA RECEIVED FROM botConnector.RegisteredPortfolios:");
+                  Console.WriteLine("Name: {0}", p.Name);
+                  Console.WriteLine("Board: {0}", p.Board.ToString());
+              }
+            //___________________________
+            //  positionStorage = new IPositionStorage();
+            //portfolioProvider = new IPortfolioProvider();
+            //selectedPortfolio=TraderHelper.Sa
+            //botConnector
             if (PortfolioSelected != null)
                 PortfolioSelected(this, new PortfolioArgs("PortfolioSelected", selectedPortfolio));
-
-
         }
 
         private void BotConnector_OrderRegisterFailed(OrderFail obj)
@@ -86,27 +100,12 @@ namespace SimpleBot002.Model
             Console.WriteLine("OrderFailed");
         }
 
-        private void BotConnector_PortfoliosReceived(Subscription arg1, Portfolio arg2)
-        {
-        //selectedPortfolio = arg2;
-        //
-        //  Console.WriteLine("PortfName:{0}", selectedPortfolio.Name);
-        //  Console.WriteLine("PortfBoard:{0}", selectedPortfolio.Board);
-        //  Console.WriteLine("PortfBeginValue:{0}", selectedPortfolio.BeginValue);
-            
-                
-        }
 
-        public void SetPortfolio()
+        public void SelectPortfolio()
         {
             string strNameportfolio = "7600oba";
-            Portfolio _portf = new Portfolio()
-            {
-                
-                Name = strNameportfolio,
-            };
-            botConnector.LookupPortfolios(_portf);
-
+            //botConnector.GetPortfolio(strNameportfolio);
+            selectedPortfolio = botConnector.LookupByPortfolioName(strNameportfolio);
         }
         
 

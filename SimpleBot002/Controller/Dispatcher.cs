@@ -17,7 +17,11 @@ namespace SimpleBot002.Controller
         MessagePresenter _msgPresenter;
         TxtMessageStorage _txtMessageStorage;
         Listener _listener;
-                
+        int benchmarkPosition;
+        int limitOrderReg;
+        int countOrderBuy;
+        int countOrderSell;
+        
         // Registration events of Connector
         void RegisterModelEvents()
         {
@@ -54,7 +58,14 @@ namespace SimpleBot002.Controller
             _listener = new Listener();
             // Register Events of Connector
             this.RegisterModelEvents();
-         
+            // Limit of attempt for Order registration
+            limitOrderReg = 5;
+            // Count for current registration OrderBUY
+            countOrderBuy = 0;
+            // Count for current registration OrderSELL
+            countOrderSell = 0;
+
+
         }
         void MeetingMode()
         {
@@ -88,7 +99,7 @@ namespace SimpleBot002.Controller
         {
             // Select Default Security
             _sBotConnector.SelectFortsSecurities();
-            _sBotConnector.SetPortfolio();
+            _sBotConnector.SelectPortfolio();
         }
 
         void TraderMode()

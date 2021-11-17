@@ -9,8 +9,19 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Core/Requirements.md",
-            "mode": "preview"
+            "file": "DailyNotes/2021-11-14.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "ff08ddc067879d05",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "DailyNotes/2021-11-11.md",
+            "mode": "source"
           }
         }
       }
@@ -76,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Core/Requirements.md",
+                "file": "DailyNotes/2021-11-14.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Core/Requirements.md"
+                "file": "DailyNotes/2021-11-14.md"
               }
             }
           }
@@ -117,15 +128,15 @@
   },
   "active": "1937854bdf9b8a28",
   "lastOpenFiles": [
-    "Core/Requirements.md",
-    "Core/PrecedentConditions.md",
-    "Core/Environment of SimpleBot001.md",
-    "Core/ConstructingAndCodingMOC.md",
-    "DailyNotes/2021-08-07.md",
-    "Core/DraftPull&DefineSecurity.md",
+    "DailyNotes/2021-11-14.md",
+    "Core/GlobalTaskList.md",
+    "DailyNotes/2021-11-11.md",
+    "DailyNotes/2021-11-08.md",
+    "DailyNotes/2021-11-10.md",
+    "Core/DraftsTestConnector.md",
     "Core/DraftsMOC.md",
-    "Core/ManifestO.md",
-    "Templates/+ DocDraftsTemplate.md",
-    "Core/GlobalInfoList.md"
+    "Core/PrecedentConditions.md",
+    "Core/MarketDepthSS.md",
+    "Core/ManifestO.md"
   ]
 }

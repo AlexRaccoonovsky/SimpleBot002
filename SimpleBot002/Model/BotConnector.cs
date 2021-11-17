@@ -33,7 +33,7 @@ namespace SimpleBot002.Model
         Connector botConnector;
         public ConnectionStates connectionState { get; private set; }
         public Security selectedSecurity { get; private set; }
-        public string strSecIDDefault { get; private set; } = "SIU1@FORTS";
+        public string strSecIDDefault { get; private set; } = "SIZ1@FORTS";
         public string strPortfDefault { get; private set; } = "7600oba";
         public Portfolio selectedPortfolio { get; private set; }
 

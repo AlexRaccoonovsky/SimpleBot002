@@ -37,7 +37,7 @@ ___
 **Learning:**
 - [ ] MarketDepth class [[MarketDepthSS]]
 - [x] S#.API->Examples->SampleConnection
-- [ ] 
+- [x] DTO (DmitriyAfanasyev)
 - [ ] 
 - [ ] 
 ___
@@ -61,7 +61,4 @@ ___
 - [ ] 
 - [ ] 
 
-**Conclusion:**
-> Result?:
-> Why?:
-> Next steps?
+

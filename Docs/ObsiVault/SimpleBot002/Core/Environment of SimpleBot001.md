@@ -8,7 +8,7 @@ ___
 > When Can Use? Stage of designing.
 
 ___
-# Environment of SimpleBot001
+# Environment of SimpleBot002
 ![[Pasted image 20210625132623.png]]
 
 

@@ -2,7 +2,7 @@ tag: #doc
 status: #status/going 
 created:2021-06-18 10:48
 
-# Requirements for SimpleBot001
+# Requirements for SimpleBot002
 Text verson of requirements view like:
 Как вам такая задача
 создать пример простого торгового робота, БЕЗ графического интерфейса. Т.е. программа написанная на C#, которая:
@@ -19,7 +19,7 @@ Text verson of requirements view like:
 In a DRAKON-notation, algorithm can be present:
 ![[Pasted image 20210618210800.png]]
 
-Summarize, task of project is create SimpleBot001 with include primary functionalities:
+Summarize, task of project is create SimpleBot002 with include primary functionalities:
 1) Connection+testing;
 2) Find Security+test;
 3) TakeData;

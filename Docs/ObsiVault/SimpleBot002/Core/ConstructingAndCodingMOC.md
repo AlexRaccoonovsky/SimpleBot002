@@ -13,4 +13,3 @@ ___
 _List of the drafts_:
 - [x] [[DraftsTestConnector | TestConnector]];
 
-## See also

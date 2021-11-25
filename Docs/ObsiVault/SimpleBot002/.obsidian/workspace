@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Core/ConstructingAndCodingMOC.md",
+            "file": "DailyNotes/2021-11-25.md",
             "mode": "source"
           }
         }
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Core/ConstructingAndCodingMOC.md",
+                "file": "Core/GlobalTaskList.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Core/ConstructingAndCodingMOC.md"
+                "file": "Core/GlobalTaskList.md"
               }
             }
           }
@@ -126,17 +126,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "1937854bdf9b8a28",
+  "active": "ff08ddc067879d05",
   "lastOpenFiles": [
+    "Core/GlobalTaskList.md",
+    "DailyNotes/2021-11-25.md",
+    "DailyNotes/2021-11-22.md",
     "Core/ConstructingAndCodingMOC.md",
     "Core/DraftsTestConnector.md",
     "Core/DraftPull&DefineSecurity.md",
     "Core/DesigningMOC.md",
     "Core/DailyNotesMOC.md",
     "Core/Environment of SimpleBot001.md",
-    "Core/Requirements.md",
-    "Core/ManifestO.md",
-    "Core/MarketDepthSS.md",
-    "Core/PreparatoryDrafts001.md"
+    "Core/Requirements.md"
   ]
 }

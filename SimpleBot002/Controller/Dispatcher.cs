@@ -70,19 +70,26 @@ namespace SimpleBot002.Controller
         void MeetingMode()
         {
             // Create Welcome message & transfer to Presenter of messages
-            Notice WelcomeNotice = MessageMaker.CreateNotice(_txtMessageStorage.noticeWelcome);
+            Notice _welcomeNotice = MessageMaker.CreateNotice(_txtMessageStorage.noticeWelcome);
             // VIEW invoking
-            _msgPresenter.ShowNotice(WelcomeNotice);
+            _msgPresenter.ShowNotice(_welcomeNotice);
             // Creating question about connecting
             Query _queryConnect = MessageMaker.CreateQuery(_txtMessageStorage.queryConnect);
+            // Create GoodBuy message
+            Notice _goodBuy = MessageMaker.CreateNotice(_txtMessageStorage.noticeGoodBuy);
             // Show question about connect
             Answer ans=_msgPresenter.ShowQuery(_queryConnect);
+            // !!!! Need a procedure of answer processing
+            // _ans = processAnswer-procedure
             if (ans.answerParam == "y")
-            {
-                _sBotConnector.StartConnector();
-            }
+                    {
+                        _sBotConnector.StartConnector();
+                    }
             // TODO:!!!ReportingMode
-            else {Console.WriteLine("Why?"); }
+                else
+                _msgPresenter.ShowNotice(_goodBuy);
+            // TODO:!!!Procedure of closing application info
+
         }
         void TestConnectionMode()
         {

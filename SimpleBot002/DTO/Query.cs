@@ -10,18 +10,18 @@ namespace SimpleBot002.DTO
     {
         public string nameEventRelated { get; set; }
         public string messageText { get; set; }
-        public bool IsPresent { get; set; }
+        public bool isPresent { get; set; }
         public Answer answer { get; set; }
         public Query(string txtQuery = "EmptyQuery")
         {
             messageText = txtQuery;
-            IsPresent = false;
+            isPresent = false;
             answer = null;
         }
         public Query (string txtQuery = "EmptyQuery", bool isPresent = false)
         {
             messageText = txtQuery;
-            IsPresent = isPresent;
+            this.isPresent = isPresent;
             answer = null;
         }
         

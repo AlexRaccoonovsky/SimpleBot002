@@ -9,12 +9,12 @@ namespace SimpleBot002.DTO
     public abstract class Message
     {
         public string messageText { get; set; }
-        public bool IsPresent { get; set; }
+        public bool isPresent { get; set; }
 
         public Message(string msgText="Empty",bool isPresent = false)
         {
             messageText = msgText;
-            IsPresent = isPresent;
+            this.isPresent = isPresent;
         }
         
     

@@ -25,7 +25,7 @@ ___
 - [x] Design structure (30min)
 - [x] Design structure (30min)
 - [x] Design structure (30min)
-- [ ] 
+- [ ] Answer type check realization;
 - [ ] 
 - [ ] 
 ___
@@ -57,7 +57,7 @@ ___
 - [ ] GlobalInfoList_RealUseful?
 - [x] Depict [[Environment of SimpleBot001]]
 - [x] Create DraftsMOC & Aadd [[DraftsTestConnector]]
-- [ ] 
+- [ ] Procedure of closing application info
 - [ ] 
 - [ ] 
 

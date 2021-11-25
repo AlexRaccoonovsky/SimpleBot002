@@ -14,6 +14,7 @@ namespace SimpleBot002.Controller
         public string noticeCurrentState { get; private set; } = "Current state of Bot: ";
         public string noticeSecuritySelected { get; private set; } = "Id of selected security: ";
         public string noticePortfolioSelected { get; private set; } = "Code of selected portfolio: ";
+        public string noticeGoodBuy { get; private set; } = "Good buy, friend!";
 
     }
 

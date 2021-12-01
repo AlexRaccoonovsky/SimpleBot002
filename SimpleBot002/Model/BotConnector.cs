@@ -109,9 +109,9 @@ namespace SimpleBot002.Model
         }
         
 
-        public void StartConnector()
+        public void ToStartConnector()
         {
-            ConfigConnector();
+            this.ConfigConnector();
             botConnector.Connect();
         }
         public ConnectionStates TestConnectionState()

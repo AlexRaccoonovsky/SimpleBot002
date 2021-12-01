@@ -46,7 +46,7 @@ namespace SimpleBot002.View
             // Processing answer
             string ans = Console.ReadLine();
             // Trimming & lowerCase by AnswerHandler
-            string ansHndlr = AnswerStrHandler(ans);
+            string ansHndlr = AnswerHandler(ans);
             // Create object of user's answer
             Answer _answer = new Answer(ansHndlr);
           //// Event New Answer 
@@ -56,9 +56,10 @@ namespace SimpleBot002.View
         }
         void InsertDateTimeNow()
         {
-            Console.Write("[{0}] ", DateTime.Now);
+            Console.Write("[{0}]   |   ", DateTime.Now);
         }
-        string AnswerStrHandler(string str)
+        string AnswerHandler(string str)
+            // Method for process answer from Query
         {
             // Initialize handling string - string after trimming & in 
             string handlstring;

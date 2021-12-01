@@ -67,7 +67,7 @@ namespace SimpleBot002.Controller
 
 
         }
-        void MeetingMode()
+        void MeetingStart()
         {
             // Create Welcome message & transfer to Presenter of messages
             Notice _welcomeNotice = MessageMaker.CreateNotice(_txtMessageStorage.noticeWelcome);
@@ -75,15 +75,16 @@ namespace SimpleBot002.Controller
             _msgPresenter.ShowNotice(_welcomeNotice);
             // Creating question about connecting
             Query _queryConnect = MessageMaker.CreateQuery(_txtMessageStorage.queryConnect);
-            // Create GoodBuy message
-            Notice _goodBuy = MessageMaker.CreateNotice(_txtMessageStorage.noticeGoodBuy);
             // Show question about connect
             Answer ans=_msgPresenter.ShowQuery(_queryConnect);
+            // Create GoodBuy message
+            Notice _goodBuy = MessageMaker.CreateNotice(_txtMessageStorage.noticeGoodBuy);
             // !!!! Need a procedure of answer processing
             // _ans = processAnswer-procedure
             if (ans.answerParam == "y")
                     {
-                        _sBotConnector.StartConnector();
+                        // TODO: Insert try-catch
+                        _sBotConnector.ToStartConnector();
                     }
             // TODO:!!!ReportingMode
                 else
@@ -120,7 +121,7 @@ namespace SimpleBot002.Controller
         public void Start()
         {
             this.ConfigEnvironment();
-            this.MeetingMode();
+            this.MeetingStart();
             this.TestConnectionMode();
             this.PrepareTrading();
             this.TraderMode();

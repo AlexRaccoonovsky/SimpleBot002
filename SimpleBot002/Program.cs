@@ -27,7 +27,7 @@ namespace SimpleBot002
         static void Main(string[] args)
         {
             Dispatcher _dispatcher = new Dispatcher();
-            _dispatcher.Start();
+            _dispatcher.ToStartDispatch();
             Console.ReadKey();
         }
     }

@@ -46,7 +46,7 @@ namespace SimpleBot002.Controller
             _msgPresenter.ShowNotice(secIsSelected);
         }
 
-        internal void ConfigEnvironment()
+        internal void ToInitEnvironment()
         {
             // Initialize MODEL
             _sBotConnector = new BotConnector();
@@ -54,7 +54,7 @@ namespace SimpleBot002.Controller
             _msgPresenter = new MessagePresenter();
             // Initialize Storage of messages text
             _txtMessageStorage = new TxtMessageStorage();
-            // Initialize listener of dispatcher
+            // ??? need Initialize listener of dispatcher
             _listener = new Listener();
             // Register Events of Connector
             this.RegisterModelEvents();
@@ -118,9 +118,9 @@ namespace SimpleBot002.Controller
             
         }
 
-        public void Start()
+        public void ToStartDispatch()
         {
-            this.ConfigEnvironment();
+            this.ToInitEnvironment();
             this.MeetingStart();
             this.TestConnectionMode();
             this.PrepareTrading();

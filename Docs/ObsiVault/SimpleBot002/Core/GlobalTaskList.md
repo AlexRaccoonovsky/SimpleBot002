@@ -26,9 +26,11 @@ ___
 - [x] Design structure (30min)
 - [x] Design structure (30min)
 - [ ] Answer type check realization;
-- [ ] ReportingMode
-- [ ] EmergencyMode
-- [ ] 
+- [ ] startReportingMode
+- [ ] startEmergencyMode
+- [ ] startClosingMode
+- [ ] startTradingMode
+- [ ] startConnectingMode
 ___
 **Planning:**
 - [ ] 

@@ -26,7 +26,8 @@ ___
 - [x] Design structure (30min)
 - [x] Design structure (30min)
 - [ ] Answer type check realization;
-- [ ] 
+- [ ] ReportingMode
+- [ ] EmergencyMode
 - [ ] 
 ___
 **Planning:**
@@ -57,8 +58,8 @@ ___
 - [ ] GlobalInfoList_RealUseful?
 - [x] Depict [[Environment of SimpleBot001]]
 - [x] Create DraftsMOC & Aadd [[DraftsTestConnector]]
-- [ ] Procedure of closing application info
-- [ ] 
+- [x] Procedure of closing application info
+- [ ] Variable Of Trader class
 - [ ] 
 
 

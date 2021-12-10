@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DailyNotes/2021-12-08.md",
+            "file": "Core/Requirements.md",
             "mode": "source"
           }
         }
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DailyNotes/2021-12-08.md",
+                "file": "Core/Requirements.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DailyNotes/2021-12-08.md"
+                "file": "Core/Requirements.md"
               }
             }
           }
@@ -128,15 +128,15 @@
   },
   "active": "1937854bdf9b8a28",
   "lastOpenFiles": [
+    "Core/Requirements.md",
     "DailyNotes/2021-12-08.md",
+    "DailyNotes/2021-12-10.md",
     "Core/GlobalTaskList.md",
     "DailyNotes/2021-11-25.md",
     "DailyNotes/2021-11-22.md",
     "Core/ConstructingAndCodingMOC.md",
     "Core/DraftsTestConnector.md",
     "Core/DraftPull&DefineSecurity.md",
-    "Core/DesigningMOC.md",
-    "Core/DailyNotesMOC.md",
-    "Core/Environment of SimpleBot001.md"
+    "Core/DesigningMOC.md"
   ]
 }

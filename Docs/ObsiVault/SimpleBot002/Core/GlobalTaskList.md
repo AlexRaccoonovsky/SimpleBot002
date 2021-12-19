@@ -19,7 +19,7 @@ ___
 - [x] Segregate Modules_003  (20 min)
 - [x] Interconnect (Main with Model)
 - [x] Interconnect( Model -> View)
-- [ ] 
+- [ ] Add
 ___
 **Designing:**
 - [x] Design structure (30min)

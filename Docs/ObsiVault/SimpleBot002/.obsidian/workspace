@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Core/MainMenuStructure.md",
+            "file": "Templates/+ DailyTaskTemplate.md",
             "mode": "source"
           }
         }
@@ -20,7 +20,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DailyNotes/2021-12-19.md",
+            "file": "DailyNotes/2022-01-04.md",
             "mode": "source"
           }
         }
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Core/MainMenuStructure.md",
+                "file": "DailyNotes/2022-01-04.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Core/MainMenuStructure.md"
+                "file": "DailyNotes/2022-01-04.md"
               }
             }
           }
@@ -126,17 +126,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "1937854bdf9b8a28",
+  "active": "ff08ddc067879d05",
   "lastOpenFiles": [
+    "DailyNotes/2022-01-04.md",
+    "DailyNotes/2021-12-19.md",
+    "Templates/+ DailyTaskTemplate.md",
+    "Core/ManifestO.md",
+    "Core/MainMenuStructure.md",
     "Core/Untitled.md",
     "Core/Subsytems of SimpleBot002.md",
-    "DailyNotes/2021-12-19.md",
     "Core/DesigningMOC.md",
     "Core/DraftsTestConnector.md",
-    "Core/DraftsMOC.md",
-    "Core/Environment of SimpleBot001.md",
-    "Core/GlobalTaskList.md",
-    "Core/DraftPull&DefineSecurity.md",
-    "DailyNotes/2021-12-08.md"
+    "Core/DraftsMOC.md"
   ]
 }

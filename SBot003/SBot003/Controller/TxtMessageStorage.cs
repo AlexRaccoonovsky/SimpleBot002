@@ -8,6 +8,6 @@ namespace SBot003.Controller
 {
     public static class TxtMessageStorage
     {
-        public string 
+        public static string emptyMessage { get; private set;  } = "EmptyMessage";
     }
 }

@@ -9,7 +9,7 @@ namespace SBot003.View
 {
     class MessagePresenter
     {
-        public Answer ShowMainMenu()
+        public void ShowMainMenu()
         {
             Console.WriteLine("********MainMenu********");
             Console.WriteLine("1. Connect");
@@ -19,12 +19,16 @@ namespace SBot003.View
             Console.WriteLine("5. TraderMode");
             Console.WriteLine("6. Disconnect");
             Console.WriteLine("7. Exit");
-            // Create Answer object
-            Answer answer = new Answer();
+            Console.WriteLine("---------------");
+        }
+        //public void Show
+        public UserInput TakeUserInput()
+        {
+            // Create UserChoice object
+            UserInput userChoice = new UserInput();
             // Take user answer
-            answer.messageOfAnswer = Console.ReadLine();
-            return answer;
-            
+            userChoice.strMessage = Console.ReadLine();
+            return userChoice;
         }
     }
 }

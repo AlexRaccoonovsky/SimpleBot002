@@ -21,9 +21,10 @@ namespace SBot003.Controller
             // Take echo from User
             UserInput inputMainMenu = messagePresenter.TakeUserInput();
             // To Trim taking message
-            UserInput userInputTrim = userInputHandler.ToTrimUserInput(inputMainMenu);
+            UserInput inputMainMenuTrim = userInputHandler.ToTrimUserInput(inputMainMenu);
             // TryParse field strMessage to numChoice of inputuser
-            UserInput userChoice = userInputHandler.TryParse(userInputTrim);
+            UserInput userChoice = userInputHandler.TryParse(inputMainMenuTrim);
+            
             if (userChoice.isParsed)
             {
                 // ToValidateUserChoice
@@ -31,8 +32,9 @@ namespace SBot003.Controller
             }
             else
             {
-
-                Console.WriteLine("TryAgain!");
+                Alert tryAgain = new Alert();
+                tryAgain.messageAlert = TxtMessageStorage.messageTryAgain;
+                messagePresenter.ShowAlert(tryAgain);
             }
 
         }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using SBot003.DTO;
 
 namespace SBot003.View
@@ -21,14 +18,37 @@ namespace SBot003.View
             Console.WriteLine("7. Exit");
             Console.WriteLine("---------------");
         }
-        //public void Show
         public UserInput TakeUserInput()
         {
             // Create UserChoice object
-            UserInput userChoice = new UserInput();
+            UserInput userInput = new UserInput();
             // Take user answer
-            userChoice.strMessage = Console.ReadLine();
-            return userChoice;
+            userInput.strMessage = Console.ReadLine();
+            return userInput;
         }
+        public void ShowNotice(Notice obj)
+        {
+            // Change Console color for Notice-message
+            Console.ForegroundColor = ConsoleColor.Green;
+            // Print DateTime prefix
+            InsertDateTimePrefix();
+            // Print message of Notice
+            Console.WriteLine(obj.messageNotice);
+        }
+        public void ShowAlert(Alert obj)
+        {
+            // Change Console color for Notice-message
+            Console.ForegroundColor = ConsoleColor.Red;
+            // Print DateTime prefix
+            InsertDateTimePrefix();
+            // Print message of Notice
+            Console.WriteLine(obj.messageAlert);
+        }
+
+        internal void InsertDateTimePrefix()
+        {
+            Console.Write("[{0}]   |   ", DateTime.Now);
+        }
+
     }
 }

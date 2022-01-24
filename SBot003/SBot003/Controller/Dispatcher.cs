@@ -17,9 +17,9 @@ namespace SBot003.Controller
         public void StartToDispatch()
         {
             this.ToInitInvironment();
-            messagePresenter.ShowMainMenu();
+            messagePresenter.ToShowMainMenu();
             // Take echo from User
-            UserInput inputMainMenu = messagePresenter.TakeUserInput();
+            UserInput inputMainMenu = messagePresenter.ToTakeUserInput();
             // To Trim taking message
             UserInput inputMainMenuTrim = userInputHandler.ToTrimUserInput(inputMainMenu);
             // TryParse field strMessage to numChoice of inputuser

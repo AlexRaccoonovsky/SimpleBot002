@@ -6,7 +6,7 @@ namespace SBot003.View
 {
     class MessagePresenter
     {
-        public void ShowMainMenu()
+        public void ToShowMainMenu()
         {
             Console.WriteLine("********MainMenu********");
             Console.WriteLine("1. Connect");
@@ -18,7 +18,7 @@ namespace SBot003.View
             Console.WriteLine("7. Exit");
             Console.WriteLine("---------------");
         }
-        public UserInput TakeUserInput()
+        public UserInput ToTakeUserInput()
         {
             // Create UserChoice object
             UserInput userInput = new UserInput();

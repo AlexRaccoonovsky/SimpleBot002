@@ -6,7 +6,42 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Reference Include="Ecng.Collections">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\Ecng.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.Common">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\Ecng.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.ComponentModel">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\Ecng.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Ecng.Serialization">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\Ecng.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Algo">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.Algo.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.BusinessEntities">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.BusinessEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Fix">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.Fix.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Localization">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Logging">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Messages">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.Quik">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.Quik.dll</HintPath>
+    </Reference>
+    <Reference Include="StockSharp.QuikLua">
+      <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\StockSharp.QuikLua.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

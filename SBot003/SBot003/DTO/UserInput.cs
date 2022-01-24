@@ -14,6 +14,5 @@ namespace SBot003.DTO
         public byte numChoice { get; set;}
         // 
         public bool isParsed { get; set;} = false;
-
     }
 }

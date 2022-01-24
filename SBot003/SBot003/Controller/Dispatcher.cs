@@ -20,26 +20,23 @@ namespace SBot003.Controller
             messagePresenter.ToShowMainMenu();
             // Take echo from User
             UserInput inputMainMenu = messagePresenter.ToTakeUserInput();
-            // To Trim taking message
-            UserInput inputMainMenuTrim = userInputHandler.ToTrimUserInput(inputMainMenu);
-            // TryParse field strMessage to numChoice of inputuser
-            UserInput userChoice = userInputHandler.TryParse(inputMainMenuTrim);
             
-            if (userChoice.isParsed)
-            {
-                // ToValidateUserChoice
-                Console.WriteLine("Parsing is complete");
-            }
-            else
-            {
-                Alert tryAgain = new Alert();
-                tryAgain.messageAlert = TxtMessageStorage.messageTryAgain;
-                messagePresenter.ShowAlert(tryAgain);
-            }
+            
+            
+        //  if (userChoice.isParsed)
+        //  {
+        //      // ToValidateUserChoice
+        //      Console.WriteLine("Parsing is complete");
+        //  }
+        //  else
+        //  {
+        //      Alert tryAgain = new Alert();
+        //      tryAgain.messageAlert = TxtMessageStorage.messageTryAgain;
+        //      messagePresenter.ShowAlert(tryAgain);
+        //  }
 
         }
-
-        internal void ToInitInvironment()
+        void ToInitInvironment()
         {
             // Initialize MessagePresenter
             messagePresenter = new MessagePresenter();

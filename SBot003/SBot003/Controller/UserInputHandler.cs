@@ -7,27 +7,39 @@ using SBot003.DTO;
 
 namespace SBot003.Controller
 {
-    internal class UserInputHandler
+     class UserInputHandler
     {
-        internal UserInput ToTrimUserInput(UserInput userInput)
+        internal UserInput ToRenderUserInput(UserInput obj)
+        {
+            // Take trimmed UserInput object
+            obj = this.ToTrimUserInput(obj);
+            // TryParse field strMessage to numChoice of InputUser
+            UserInput userChoice = this.TryParse(obj);
+            return obj;
+        }
+
+        UserInput ToTrimUserInput(UserInput userInput)
+        // Method trim spaces from property strMessage of UserInput
         {
             userInput.strMessage = (userInput.strMessage).Trim();
             return userInput;
         }
 
-        internal UserInput TryParse(UserInput userChoice)
+        UserInput TryParse(UserInput obj)
         {
             byte numUserChoice;
-            bool success = byte.TryParse(userChoice.strMessage, out numUserChoice);
-            if (success)
-            {
-                userChoice.numChoice = numUserChoice;
-                userChoice.isParsed = true;
-                return userChoice;
+            bool isSuccessParsing = byte.TryParse(obj.strMessage, out numUserChoice);
+            if (isSuccessParsing)
+            { 
+                // Change properties numChoice & isParsed of object UserInput
+                obj.numChoice = numUserChoice;
+                obj.isParsed = true;
+                return obj;
             }
             else
-
-                return userChoice;
+            {
+                return obj;
+            }
         }
 
     }

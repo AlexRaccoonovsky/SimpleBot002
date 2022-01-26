@@ -10,9 +10,9 @@ namespace SBot003.DTO
     {
         // Property contain input of User
         public string strMessage { get; set;}
-        // Handling input of User which using by Dispatcher
-        public byte numChoice { get; set;}
-        // 
+        // Rendering property strMessage which using by Dispatcher
+        public byte? numChoice { get; set; } = null;
+        // Property 
         public bool isParsed { get; set;} = false;
     }
 }

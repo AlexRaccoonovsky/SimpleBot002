@@ -20,13 +20,13 @@ using System.Collections.Generic;
 
 namespace SBot003.Model
 {
-    public class SBotConnector
+    public class GromoBotConnector
     {
         Connector connector;
         void ToConfigConnector()
         {
             connector = new Connector();
-            #region "Registration settings in an adapter"
+            #region Registration settings in an adapter
             var luaFixMarketDataMessageAdapter = new LuaFixMarketDataMessageAdapter(connector.TransactionIdGenerator)
             {
                 Address = "localhost:5001".To<EndPoint>(),
@@ -42,6 +42,9 @@ namespace SBot003.Model
             connector.Adapter.InnerAdapters.Add(luaFixMarketDataMessageAdapter);
             connector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
             #endregion
+            #region Registration Events of GromoBotConnector
+            connector.Connected += ToNotifyDispatcherConnected;
+            #endregion
         }
         public void ToConnect()
         { 
@@ -51,6 +54,9 @@ namespace SBot003.Model
         public ConnectionStates ToCheckConnectionState()
         {
             return connector.ConnectionState;
+        }
+        void ToNotifyDispatcherConnected()
+        { 
         }
     }
 }

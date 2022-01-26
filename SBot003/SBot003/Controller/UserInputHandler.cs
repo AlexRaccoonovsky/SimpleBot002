@@ -16,6 +16,7 @@ namespace SBot003.Controller
             // TryParse field strMessage to numChoice of InputUser
             UserInput userChoice = this.TryParse(obj);
             return obj;
+
         }
 
         UserInput ToTrimUserInput(UserInput userInput)
@@ -38,6 +39,7 @@ namespace SBot003.Controller
             }
             else
             {
+                // Return UserInput object with properties numChoice = null; isParsed = false; 
                 return obj;
             }
         }

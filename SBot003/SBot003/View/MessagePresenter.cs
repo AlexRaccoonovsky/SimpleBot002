@@ -6,17 +6,13 @@ namespace SBot003.View
 {
     class MessagePresenter
     {
-        public void ToShowMainMenu()
+        public void ToShowMenu(string[] menuStrings)
         {
-            Console.WriteLine("********MainMenu********");
-            Console.WriteLine("1. Connect");
-            Console.WriteLine("2. Set Portfolio");
-            Console.WriteLine("3. Set Security");
-            Console.WriteLine("4. ObserverMode");
-            Console.WriteLine("5. TraderMode");
-            Console.WriteLine("6. Disconnect");
-            Console.WriteLine("7. Exit");
-            Console.WriteLine("---------------");
+            foreach (string str in menuStrings)
+            { 
+                Console.WriteLine(str);
+            }
+
         }
         public UserInput ToTakeUserInput()
         {
@@ -45,7 +41,7 @@ namespace SBot003.View
             Console.WriteLine(obj.messageAlert);
         }
 
-        internal void InsertDateTimePrefix()
+        void InsertDateTimePrefix()
         {
             Console.Write("[{0}]   |   ", DateTime.Now);
         }

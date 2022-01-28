@@ -12,7 +12,9 @@ namespace SBot003.DTO
         public string strMessage { get; set;}
         // Rendering property strMessage which using by Dispatcher
         public byte? numChoice { get; set; } = null;
-        // Property 
+        // Property indicating result of parsing
         public bool isParsed { get; set;} = false;
+        // Property indicatin result of validation check
+        public bool isValidRangeOfMenu { get; set;} = false;
     }
 }

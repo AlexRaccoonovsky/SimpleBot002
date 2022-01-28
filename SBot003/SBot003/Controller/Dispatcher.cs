@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 using SBot003.View;
 using SBot003.DTO;
 using SBot003.Model;
+using SBot003.ServiceStorage;
+using StockSharp.Messages; ;
 
 
 namespace SBot003.Controller
 {
     public class Dispatcher
     {
+        #region Auxiliary Entities definition
         MessagePresenter messagePresenter;
         UserInputHandler userInputHandler;
         GromoBotConnector gromoBotConnector;
+        #endregion
+        #region Indicators of Gromobot's State
+        ConnectionStates connectionState;
+
+        #endregion
+
+
         void ToInitInvironment()
         {
             #region Initialize Entities for relationship
@@ -22,37 +32,31 @@ namespace SBot003.Controller
             userInputHandler = new UserInputHandler();
             gromoBotConnector = new GromoBotConnector();
             #endregion
-
-
         }
 
         public void StartToDispatch()
         {
             this.ToInitInvironment();
-            messagePresenter.ToShowMainMenu();
+            // Display MainMenu
+            messagePresenter.ToShowMenu(MenuItemsStorage.mainMenuItems);
             // Take echo from User
             UserInput inputMainMenu = messagePresenter.ToTakeUserInput();
             // Rendering (Trimming+Parsing) UserInput object
             inputMainMenu = userInputHandler.ToRenderUserInput(inputMainMenu);
-            // To check Rendering UserInput
-            bool isValidInputMainMenu = ToValidateRangeMainMenu(inputMainMenu);
             // Executing UserCommand
-            if (inputMainMenu.isParsed && isValidInputMainMenu)
+            if (inputMainMenu.isValidRangeOfMenu)
             {
+
+                // 
                 ToExecuteMainMenuItem(inputMainMenu);
             }
             else
             // Throw the Alert
             {
-                Alert tryAgain = new Alert();
-                tryAgain.messageAlert = TxtMessageStorage.messageTryAgain;
-                messagePresenter.ShowAlert(tryAgain);
+                Alert incorrectInput = new Alert();
+                incorrectInput.messageAlert = TxtMessageStorage.incorrectInput;
+                messagePresenter.ShowAlert(incorrectInput);
             }
-        }
-        // TODO: ToValidateRangeMainMenu
-        bool ToValidateRangeMainMenu(UserInput obj)
-        {
-            return true;
         }
         void ToExecuteMainMenuItem(UserInput inputMainMenu)
         {

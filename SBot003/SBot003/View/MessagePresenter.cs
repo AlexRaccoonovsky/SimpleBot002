@@ -22,7 +22,7 @@ namespace SBot003.View
             userInput.strMessage = Console.ReadLine();
             return userInput;
         }
-        public void ShowNotice(Notice obj)
+        public void ToShowNotice(Notice obj)
         {
             // Change Console color for Notice-message
             Console.ForegroundColor = ConsoleColor.Green;
@@ -31,7 +31,7 @@ namespace SBot003.View
             // Print message of Notice
             Console.WriteLine(obj.messageNotice);
         }
-        public void ShowAlert(Alert obj)
+        public void ToShowAlert(Alert obj)
         {
             // Change Console color for Notice-message
             Console.ForegroundColor = ConsoleColor.Red;
@@ -39,6 +39,10 @@ namespace SBot003.View
             InsertDateTimePrefix();
             // Print message of Notice
             Console.WriteLine(obj.messageAlert);
+        }
+        public void ToShowStateOfGromoBot()
+        {
+            Console.WriteLine("Cu");
         }
 
         void InsertDateTimePrefix()

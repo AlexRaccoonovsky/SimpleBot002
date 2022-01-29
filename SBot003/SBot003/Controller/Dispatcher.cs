@@ -7,7 +7,7 @@ using SBot003.View;
 using SBot003.DTO;
 using SBot003.Model;
 using SBot003.ServiceStorage;
-using StockSharp.Messages; ;
+using StockSharp.Messages; 
 
 
 namespace SBot003.Controller
@@ -19,8 +19,9 @@ namespace SBot003.Controller
         UserInputHandler userInputHandler;
         GromoBotConnector gromoBotConnector;
         #endregion
+
         #region Indicators of Gromobot's State
-        ConnectionStates connectionState;
+        ConnectionStates connectionState = ConnectionStates.Disconnected;
 
         #endregion
 
@@ -55,7 +56,7 @@ namespace SBot003.Controller
             {
                 Alert incorrectInput = new Alert();
                 incorrectInput.messageAlert = TxtMessageStorage.incorrectInput;
-                messagePresenter.ShowAlert(incorrectInput);
+                messagePresenter.ToShowAlert(incorrectInput);
             }
         }
         void ToExecuteMainMenuItem(UserInput inputMainMenu)

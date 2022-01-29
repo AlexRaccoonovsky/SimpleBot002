@@ -10,5 +10,6 @@ namespace SBot003.ServiceStorage
     {
         public static string emptyMessage { get; private set;  } = "EmptyMessage";
         public static string incorrectInput { get; private set; } = "Input is incorrect. Please try again!";
+        public static string signNoticeConnectionState { get; private set; } = "State Of Connection:";
     }
 }

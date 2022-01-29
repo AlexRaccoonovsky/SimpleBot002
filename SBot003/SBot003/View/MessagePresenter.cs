@@ -14,6 +14,18 @@ namespace SBot003.View
             }
 
         }
+        public void ToShowStateNotice(string[] stateSigns)
+        {
+            // Change Console color for stateNotice message
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("_____________");
+            foreach (string signs in stateSigns)
+            { Console.Write(signs); }
+            
+
+            Console.WriteLine("_____________");
+
+        }
         public UserInput ToTakeUserInput()
         {
             // Create UserChoice object

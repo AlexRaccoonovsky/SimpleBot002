@@ -22,7 +22,7 @@ namespace SBot003.Controller
 
         #region Indicators of Gromobot's State
         ConnectionStates connectionState = ConnectionStates.Disconnected;
-
+        
         #endregion
 
 
@@ -64,11 +64,24 @@ namespace SBot003.Controller
             switch (inputMainMenu.numChoice)
             {
                 case 1:
+                    Console.WriteLine("{0}", connectionState.ToString());
+                    break;
+                    case 2:
                     gromoBotConnector.ToConnect();
                     break;
                 default:
                     break;
             }
+        }
+        StateNotice ToFormStateNotice(string txtStateSigns[], string[] valuesOfStatusSigns)
+        {
+            StateNotice obj = new StateNotice();
+            for (int i=0;i<3;i++)
+            {
+                obj.txtStateSigns[i] = txtStateSigns[i];
+
+            }
+            return StateNotice obj;
         }
     }
 }

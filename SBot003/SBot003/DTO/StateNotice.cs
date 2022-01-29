@@ -8,6 +8,7 @@ namespace SBot003.DTO
 {
     public class StateNotice:Message
     {
-        public string[] txtStateSigns;
+        public string[] txtStateSigns { get; set; }
+        public string[] valueOfStatusSigns { get; set; }
     }
 }

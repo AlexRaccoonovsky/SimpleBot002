@@ -21,5 +21,7 @@ namespace SBot003.ServiceStorage
               "8. Exit",
               "---------------"
             };
+        public static string[] stateOfGromoBotItems = new string[]
+            { "ConnectionState:","Portfolio:","Security:"};
     }
 }

@@ -20,9 +20,14 @@ namespace SBot003.Controller
         GromoBotConnector gromoBotConnector;
         #endregion
 
-        #region Indicators of Gromobot's State
+        #region Parameters of Gromobot's State
+        // ? need Quantity of Gromobot's parameters (connectionState,selectedPortfolio,selectedSecurity )
+        public const int numOfGromoBotParameters = 3;
+
         ConnectionStates connectionState = ConnectionStates.Disconnected;
-        
+        string selectedPortfolio = "EmptyPortfolio";
+        string selectedSecurity = "EmptySecurity";
+
         #endregion
 
 
@@ -47,7 +52,6 @@ namespace SBot003.Controller
             // Executing UserCommand
             if (inputMainMenu.isValidRangeOfMenu)
             {
-
                 // 
                 ToExecuteMainMenuItem(inputMainMenu);
             }
@@ -63,25 +67,25 @@ namespace SBot003.Controller
         {
             switch (inputMainMenu.numChoice)
             {
-                case 1:
-                    Console.WriteLine("{0}", connectionState.ToString());
+                    case 1:
+                    //
+                    string[] valuesOfStateParams = new string[numOfGromoBotParameters];
+                    valuesOfStateParams [0] = connectionState.ToString();
+                    valuesOfStateParams [1] = selectedPortfolio; 
+                    valuesOfStateParams [2] = selectedSecurity;
+                    //
+                    StateNotice currentState = new StateNotice(valuesOfStateParams);
+                    //
+                    messagePresenter.ToShowStateNotice(currentState);
                     break;
+
                     case 2:
                     gromoBotConnector.ToConnect();
                     break;
-                default:
+
+                    default:
                     break;
             }
-        }
-        StateNotice ToFormStateNotice(string txtStateSigns[], string[] valuesOfStatusSigns)
-        {
-            StateNotice obj = new StateNotice();
-            for (int i=0;i<3;i++)
-            {
-                obj.txtStateSigns[i] = txtStateSigns[i];
-
-            }
-            return StateNotice obj;
         }
     }
 }

@@ -49,7 +49,7 @@ namespace SBot003.Controller
         }
         UserInput ToCheckRangeOfUserInput(UserInput obj)
         {
-            // TODO: Check a logic
+            // TODO: Check a logic, insert comments
             if (obj.numChoice !=null)
             {
                 if (obj.numChoice >= RangeOfMenuStorage.minNumChoiceOfMainMenu &&

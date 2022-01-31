@@ -1,6 +1,7 @@
 ﻿using System;
 
 using SBot003.DTO;
+using SBot003.Controller;
 
 namespace SBot003.View
 {
@@ -14,15 +15,15 @@ namespace SBot003.View
             }
 
         }
-        public void ToShowStateNotice(string[] stateSigns)
+        public void ToShowStateNotice(StateNotice obj)
         {
             // Change Console color for stateNotice message
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("_____________");
-            foreach (string signs in stateSigns)
-            { Console.Write(signs); }
-            
-
+            foreach (string param in obj.valuesOfStatusSigns)
+            {
+                Console.WriteLine(param);
+            }
             Console.WriteLine("_____________");
 
         }

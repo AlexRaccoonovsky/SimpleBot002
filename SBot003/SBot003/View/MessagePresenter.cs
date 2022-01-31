@@ -55,11 +55,6 @@ namespace SBot003.View
             // Print message of Notice
             Console.WriteLine(obj.messageAlert);
         }
-        public void ToShowStateOfGromoBot()
-        {
-            Console.WriteLine("Cu");
-        }
-
         void InsertDateTimePrefix()
         {
             Console.Write("[{0}]   |   ", DateTime.Now);

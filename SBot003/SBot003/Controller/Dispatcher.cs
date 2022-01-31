@@ -21,13 +21,15 @@ namespace SBot003.Controller
         #endregion
 
         #region Parameters of Gromobot's State
-        // ? need Quantity of Gromobot's parameters (connectionState,selectedPortfolio,selectedSecurity )
+        // Quantity of Gromobot's parameters:
+        // - connectionState;
+        // - selectedPortfolio;
+        // - selectedSecurity.
         public const int numOfGromoBotParameters = 3;
-
+        // Initiation of GromoBot's parameters
         ConnectionStates connectionState = ConnectionStates.Disconnected;
         string selectedPortfolio = "EmptyPortfolio";
         string selectedSecurity = "EmptySecurity";
-
         #endregion
 
 
@@ -68,7 +70,7 @@ namespace SBot003.Controller
             switch (inputMainMenu.numChoice)
             {
                     case 1:
-                    //
+                    // TODO: !!!For refactor: In one method
                     string[] valuesOfStateParams = new string[numOfGromoBotParameters];
                     valuesOfStateParams [0] = connectionState.ToString();
                     valuesOfStateParams [1] = selectedPortfolio; 

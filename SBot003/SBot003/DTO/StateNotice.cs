@@ -10,15 +10,15 @@ namespace SBot003.DTO
     public class StateNotice:Message
     {
         // TODO: !!!Need To Change
-        public string messageText { get; set; }
+        public string messageText { get; set; } = TxtMessageStorage.titleForCurrentParameters;
         // Signs for request "1. Show State Of GromoBot" of MainMenu
         public string[] txtStateSigns { get; private set; }
         // Values for or request "1. Show State Of GromoBot" of MainMenu
-        public string[] valuesOfStatusSigns{ get; private set; }
+        public string[] valuesOfStateParam{ get; private set; }
         public StateNotice(string[] valuesOfGromoBotStateParams)
         {
             txtStateSigns = MenuItemsStorage.signsForGromoBotStateParam;
-            valuesOfStatusSigns = valuesOfGromoBotStateParams;
+            valuesOfStateParam = valuesOfGromoBotStateParams;
         }
     }
 }

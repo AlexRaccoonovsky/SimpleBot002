@@ -19,13 +19,15 @@ namespace SBot003.View
         {
             // Change Console color for stateNotice message
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("_____________");
-            foreach (string param in obj.valuesOfStatusSigns)
+            Console.WriteLine("------------");
+            Console.WriteLine(obj.messageText);
+            Console.WriteLine("------------");
+            for (int i = 0; i < Dispatcher.numOfGromoBotParameters; i++)
             {
-                Console.WriteLine(param);
+                Console.Write(obj.txtStateSigns[i]);
+                Console.Write(obj.valuesOfStateParam[i]+"\r\n");
             }
-            Console.WriteLine("_____________");
-
+            Console.WriteLine("------------");
         }
         public UserInput ToTakeUserInput()
         {

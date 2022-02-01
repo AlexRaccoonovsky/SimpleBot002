@@ -22,6 +22,11 @@ namespace SBot003.Model
 {
     public class GromoBotConnector
     {
+        #region Declaration Of Event
+        public event EventHandler EventConnected;
+        public event EventHandler EventDisconnected;
+        #endregion
+
         Connector connector;
         void ToConfigConnector()
         {
@@ -41,9 +46,6 @@ namespace SBot003.Model
             };
             connector.Adapter.InnerAdapters.Add(luaFixMarketDataMessageAdapter);
             connector.Adapter.InnerAdapters.Add(luaFixTransactionMessageAdapter);
-            #endregion
-            #region Registration Events of GromoBotConnector
-            connector.Connected += ToNotifyDispatcherConnected;
             #endregion
         }
         public void ToConnect()

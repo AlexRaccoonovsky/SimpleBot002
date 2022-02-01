@@ -32,16 +32,21 @@ namespace SBot003.Controller
         string selectedSecurity = "EmptySecurity";
         #endregion
 
-
         void ToInitInvironment()
         {
-            #region Initialize Entities for relationship
+            #region To Initialize Entities for relationship
             messagePresenter = new MessagePresenter();
             userInputHandler = new UserInputHandler();
             gromoBotConnector = new GromoBotConnector();
             #endregion
-        }
 
+            #region Registration Events of GromoBotConnector
+            // Events registration
+            gromoBotConnector.EventConnected += HandlerEventConnected;
+            //connector.Connected += ToNotifyDispatcherConnected;
+            // Delegates registrtion
+            #endregion
+        }
         public void StartToDispatch()
         {
             this.ToInitInvironment();
@@ -79,15 +84,24 @@ namespace SBot003.Controller
                     StateNotice currentState = new StateNotice(valuesOfStateParams);
                     //
                     messagePresenter.ToShowStateNotice(currentState);
+                    Console.ReadLine();
                     break;
 
                     case 2:
                     gromoBotConnector.ToConnect();
+                    Console.ReadLine();
                     break;
 
                     default:
                     break;
             }
+        }
+        void HandlerEventConnected(object source,EventArgs arg)
+        {// TODO change field of Dispatcher
+            Notice noticeConnected = new Notice();
+            noticeConnected.messageNotice = (TxtMessageStorage.messageConnected);
+            messagePresenter.ToShowNotice(noticeConnected);
+            Console.ReadLine(); 
         }
     }
 }

@@ -9,6 +9,8 @@ namespace SBot003.View
     {
         public void ToShowMenu(string[] menuStrings)
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (string str in menuStrings)
             { 
                 Console.WriteLine(str);
@@ -28,6 +30,13 @@ namespace SBot003.View
                 Console.Write(obj.valuesOfStateParam[i]+"\r\n");
             }
             Console.WriteLine("------------");
+        }
+        public bool IsPressedEnter()
+        {
+            bool isEnterKey = false;
+            while (Console.ReadKey().Key != ConsoleKey.Enter) { }
+            isEnterKey= true;
+            return isEnterKey;
         }
         public UserInput ToTakeUserInput()
         {

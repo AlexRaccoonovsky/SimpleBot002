@@ -50,6 +50,41 @@ namespace SBot003.Controller
         public void StartToDispatch()
         {
             this.ToInitInvironment();
+            this.HandlerMainMenu();
+        }
+        void ToExecuteMainMenuItem(UserInput inputMainMenu)
+        {
+            switch (inputMainMenu.numChoice)
+            {
+                    case 1:
+                    // TODO: !!!For refactor: In one method
+                    string[] valuesOfStateParams = new string[numOfGromoBotParameters];
+                    valuesOfStateParams [0] = connectionState.ToString();
+                    valuesOfStateParams [1] = selectedPortfolio; 
+                    valuesOfStateParams [2] = selectedSecurity;
+                    //
+                    StateNotice currentState = new StateNotice(valuesOfStateParams);
+                    //
+                    messagePresenter.ToShowStateNotice(currentState);
+                    
+                    Notice pressEnterKey = new Notice();
+                    pressEnterKey.messageNotice = TxtMessageStorage.pressEnterNotice;
+                    messagePresenter.ToShowNotice(pressEnterKey);
+                    if (messagePresenter.IsPressedEnter())
+                       { HandlerMainMenu();}
+                    break;
+
+                    case 2:
+                    gromoBotConnector.ToConnect();
+                    HandlerMainMenu();
+                    break;
+
+                    default:
+                    break;
+            }
+        }
+        void HandlerMainMenu()
+        {
             // Display MainMenu
             messagePresenter.ToShowMenu(MenuItemsStorage.mainMenuItems);
             // Take echo from User
@@ -70,38 +105,18 @@ namespace SBot003.Controller
                 messagePresenter.ToShowAlert(incorrectInput);
             }
         }
-        void ToExecuteMainMenuItem(UserInput inputMainMenu)
-        {
-            switch (inputMainMenu.numChoice)
-            {
-                    case 1:
-                    // TODO: !!!For refactor: In one method
-                    string[] valuesOfStateParams = new string[numOfGromoBotParameters];
-                    valuesOfStateParams [0] = connectionState.ToString();
-                    valuesOfStateParams [1] = selectedPortfolio; 
-                    valuesOfStateParams [2] = selectedSecurity;
-                    //
-                    StateNotice currentState = new StateNotice(valuesOfStateParams);
-                    //
-                    messagePresenter.ToShowStateNotice(currentState);
-                    Console.ReadLine();
-                    break;
-
-                    case 2:
-                    gromoBotConnector.ToConnect();
-                    Console.ReadLine();
-                    break;
-
-                    default:
-                    break;
-            }
-        }
         void HandlerEventConnected(object source,EventArgs arg)
         {// TODO change field of Dispatcher
+            this.connectionState = ConnectionStates.Connected;
             Notice noticeConnected = new Notice();
             noticeConnected.messageNotice = (TxtMessageStorage.messageConnected);
             messagePresenter.ToShowNotice(noticeConnected);
-            Console.ReadLine(); 
+            
+            Notice pressEnterKey = new Notice();
+            pressEnterKey.messageNotice = TxtMessageStorage.pressEnterNotice;
+            if (messagePresenter.IsPressedEnter())
+            { HandlerMainMenu(); }
         }
+
     }
 }

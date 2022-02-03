@@ -75,8 +75,19 @@ namespace SBot003.Controller
                     break;
 
                     case 2:
+
+                    // Show current state
+
+
                     gromoBotConnector.ToConnect();
-                    HandlerMainMenu();
+
+                    Notice nowState = new Notice();
+                    this.connectionState = gromoBotConnector.ToCheckConnectionState();
+                    nowState.messageNotice = connectionState.ToString();
+                    messagePresenter.ToShowNotice(nowState);
+                    messagePresenter.ToTakeUserInput();
+
+
                     break;
 
                     default:
@@ -106,16 +117,14 @@ namespace SBot003.Controller
             }
         }
         void HandlerEventConnected(object source,EventArgs arg)
-        {// TODO change field of Dispatcher
-            this.connectionState = ConnectionStates.Connected;
-            Notice noticeConnected = new Notice();
-            noticeConnected.messageNotice = (TxtMessageStorage.messageConnected);
-            messagePresenter.ToShowNotice(noticeConnected);
-            
-            Notice pressEnterKey = new Notice();
-            pressEnterKey.messageNotice = TxtMessageStorage.pressEnterNotice;
-            if (messagePresenter.IsPressedEnter())
-            { HandlerMainMenu(); }
+        {
+            Notice nowState = new Notice();
+            this.connectionState = gromoBotConnector.ToCheckConnectionState();
+            nowState.messageNotice = connectionState.ToString();
+            messagePresenter.ToShowNotice(nowState);
+            messagePresenter.ToTakeUserInput();
+
+
         }
 
     }

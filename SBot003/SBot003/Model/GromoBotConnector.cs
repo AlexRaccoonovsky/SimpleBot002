@@ -57,8 +57,6 @@ namespace SBot003.Model
         {
             return connector.ConnectionState;
         }
-        void ToNotifyDispatcherConnected()
-        { 
-        }
+
     }
 }

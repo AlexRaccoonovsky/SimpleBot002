@@ -50,7 +50,7 @@ namespace SBot003.Controller
         public void StartToDispatch()
         {
             this.ToInitInvironment();
-            this.HandlerMainMenu();
+            //this.HandlerMainMenu();
         }
         void ToExecuteMainMenuItem(UserInput inputMainMenu)
         {

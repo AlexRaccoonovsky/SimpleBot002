@@ -7,7 +7,14 @@ namespace SBot003.View
 {
     class MessagePresenter
     {
-        public void ToShowMenu(string[] menuStrings)
+        
+        public void DisplayFacing()
+        {
+            Console.Clear();
+            
+
+        }
+        void ToShowMainMenu(string[] menuStrings)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;

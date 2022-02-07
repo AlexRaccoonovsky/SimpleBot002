@@ -9,6 +9,10 @@ namespace GromoBot
     {
         static void Main(string[] args)
         {
+            
+            GromoBotIO gromoBotIO = new GromoBotIO();   
+            gromoBotIO.ToStartIO();
+            Console.ReadKey();
 
         }
     }

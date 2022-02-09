@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace GromoBot.View
 {
-    public class MainMenu
-    {
-        internal void ToShowTitle()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(SignsOfMenuItemsStore.mainMenuTitle);
-        }
 
+    internal class MainMenuArea
+    {
+          // TODO: Can kill ToSetTemplate()?
         internal void ToSetTemplate()
         { 
         }
         
-        internal void ToShowItems(AccessTemplatesStore obj)
+
+        internal void ToShow(AccessTemplatesStore obj)
         {
+            ToShowTitle();
             obj.ToInitAccessPrimaryMainMenu();
             for(int numItem = 0; numItem<obj.quanItemsMainMenu; numItem++)
             {
@@ -34,8 +32,17 @@ namespace GromoBot.View
                     Console.WriteLine(SignsOfMenuItemsStore.mainMenuItems[numItem]);
                 }
             }
-
-
+            ToShowEndAreaSeparator();
+        }
+        void ToShowTitle()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(SignsOfMenuItemsStore.mainMenuTitle);
+        }
+        void ToShowEndAreaSeparator()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine(SignsOfMenuItemsStore.endOfAreaSeparator);
         }
     }
 }

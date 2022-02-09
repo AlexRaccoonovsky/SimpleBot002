@@ -9,8 +9,12 @@ namespace GromoBot.View
     public class GromoBotIO
     {
         #region Entities Of Input/Output Of Gromo
-        internal MainMenu mainMenu;
-        internal AccessTemplatesStore accessTemplatesStore;
+        MainMenuArea mainMenuArea;
+        StateParametersArea stateParametersArea;
+        AccessTemplatesStore accessTemplatesStore;
+        // TODO: ??Resolve about accesmodificator
+        internal Cursor cursor;
+        internal CursorPosition cursorPosition;
         #endregion
         public void ToStartIO()
         {
@@ -31,20 +35,25 @@ namespace GromoBot.View
         }
         void ToInitializeEntities()
         {
-            mainMenu = new MainMenu();
+            cursor = new Cursor();
+            cursorPosition = new CursorPosition();
             accessTemplatesStore = new AccessTemplatesStore();
+            mainMenuArea = new MainMenuArea();
+            stateParametersArea = new StateParametersArea();
+
+            
             return;
         }
         void ToDrawInterfaceMainMenu()
         {
-            // Set cursor to position of Main Menu Title
-            Cursor cursor = new Cursor();
-            cursor.ToSetPosition(CursorPositionStore.mainMenuTitle);
-            // To depict Title Of MainMenu
-            mainMenu.ToShowTitle();
+            // TODO: May be cursor transfer to AreaMdules?
             // Set cursor to position of first Main Menu Item
             cursor.ToSetPosition(CursorPositionStore.mainMenuItemsBegin);
-            mainMenu.ToShowItems(accessTemplatesStore);
+            mainMenuArea.ToShow(accessTemplatesStore);
+            // Set cursor to position of GromoBot's State Parameters
+            cursor.ToSetPosition(CursorPositionStore.stateParametersString);
+            stateParametersArea.ToShow();
+
 
         }
     }

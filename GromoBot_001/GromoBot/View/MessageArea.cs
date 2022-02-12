@@ -15,5 +15,9 @@ namespace GromoBot.View
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(SignsOfMenuItemsStore.messageAreaTitle);
         }
+        void InsertDateTimePrefix()
+        {
+            Console.Write("[{0}]   |   ", DateTime.Now);
+        }
     }
 }

@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace GromoBot.View
 {
-
     internal class StateParametersArea
     {
-
-
-
         public void ToShow()
         {
             ToShowTitle();
+            ToShowEndAreaSeparator();
             Console.ForegroundColor= ConsoleColor.White;
             Console.WriteLine("ConnectionState: {0} | Portfolio: {1} | Security: {2}","CS","MyPortf","MySec");
             ToShowEndAreaSeparator();
-
         }
         void ToShowTitle()
         {

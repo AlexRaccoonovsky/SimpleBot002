@@ -13,11 +13,10 @@ namespace GromoBot.View
         internal void ToSetTemplate()
         { 
         }
-        
-
         internal void ToShow(AccessTemplatesStore obj)
         {
             ToShowTitle();
+            ToShowEndAreaSeparator();
             obj.ToInitAccessPrimaryMainMenu();
             for(int numItem = 0; numItem<obj.quanItemsMainMenu; numItem++)
             {

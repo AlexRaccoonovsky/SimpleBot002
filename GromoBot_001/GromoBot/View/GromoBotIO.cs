@@ -44,18 +44,16 @@ namespace GromoBot.View
             stateParametersArea = new StateParametersArea();
             userInputArea = new UserInputArea();
             messageArea = new MessageArea();    
-
-            
             return;
         }
         void ToDrawInterfaceMainMenu()
         {
             // TODO: May be cursor transfer to AreaMdules?
             // Set cursor to position of first Main Menu Item
-            cursor.ToSetPosition(CursorPositionStore.mainMenuItemsBegin);
+            cursor.ToSetPosition(CursorPositionStore.mainMenuTitle);
             mainMenuArea.ToShow(accessTemplatesStore);
             // Set cursor to position of GromoBot's State Parameters
-            cursor.ToSetPosition(CursorPositionStore.stateParametersString);
+            cursor.ToSetPosition(CursorPositionStore.titleStateParameters);
             stateParametersArea.ToShow();
             // Set cursor to position of GromoBot's UserInput
             cursor.ToSetPosition(CursorPositionStore.titleUserInput);
@@ -63,8 +61,8 @@ namespace GromoBot.View
             // Set cursor to MessageArea position of GromoBot
             cursor.ToSetPosition(CursorPositionStore.titleOfMessageArea);
             messageArea.ToShowTitle();
-
-
+            // Set cursor to UserInputPosition
+            cursor.ToSetPosition(CursorPositionStore.userInputPosition);
         }
     }
 }

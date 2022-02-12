@@ -11,6 +11,7 @@ namespace GromoBot.View
     {
 
 
+
         public void ToShow()
         {
             ToShowTitle();

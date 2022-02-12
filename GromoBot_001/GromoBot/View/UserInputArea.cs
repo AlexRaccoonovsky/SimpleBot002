@@ -11,13 +11,14 @@ namespace GromoBot.View
         public void ToShow()
         {
             ToShowTitle();
+            ToShowEndAreaSeparator();
             ToShowUserInputString();    
             ToShowEndAreaSeparator();
         }
         void ToShowTitle()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(SignsOfMenuItemsStore.stateParametersTitle);
+            Console.WriteLine(SignsOfMenuItemsStore.UserInputTitle);
         }
         void ToShowUserInputString()
         {

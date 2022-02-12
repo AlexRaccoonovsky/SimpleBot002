@@ -12,6 +12,8 @@ namespace GromoBot.View
         MainMenuArea mainMenuArea;
         StateParametersArea stateParametersArea;
         AccessTemplatesStore accessTemplatesStore;
+        UserInputArea userInputArea;
+        MessageArea messageArea;
         // TODO: ??Resolve about accesmodificator
         internal Cursor cursor;
         internal CursorPosition cursorPosition;
@@ -40,6 +42,8 @@ namespace GromoBot.View
             accessTemplatesStore = new AccessTemplatesStore();
             mainMenuArea = new MainMenuArea();
             stateParametersArea = new StateParametersArea();
+            userInputArea = new UserInputArea();
+            messageArea = new MessageArea();    
 
             
             return;
@@ -53,6 +57,12 @@ namespace GromoBot.View
             // Set cursor to position of GromoBot's State Parameters
             cursor.ToSetPosition(CursorPositionStore.stateParametersString);
             stateParametersArea.ToShow();
+            // Set cursor to position of GromoBot's UserInput
+            cursor.ToSetPosition(CursorPositionStore.titleUserInput);
+            userInputArea.ToShow();
+            // Set cursor to MessageArea position of GromoBot
+            cursor.ToSetPosition(CursorPositionStore.titleOfMessageArea);
+            messageArea.ToShowTitle();
 
 
         }

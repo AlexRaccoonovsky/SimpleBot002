@@ -21,6 +21,7 @@ namespace GromoBot.View
         public static string endOfAreaSeparator { get; set; } =  "---------------";
         public static string stateParametersTitle { get; set; } = "* * * *State Parameters Of GromoBot * * * *";
         public static string UserInputTitle { get; set; } = "+ + + + User Input + + + +";
+        public static string messageAreaTitle { get; set; } = "# # # # Messages Of GromoBot # # # #";
 
 
     }

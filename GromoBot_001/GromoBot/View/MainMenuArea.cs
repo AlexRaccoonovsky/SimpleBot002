@@ -27,7 +27,7 @@ namespace GromoBot.View
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
                     Console.WriteLine(SignsOfMenuItemsStore.mainMenuItems[numItem]);
                 }
             }

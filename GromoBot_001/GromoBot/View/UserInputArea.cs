@@ -26,7 +26,7 @@ namespace GromoBot.View
         }
         void ToShowEndAreaSeparator()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(SignsOfMenuItemsStore.endOfAreaSeparator);
         }
 

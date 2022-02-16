@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GromoBot.View
 {
-    public enum TypeOfItems
+    public enum MenuItemStates
     {
         Disable = 0,
         Enable = 1,

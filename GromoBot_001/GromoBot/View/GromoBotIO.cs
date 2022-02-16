@@ -8,7 +8,7 @@ namespace GromoBot.View
 {
     public class GromoBotIO
     {
-        #region Entities Of Input/Output Of Gromo
+        #region Environment Of Input/Output Of Gromo
         MainMenuArea mainMenuArea;
         StateParametersArea stateParametersArea;
         AccessTemplatesStore accessTemplatesStore;
@@ -21,7 +21,7 @@ namespace GromoBot.View
         public void ToStartIO()
         {
             ToInitializeWindow();
-            ToInitializeEntities();
+            ToInitializeGromoBotIO();
             ToDrawInterfaceMainMenu();
             return;
         }
@@ -35,7 +35,7 @@ namespace GromoBot.View
             Console.WindowHeight = Console.BufferHeight - 1;
             return;
         }
-        void ToInitializeEntities()
+        void ToInitializeGromoBotIO()
         {
             cursor = new Cursor();
             cursorPosition = new CursorPosition();

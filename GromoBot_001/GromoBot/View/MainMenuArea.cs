@@ -13,14 +13,14 @@ namespace GromoBot.View
         internal void ToSetTemplate()
         { 
         }
-        internal void ToShow(AccessTemplatesStore obj)
+        public void ToShow(AccessTemplatesStore obj)
         {
             ToShowTitle();
             ToShowEndAreaSeparator();
             obj.ToInitAccessPrimaryMainMenu();
             for(int numItem = 0; numItem<obj.quanItemsMainMenu; numItem++)
             {
-                if (obj.accessOfMainMenu[numItem] == TypeOfItems.Enable)
+                if (obj.accessOfMainMenu[numItem] == MenuItemStates.Enable)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(SignsOfMenuItemsStore.mainMenuItems[numItem]);

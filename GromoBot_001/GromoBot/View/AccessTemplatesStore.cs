@@ -11,18 +11,19 @@ namespace GromoBot.View
     public  class AccessTemplatesStore
     {
         public int quanItemsMainMenu  = SignsOfMenuItemsStore.mainMenuItems.Length;
-        public TypeOfItems[] accessOfMainMenu { get; private set; }
-        public TypeOfItems[] ToInitAccessPrimaryMainMenu()
+        public MenuItemStates[] accessOfMainMenu { get; private set; }
+        // TODO: Rename?
+        public MenuItemStates[] ToInitAccessPrimaryMainMenu()
         {
             // TODO:Definite quantOfAr
-            accessOfMainMenu = new TypeOfItems[7] {
-                TypeOfItems.Enable,
-                TypeOfItems.Disable,
-                TypeOfItems.Disable,
-                TypeOfItems.Disable,
-                TypeOfItems.Disable,
-                TypeOfItems.Enable,
-                TypeOfItems.Enable };
+            accessOfMainMenu = new MenuItemStates[7] {
+                MenuItemStates.Enable,
+                MenuItemStates.Disable,
+                MenuItemStates.Disable,
+                MenuItemStates.Disable,
+                MenuItemStates.Disable,
+                MenuItemStates.Enable,
+                MenuItemStates.Enable };
 
             return accessOfMainMenu;
         

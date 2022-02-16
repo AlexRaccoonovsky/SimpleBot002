@@ -8,7 +8,7 @@ namespace GromoBot.View
 {
     class Template
     {
-        public TypeOfItems[] itemsAccess;
+        public MenuItemStates[] itemsAccess;
         public int numOfItems { get; set; } = 1;
     }
 }

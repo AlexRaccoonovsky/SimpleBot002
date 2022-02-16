@@ -18,7 +18,7 @@ namespace GromoBot.View
         void ToShowTitle()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(SignsOfMenuItemsStore.UserInputTitle);
+            Console.WriteLine(SignsOfMenuItemsStore.userInputTitle);
         }
         void ToShowUserInputString()
         {

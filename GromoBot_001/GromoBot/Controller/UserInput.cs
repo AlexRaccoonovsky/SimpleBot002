@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace GromoBot.Controller
 {
-    internal class UserInput
+    public class UserInput
     {
+        public string userInput { get; private set; }
+        public int userInputNum { get; private set; }
+
+
+        public void ToFetch()
+        { 
+            userInput = Console.ReadLine();
+            return;
+        }
+        
     }
 }

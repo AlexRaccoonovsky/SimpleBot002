@@ -1,6 +1,6 @@
 ﻿using System;
-using GromoBot.View
-    ;
+using GromoBot.Controller;
+
 
 namespace GromoBot
 
@@ -9,9 +9,8 @@ namespace GromoBot
     {
         static void Main(string[] args)
         {
-            
-            GromoBotIO gromoBotIO = new GromoBotIO();   
-            gromoBotIO.ToStartIO();
+            Gromo gromoBot = new Gromo();
+            gromoBot.ToStartMainMenuMode();
             Console.ReadKey();
 
         }

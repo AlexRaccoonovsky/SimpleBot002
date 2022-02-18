@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GromoBot.Controller;
 
 namespace GromoBot.View
 {
@@ -15,14 +16,23 @@ namespace GromoBot.View
         UserInputArea userInputArea;
         MessageArea messageArea;
         // TODO: ??Resolve about accesmodificator
-        internal Cursor cursor;
-        internal CursorPosition cursorPosition;
+        Cursor cursor;
+        CursorPosition cursorPosition;
         #endregion
-        public void ToStartIO()
+        public GromoBotIO()
+        {
+            cursor = new Cursor();
+            cursorPosition = new CursorPosition();
+            accessTemplatesStore = new AccessTemplatesStore();
+            mainMenuArea = new MainMenuArea();
+            stateParametersArea = new StateParametersArea();
+            userInputArea = new UserInputArea();
+            messageArea = new MessageArea();
+        }
+        public void ToStartIO(State gromoState)
         {
             ToInitializeWindow();
-            ToInitializeGromoBotIO();
-            ToDrawInterfaceMainMenu();
+            ToDrawInterfaceMainMenu(gromoState);
             return;
         }
         void ToInitializeWindow()
@@ -35,18 +45,7 @@ namespace GromoBot.View
             Console.WindowHeight = Console.BufferHeight - 1;
             return;
         }
-        void ToInitializeGromoBotIO()
-        {
-            cursor = new Cursor();
-            cursorPosition = new CursorPosition();
-            accessTemplatesStore = new AccessTemplatesStore();
-            mainMenuArea = new MainMenuArea();
-            stateParametersArea = new StateParametersArea();
-            userInputArea = new UserInputArea();
-            messageArea = new MessageArea();    
-            return;
-        }
-        void ToDrawInterfaceMainMenu()
+        void ToDrawInterfaceMainMenu(State gromoState)
         {
             // TODO: May be cursor transfer to AreaMdules?
             // Set cursor to position of first Main Menu Item
@@ -54,7 +53,7 @@ namespace GromoBot.View
             mainMenuArea.ToShow(accessTemplatesStore);
             // Set cursor to position of GromoBot's State Parameters
             cursor.ToSetPosition(CursorPositionStore.titleStateParameters);
-            stateParametersArea.ToShow();
+            stateParametersArea.ToShow(gromoState);
             // Set cursor to position of GromoBot's UserInput
             cursor.ToSetPosition(CursorPositionStore.titleUserInput);
             userInputArea.ToShow();
@@ -64,5 +63,11 @@ namespace GromoBot.View
             // Set cursor to UserInputPosition
             cursor.ToSetPosition(CursorPositionStore.userInputPosition);
         }
+        public void ToShowNotice(Notice obj)
+        {
+            messageArea.ToShowNotice(obj);
+
+        }
+
     }
 }

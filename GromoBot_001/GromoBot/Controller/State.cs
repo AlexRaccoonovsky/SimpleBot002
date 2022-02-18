@@ -8,11 +8,10 @@ using StockSharp.BusinessEntities;
 
 namespace GromoBot.Controller
 {
-    internal class State
+    public class State
     {
-        ConnectionStates connectionState { get; set; } = ConnectionStates.Disconnected;
-        Portfolio? selectedPortfolio { get; set; } = null;
-        Security? selectedSecurity { set; get; } = null;
-
+        public ConnectionStates connectionState { get; set; } = ConnectionStates.Disconnected;
+        public Portfolio? selectedPortfolio { get; set; } = null;
+        public Security? selectedSecurity { set; get; } = null;
     }
 }

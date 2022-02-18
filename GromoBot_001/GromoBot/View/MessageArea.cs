@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GromoBot.Controller;
 
 namespace GromoBot.View
 {
     internal class MessageArea
     {
-        public void ToShowNotice()
-        { }
+        public void ToShowNotice(Notice obj)
+        {
+            // Change Console color for Notice-message
+            Console.ForegroundColor = ConsoleColor.Green;
+            // Print DateTime prefix
+            InsertDateTimePrefix();
+            // Print message of Notice
+            Console.WriteLine(obj.messageNotice);
+        }
         public void ToShowTitle()
         { 
             Console.ForegroundColor = ConsoleColor.Yellow;

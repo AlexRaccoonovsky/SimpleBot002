@@ -12,7 +12,6 @@ namespace GromoBot.View
         #region Environment Of Input/Output Of Gromo
         MainMenuArea mainMenuArea;
         StateParametersArea stateParametersArea;
-        AccessTemplatesStore accessTemplatesStore;
         UserInputArea userInputArea;
         MessageArea messageArea;
         // TODO: ??Resolve about accesmodificator
@@ -23,7 +22,6 @@ namespace GromoBot.View
         {
             cursor = new Cursor();
             cursorPosition = new CursorPosition();
-            accessTemplatesStore = new AccessTemplatesStore();
             mainMenuArea = new MainMenuArea();
             stateParametersArea = new StateParametersArea();
             userInputArea = new UserInputArea();
@@ -32,7 +30,7 @@ namespace GromoBot.View
         public void ToStartIO(State gromoState)
         {
             ToInitializeWindow();
-            ToDrawInterfaceMainMenu(gromoState);
+            ToDrawInterfaceMainMenu(cursor, gromoState);
             return;
         }
         void ToInitializeWindow()
@@ -45,28 +43,26 @@ namespace GromoBot.View
             Console.WindowHeight = Console.BufferHeight - 1;
             return;
         }
-        void ToDrawInterfaceMainMenu(State gromoState)
+        void ToDrawInterfaceMainMenu(Cursor cursor, State gromoState)
         {
             // TODO: May be cursor transfer to AreaMdules?
-            // Set cursor to position of first Main Menu Item
-            cursor.ToSetPosition(CursorPositionStore.mainMenuTitle);
-            mainMenuArea.ToShow(accessTemplatesStore);
-            // Set cursor to position of GromoBot's State Parameters
-            cursor.ToSetPosition(CursorPositionStore.titleStateParameters);
-            stateParametersArea.ToShow(gromoState);
-            // Set cursor to position of GromoBot's UserInput
-            cursor.ToSetPosition(CursorPositionStore.titleUserInput);
-            userInputArea.ToShow();
-            // Set cursor to MessageArea position of GromoBot
-            cursor.ToSetPosition(CursorPositionStore.titleOfMessageArea);
-            messageArea.ToShowTitle();
-            // Set cursor to UserInputPosition
-            cursor.ToSetPosition(CursorPositionStore.userInputPosition);
+           
+            mainMenuArea.ToShow(cursor, cursorPosition);
+       //  // Set cursor to position of GromoBot's State Parameters
+       //  cursor.ToSetPosition(CursorPositionStore.titleStateParameters);
+       //  stateParametersArea.ToShow(cursor, cursorPosition,gromoState);
+       //  // Set cursor to position of GromoBot's UserInput
+       //  cursor.ToSetPosition(CursorPositionStore.titleUserInput);
+       //  userInputArea.ToShow();
+       //  // Set cursor to MessageArea position of GromoBot
+       //  cursor.ToSetPosition(CursorPositionStore.titleOfMessageArea);
+       //  messageArea.ToShowTitle();
+       //  // Set cursor to UserInputPosition
+       //  cursor.ToSetPosition(CursorPositionStore.userInputPosition);
         }
         public void ToShowNotice(Notice obj)
         {
             messageArea.ToShowNotice(obj);
-
         }
 
     }

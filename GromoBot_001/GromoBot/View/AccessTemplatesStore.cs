@@ -8,24 +8,25 @@ namespace GromoBot.View
 {
     // TODO: Rename name of class
 
-    public  class AccessTemplatesStore
+    public static class AccessTemplatesStore
     {
-        public int quanItemsMainMenu  = SignsOfMenuItemsStore.mainMenuItems.Length;
-        public MenuItemStates[] accessOfMainMenu { get; private set; }
-        // TODO: Rename?
-        public MenuItemStates[] ToInitAccessPrimaryMainMenu()
+        
+       // TODO: Rename?
+        public static MenuItemStates[] ToInitAccessTemplatePrimaryMainMenu()
         {
             // TODO:Definite quantOfAr
-            accessOfMainMenu = new MenuItemStates[7] {
+            MenuItemStates[] accessTemplateOfMainMenu = new MenuItemStates[7]
+            {
                 MenuItemStates.Enable,
                 MenuItemStates.Disable,
                 MenuItemStates.Disable,
                 MenuItemStates.Disable,
                 MenuItemStates.Disable,
                 MenuItemStates.Enable,
-                MenuItemStates.Enable };
+                MenuItemStates.Enable 
+            };
 
-            return accessOfMainMenu;
+            return accessTemplateOfMainMenu;
         
         }
     }

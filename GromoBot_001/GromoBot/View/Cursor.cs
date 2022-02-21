@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace GromoBot.View
 {
-    class Cursor
+    public class Cursor
     {
-        public int left { get; private set; }
-        public int top { get; private set; }
-
+        public int left { get; set; }
+        public int top { get; set; }
         internal void ToSetPosition (CursorPosition cursorPosition)
         {
-            left = cursorPosition.numOfColumn;
             top = cursorPosition.numOfRow;
+            left = cursorPosition.numOfColumn;
             Console.SetCursorPosition(top,left);
         }
+
     }
 }

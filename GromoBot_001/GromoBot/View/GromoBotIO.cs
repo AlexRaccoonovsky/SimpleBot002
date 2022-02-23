@@ -45,18 +45,10 @@ namespace GromoBot.View
         }
         void ToDrawInterfaceMainMenu(Cursor cursor, State gromoState)
         {
-            // TODO: May be cursor transfer to AreaMdules?
-           
             mainMenuArea.ToShow(cursor, cursorPosition);
-       //  // Set cursor to position of GromoBot's State Parameters
-       //  cursor.ToSetPosition(CursorPositionStore.titleStateParameters);
-       //  stateParametersArea.ToShow(cursor, cursorPosition,gromoState);
-       //  // Set cursor to position of GromoBot's UserInput
-       //  cursor.ToSetPosition(CursorPositionStore.titleUserInput);
-       //  userInputArea.ToShow();
-       //  // Set cursor to MessageArea position of GromoBot
-       //  cursor.ToSetPosition(CursorPositionStore.titleOfMessageArea);
-       //  messageArea.ToShowTitle();
+            stateParametersArea.ToShow(cursor, cursorPosition,gromoState);
+            userInputArea.ToShow(cursor, cursorPosition);
+            messageArea.ToShowTitle(cursor, cursorPosition);
        //  // Set cursor to UserInputPosition
        //  cursor.ToSetPosition(CursorPositionStore.userInputPosition);
         }

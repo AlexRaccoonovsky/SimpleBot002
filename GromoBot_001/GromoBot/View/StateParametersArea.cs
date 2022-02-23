@@ -22,20 +22,19 @@ namespace GromoBot.View
         void ToShowStateString(Cursor cursor, CursorPosition cursorPosition, State gromoState)
         {
             string stateOfConnection = (gromoState.connectionState).ToString();
-            string stateOfPortfolio;
-            string stateOfSecurity;
+            string stateOfPortfolio = "TestPortfolio";
+            string stateOfSecurity = "TestSecurity";
             cursor.ToSetPosition(cursorPosition.lastPosition);
-            // Create string stateOfPortfolio for display
-            if (gromoState.selectedPortfolio != null)
-            { stateOfPortfolio = (gromoState.selectedPortfolio).ToString(); }
-            else
-            { stateOfPortfolio = "NotSelected!"; }
-
-            // Create string stateOfPortfolio for display
-            if (gromoState.selectedSecurity != null)
-            { stateOfSecurity = (gromoState.selectedSecurity).ToString(); }
-            else
-            { stateOfSecurity = "Not Selected!"; }
+                    // Define value of string stateOfPortfolio
+                    if (gromoState.selectedPortfolio != null)
+                    { stateOfPortfolio = (gromoState.selectedPortfolio).ToString(); }
+                    else
+                    { stateOfPortfolio = "NotSelected!"; }
+                    // Define value of string stateOfSecurity
+                    if (gromoState.selectedSecurity != null)
+                    { stateOfSecurity = (gromoState.selectedSecurity).ToString(); }
+                    else
+                    { stateOfSecurity = "Not Selected!"; }
             // Display State State String
             Console.WriteLine("ConnectionState: {0} | Portfolio: {1} | Security: {2}",stateOfConnection, stateOfPortfolio, stateOfSecurity);
             // Set field lastRowOfMessage of CursorPosition to current value

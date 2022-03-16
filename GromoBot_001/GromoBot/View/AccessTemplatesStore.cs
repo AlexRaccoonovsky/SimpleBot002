@@ -22,7 +22,7 @@ namespace GromoBot.View
                 MenuItemStates.Disable,
                 MenuItemStates.Disable,
                 MenuItemStates.Disable,
-                MenuItemStates.Enable,
+                MenuItemStates.Disable,
                 MenuItemStates.Enable 
             };
 

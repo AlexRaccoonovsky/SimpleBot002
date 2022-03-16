@@ -18,13 +18,13 @@ namespace GromoBot.View
             // Print message of Notice
             Console.WriteLine(obj.messageNotice);
         }
-        public void ToShowTitle(Cursor cursor, CursorPosition cursorPosition)
+        public void ToShowTitle(Cursor cursor)
         {
-            cursor.ToSetPosition(cursorPosition.lastPosition);
+            // Set cursor for title
+            cursor.ToSetPosition(cursor.positionStore.leftIndentOfTitle, cursor.positionStore.lastRow);
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(SignsOfMenuItemsStore.messageAreaTitle);
-            cursorPosition.lastPosition.numOfRow = Console.CursorLeft;
-            cursorPosition.lastPosition.numOfColumn = Console.CursorTop;
         }
         void InsertDateTimePrefix()
         {

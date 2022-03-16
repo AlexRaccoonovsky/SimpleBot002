@@ -12,52 +12,54 @@ namespace GromoBot.View
         string connectionState;
         string Portfolio;
         string Security;
-        public void ToShow(Cursor cursor, CursorPosition cursorPosition, State gromoState)
+        public void ToShow(Cursor cursor, StateOfGromo gromoState)
         {
-            ToShowTitle(cursor,cursorPosition);
-            ToShowEndAreaSeparator(cursor, cursorPosition);
-            ToShowStateString(cursor, cursorPosition,gromoState);
-            ToShowEndAreaSeparator(cursor, cursorPosition);
+            ToShowTitle(cursor);
+            ToShowEndAreaSeparator(cursor);
+            ToShowStateString(cursor, gromoState);
+            ToShowEndAreaSeparator(cursor);
         }
-        void ToShowStateString(Cursor cursor, CursorPosition cursorPosition, State gromoState)
+        void ToShowStateString(Cursor cursor, StateOfGromo gromoState)
         {
             string stateOfConnection = (gromoState.connectionState).ToString();
             string stateOfPortfolio = "TestPortfolio";
             string stateOfSecurity = "TestSecurity";
-            cursor.ToSetPosition(cursorPosition.lastPosition);
-                    // Define value of string stateOfPortfolio
-                    if (gromoState.selectedPortfolio != null)
-                    { stateOfPortfolio = (gromoState.selectedPortfolio).ToString(); }
-                    else
-                    { stateOfPortfolio = "NotSelected!"; }
-                    // Define value of string stateOfSecurity
-                    if (gromoState.selectedSecurity != null)
-                    { stateOfSecurity = (gromoState.selectedSecurity).ToString(); }
-                    else
-                    { stateOfSecurity = "Not Selected!"; }
+            // Define value of string stateOfPortfolio
+              if (gromoState.selectedPortfolio != null)
+                 { stateOfPortfolio = (gromoState.selectedPortfolio).ToString(); }
+              else
+                 { stateOfPortfolio = "NotSelected!"; }
+            // Define value of string stateOfSecurity
+              if (gromoState.selectedSecurity != null)
+                 { stateOfSecurity = (gromoState.selectedSecurity).ToString(); }
+              else
+                 { stateOfSecurity = "Not Selected!"; }
+            // Set cursor for the string with state of parameters
+            cursor.ToSetPosition(cursor.positionStore.leftIndentOfBody, cursor.positionStore.lastRow);
             // Display State State String
             Console.WriteLine("ConnectionState: {0} | Portfolio: {1} | Security: {2}",stateOfConnection, stateOfPortfolio, stateOfSecurity);
-            // Set field lastRowOfMessage of CursorPosition to current value
-            cursorPosition.lastPosition.numOfRow = Console.CursorLeft;
-            cursorPosition.lastPosition.numOfColumn = Console.CursorTop;
+            // Save last position of cursor
+            cursor.positionStore.ToSaveLastRow(Console.CursorTop);
         }
-        void ToShowTitle(Cursor cursor, CursorPosition cursorPosition)
+        void ToShowTitle(Cursor cursor)
         {
-            cursor.ToSetPosition(cursorPosition.lastPosition);
+            // Set cursor for title
+            cursor.ToSetPosition(cursor.positionStore.leftIndentOfTitle, cursor.positionStore.lastRow);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(SignsOfMenuItemsStore.stateParametersTitle);
-            // Set field lastRowOfMessage of CursorPosition to current value
-            cursorPosition.lastPosition.numOfRow = Console.CursorLeft;
-            cursorPosition.lastPosition.numOfColumn = Console.CursorTop;
+            // Save last position of cursor
+            cursor.positionStore.ToSaveLastRow(Console.CursorTop);
         }
-        void ToShowEndAreaSeparator(Cursor cursor, CursorPosition cursorPosition)
+        void ToShowEndAreaSeparator(Cursor cursor)
         {
-            cursor.ToSetPosition(cursorPosition.lastPosition);
+            // Set position of cursor in a last position
+            cursor.ToSetPosition(0, cursor.ToGetLastRowFromStore());
+            // Choose a color for separator
             Console.ForegroundColor = ConsoleColor.DarkGray;
+            // Take a separator symbols from store
             Console.WriteLine(SignsOfMenuItemsStore.endOfAreaSeparator);
-            // Set field lastRowOfMessage of CursorPosition to current value
-            cursorPosition.lastPosition.numOfRow = Console.CursorLeft;
-            cursorPosition.lastPosition.numOfColumn = Console.CursorTop;
+            // Save last position of cursor
+            cursor.positionStore.ToSaveLastRow(Console.CursorTop);
         }
     }
 }

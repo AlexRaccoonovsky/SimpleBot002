@@ -8,36 +8,46 @@ namespace GromoBot.View
 {
     internal class UserInputArea
     {
-        public void ToShow(Cursor cursor, CursorPosition cursorPosition)
+        public void ToShow(Cursor cursor)
         {
-            ToShowTitle(cursor, cursorPosition);
-            ToShowEndAreaSeparator(cursor, cursorPosition);
-            ToShowUserInputString(cursor, cursorPosition);    
-            ToShowEndAreaSeparator(cursor, cursorPosition);
+            ToShowTitle(cursor);
+            ToShowEndAreaSeparator(cursor);
+            ToShowUserInputString(cursor);    
+            ToShowEndAreaSeparator(cursor);
         }
-        void ToShowTitle(Cursor cursor, CursorPosition cursorPosition)
+        void ToShowTitle(Cursor cursor)
         {
-            cursor.ToSetPosition(cursorPosition.lastPosition);
+            // Set cursor for title
+            cursor.ToSetPosition(cursor.positionStore.leftIndentOfTitle, cursor.positionStore.lastRow);
+            // Set Title's color
             Console.ForegroundColor = ConsoleColor.Yellow;
+            // Display title for UserInputArea
             Console.WriteLine(SignsOfMenuItemsStore.userInputTitle);
-            // Set field lastRowOfMessage of CursorPosition to current value
-            cursorPosition.lastPosition.numOfRow = Console.CursorLeft;
-            cursorPosition.lastPosition.numOfColumn = Console.CursorTop;
+            // Save last position of cursor
+            cursor.positionStore.ToSaveLastRow(Console.CursorTop);
         }
-        void ToShowUserInputString(Cursor cursor, CursorPosition cursorPosition)
+        void ToShowUserInputString(Cursor cursor)
         {
-            cursor.ToSetPosition(cursorPosition.lastPosition);
-            Console.WriteLine("Input:");
-            cursorPosition.lastPosition.numOfRow = Console.CursorLeft;
-            cursorPosition.lastPosition.numOfColumn = Console.CursorTop;
+            // Set cursor for the string with state of parameters
+            cursor.ToSetPosition(cursor.positionStore.leftIndentOfBody, cursor.positionStore.lastRow);
+            Console.Write("Input:");
+            // Write info about UserInputString to Store Of Cursor Position
+            cursor.positionStore.inputOfUser = cursor.ToGetCursorPosition();
+            Console.WriteLine();
+            // Save last position of cursor
+            cursor.positionStore.ToSaveLastRow(Console.CursorTop);
+            
         }
-        void ToShowEndAreaSeparator(Cursor cursor, CursorPosition cursorPosition)
+        void ToShowEndAreaSeparator(Cursor cursor)
         {
-            cursor.ToSetPosition(cursorPosition.lastPosition);
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            // Set position of cursor in a last position
+            cursor.ToSetPosition(0, cursor.ToGetLastRowFromStore());
+            // Choose a color for separator
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            // Take a separator symbols from store
             Console.WriteLine(SignsOfMenuItemsStore.endOfAreaSeparator);
-            cursorPosition.lastPosition.numOfRow = Console.CursorLeft;
-            cursorPosition.lastPosition.numOfColumn = Console.CursorTop;
+            // Save last Row of cursor
+            cursor.positionStore.ToSaveLastRow(Console.CursorTop);
         }
 
     }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GromoBot.Controller
 {
-    public enum Modes
+
+    public enum ModesOfGromo
     {
         MainMenuMode =0,
         ConnectingMode = 1,

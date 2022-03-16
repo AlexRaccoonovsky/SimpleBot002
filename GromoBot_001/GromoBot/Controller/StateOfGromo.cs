@@ -8,7 +8,7 @@ using StockSharp.BusinessEntities;
 
 namespace GromoBot.Controller
 {
-    public class State
+    public class StateOfGromo
     {
         public ConnectionStates connectionState { get; set; } = ConnectionStates.Disconnected;
         public Portfolio? selectedPortfolio { get; set; } = null;

@@ -11,15 +11,15 @@ namespace GromoBot.Controller
 {
     public class Gromo
     {
-        public Modes currentMode { get; private set; } 
-        public State currentState { get; private set; }
+        public ModesOfGromo currentMode { get; private set; } 
+        public StateOfGromo currentState { get; private set; }
         GromoBotIO gromoIO;
         UserInput inputOfUser;
         public Gromo()
         { 
             gromoIO = new GromoBotIO();
-            currentState = new State();
-            currentMode = Modes.MainMenuMode;
+            currentState = new StateOfGromo();
+            currentMode = ModesOfGromo.MainMenuMode;
             inputOfUser = new UserInput();
         }
 

@@ -6,16 +6,31 @@ using System.Threading.Tasks;
 
 namespace GromoBot.View
 {
-    public static class CursorPositionStore
+    public class CursorPositionStore
     {
-        public static CursorPosition nullPosition = new CursorPosition(0, 0);
-        public static CursorPosition mainMenuTitle = new CursorPosition(0,10);
-        public static CursorPosition titleStateParameters = new CursorPosition(11,10);
-        public static CursorPosition titleUserInput = new CursorPosition(16,10);
-        public static CursorPosition titleOfMessageArea = new CursorPosition(21,10);
-        public static CursorPosition firstMessage = new CursorPosition(23,3);
-        public static CursorPosition stateParametersString = new CursorPosition(12, 10);
-        public static CursorPosition userInputPosition = new CursorPosition(18, 7);
-
+        public CursorPosition nullPosition { get; set; } = new CursorPosition();
+        public CursorPosition lastPosition { get; private set;} = new CursorPosition();
+        public CursorPosition inputOfUser { get; set; } = new CursorPosition();
+        // TODO: const?
+        public int leftIndentOfTitle = 8;
+        public int leftIndentOfBody = 3;
+        public int lastRow { get; private set; } = 0;
+        public void ToSaveLastRow(int row)
+        { 
+            lastRow = row;
+        }
+        public void ToSaveLastPosition(int column, int row)
+        { 
+            lastPosition = new CursorPosition(column, row);
+        }
+        public void ToSaveLastPosition(CursorPosition position)
+        {
+            lastPosition= position;
+        }
+        // TODO: need? ToSaveInputOfUserPosition
+        public void ToSaveInputOfUserPosition(CursorPosition position)
+        {
+            inputOfUser = position;
+        }
     }
 }

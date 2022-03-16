@@ -17,17 +17,19 @@ namespace GromoBot.View
         // TODO: ??Resolve about accesmodificator
         Cursor cursor;
         CursorPosition cursorPosition;
+        CursorPositionStore cursorCursorPositionStore;
         #endregion
         public GromoBotIO()
         {
+            //cursorPosition = new CursorPosition();
             cursor = new Cursor();
-            cursorPosition = new CursorPosition();
+            //cursorCursorPositionStore = new CursorPositionStore();
             mainMenuArea = new MainMenuArea();
             stateParametersArea = new StateParametersArea();
             userInputArea = new UserInputArea();
             messageArea = new MessageArea();
         }
-        public void ToStartIO(State gromoState)
+        public void ToStartIO(StateOfGromo gromoState)
         {
             ToInitializeWindow();
             ToDrawInterfaceMainMenu(cursor, gromoState);
@@ -43,12 +45,12 @@ namespace GromoBot.View
             Console.WindowHeight = Console.BufferHeight - 1;
             return;
         }
-        void ToDrawInterfaceMainMenu(Cursor cursor, State gromoState)
+        void ToDrawInterfaceMainMenu(Cursor cursor, StateOfGromo gromoState)
         {
-            mainMenuArea.ToShow(cursor, cursorPosition);
-            stateParametersArea.ToShow(cursor, cursorPosition,gromoState);
-            userInputArea.ToShow(cursor, cursorPosition);
-            messageArea.ToShowTitle(cursor, cursorPosition);
+            mainMenuArea.ToShow(cursor);
+            stateParametersArea.ToShow(cursor, gromoState);
+            userInputArea.ToShow(cursor);
+            messageArea.ToShowTitle(cursor);
        //  // Set cursor to UserInputPosition
        //  cursor.ToSetPosition(CursorPositionStore.userInputPosition);
         }

@@ -8,13 +8,36 @@ namespace GromoBot.View
 {
     public class Cursor
     {
-        public int left { get; set; }
-        public int top { get; set; }
+        int left { get; set; }
+        int top { get; set; }
+        CursorPosition cursorPosition;
+        public CursorPositionStore positionStore;
+        public Cursor()
+        {
+            left = 0;
+            top = 0;    
+            cursorPosition = new CursorPosition();
+            positionStore=new CursorPositionStore();
+        }
         internal void ToSetPosition (CursorPosition cursorPosition)
         {
-            top = cursorPosition.numOfRow;
             left = cursorPosition.numOfColumn;
-            Console.SetCursorPosition(top,left);
+            top = cursorPosition.numOfRow;
+            Console.SetCursorPosition(left, top);
+        }
+        internal void ToSetPosition(int column, int row)
+        {
+            left = column;
+            top = row;
+            Console.SetCursorPosition(left, top);
+        }
+        internal CursorPosition ToGetCursorPosition()
+        {
+            return new CursorPosition(Console.CursorLeft, Console.CursorTop);
+        }
+        internal int ToGetLastRowFromStore()
+        {
+            return positionStore.lastRow;
         }
 
     }

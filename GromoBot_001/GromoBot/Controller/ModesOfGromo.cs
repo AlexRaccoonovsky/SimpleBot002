@@ -11,8 +11,8 @@ namespace GromoBot.Controller
     {
         MainMenuMode =0,
         ConnectingMode = 1,
-        PortfolioSelection = 2,
-        SecuritySelection = 3,
+        PortfolioSelectionMode = 2,
+        SecuritySelectionMode = 3,
         ObserverMode = 4,
         TraderMode = 5,
         DisconnectingMode = 6,

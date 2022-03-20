@@ -71,7 +71,7 @@ namespace GromoBot.View
             Console.ForegroundColor = ConsoleColor.DarkGray;
             // Take a separator symbols from store
             Console.WriteLine(SignsOfMenuItemsStore.endOfAreaSeparator);
-            // Save last position of cursor
+            // Save last row of cursor
             cursor.positionStore.ToSaveLastRow(Console.CursorTop);
         }
     }

@@ -26,9 +26,8 @@ namespace GromoBot2.IO
         }
         public void ToShowMainMenuScreen()
         {
-            MainMenuScreen mainMenuScreen = new MainMenuScreen();   
-            mainMenuScreen.ToDisplayTitle();
-            mainMenuScreen.ToDispayInheritedAreas();
+            MainMenuScreen mainMenuScreen = new MainMenuScreen();
+            mainMenuScreen.ToShow();
 
         }
     }

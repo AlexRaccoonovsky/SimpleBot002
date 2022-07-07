@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GromoBot2.IO.Cursor
+namespace GromoBot2.IO.CursorParts
 {
     internal class CursorPosition
     {
@@ -19,6 +19,16 @@ namespace GromoBot2.IO.Cursor
         {   
             numOfColumn = column;
             numOfRow = row;
+        }
+        public int numberOfColumn
+        { 
+            get => numOfColumn; 
+            set => numOfColumn = value;
+        }
+        public int numberOfRow
+        {
+            get => numOfRow;
+            set => numOfRow = value;
         }
     }
 }

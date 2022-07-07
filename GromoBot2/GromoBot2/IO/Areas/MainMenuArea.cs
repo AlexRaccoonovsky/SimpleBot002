@@ -20,17 +20,25 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplayTitle()
         {
-            Console.SetCursorPosition(Area.indentOfAreaTitle, 1);
             Console.BackgroundColor = Area.titleAreaColorBack;
             Console.ForegroundColor = Area.titleAreaColorFront;
             Console.WriteLine(titleName);
         }
         public override void ToDisplaySeparator()
         {
-            Console.SetCursorPosition(indentOfAreaSeparator, 2);
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.WriteLine(areaSeparator);
+        }
+        public void ToDisplayIems()
+        {
+            string[] itemsArray = StoreSignsForAreas.mainMenuAreaItems;
+            foreach (string item in itemsArray)
+            {
+                Console.WriteLine(item);
+            }
+
+
         }
     }
 }

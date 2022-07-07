@@ -10,7 +10,7 @@ namespace GromoBot2.IO.Areas
     {
         // Indents Of Area's Parts
         public const int indentOfAreaTitle = 10;
-        public const int indentOfAreaContent = 10;
+        public const int indentOfAreaContent = 5;
         public const int indentOfAreaSeparator = indentOfAreaContent;
         // Colors Area's Objects
         public const ConsoleColor titleAreaColorFront = ConsoleColor.DarkMagenta;

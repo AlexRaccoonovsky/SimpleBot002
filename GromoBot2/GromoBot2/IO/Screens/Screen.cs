@@ -13,5 +13,6 @@ namespace GromoBot2.IO.Screens
         public const ConsoleColor titleScreenColorBack = ConsoleColor.DarkGreen;
         public abstract string screenTitleName { get; }
         public abstract void ToDisplayTitle();
+        public abstract void ToShow();
     }
 }

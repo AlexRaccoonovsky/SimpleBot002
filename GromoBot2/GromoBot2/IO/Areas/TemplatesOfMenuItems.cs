@@ -20,7 +20,7 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Disabled,
             };
         static MenuItemsState[] TemplateOfConnected = new MenuItemsState[]
-    {
+           {
                 MenuItemsState.Disabled,
                 MenuItemsState.Enabled,
                 MenuItemsState.Enabled,
@@ -28,7 +28,7 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Disabled,
                 MenuItemsState.Enabled,
                 MenuItemsState.Disabled,
-    };
+           };
 
     }
 }

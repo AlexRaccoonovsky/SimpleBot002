@@ -41,6 +41,7 @@ namespace GromoBot2.IO.Screens
         public void ToDispayInheritedAreas()
         {
             ToShowMainMenuArea();
+            ToShowStateParametersArea();
         }
         void ToShowMainMenuArea()
         {
@@ -54,7 +55,21 @@ namespace GromoBot2.IO.Screens
             cursor.ToSavePosition();
             cursor.ToSetInPosition(Area.indentOfAreaContent, cursor.ToGetRowNumber(cursor.currentPosition));
             mainMenuArea.ToDisplaySeparator();
-
+            cursor.ToSavePosition();
+        }
+        void ToShowStateParametersArea()
+        {
+            StateParameterArea stateParamArea = new StateParameterArea();
+            cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
+            stateParamArea.ToDisplayTitle();
+            cursor.ToSavePosition();
+            cursor.ToSetInPosition(Area.indentOfAreaSeparator,cursor.ToGetRowNumber(cursor.currentPosition));
+            stateParamArea.ToDisplaySeparator();
+            stateParamArea.ToDisplayStateParameters();
+            cursor.ToSavePosition();
+            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
+            stateParamArea.ToDisplaySeparator();
+            
         }
 
     }

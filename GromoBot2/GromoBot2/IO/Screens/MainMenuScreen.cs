@@ -42,6 +42,9 @@ namespace GromoBot2.IO.Screens
         {
             ToShowMainMenuArea();
             ToShowStateParametersArea();
+            ToShowUserInputArea();
+            ToShowMessageArea();
+            ToSetCursorInUserInputPlace();
         }
         void ToShowMainMenuArea()
         {
@@ -69,8 +72,39 @@ namespace GromoBot2.IO.Screens
             cursor.ToSavePosition();
             cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
             stateParamArea.ToDisplaySeparator();
-            
+            cursor.ToSavePosition();
         }
-
+        void ToShowUserInputArea()
+        {
+            UserInputArea userInputArea = new UserInputArea();
+            cursor.ToSetInPosition(Area.indentOfAreaTitle,cursor.ToGetRowNumber(cursor.currentPosition)); 
+            userInputArea.ToDisplayTitle();
+            cursor.ToSavePosition();
+            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
+            userInputArea.ToDisplaySeparator();
+            userInputArea.ToDisplayUserInputString();
+            cursor.ToSavePosition();
+            mainMenuCursorPositionStore.userInputPosition = cursor.currentPosition;
+            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition)+1);
+            userInputArea.ToDisplaySeparator();
+            cursor.ToSavePosition();
+        }
+        void ToShowMessageArea()
+        {
+            MessageArea messageArea = new MessageArea();
+            cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
+            messageArea.ToDisplayTitle();
+            cursor.ToSavePosition();
+            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
+            messageArea.ToDisplaySeparator();
+            messageArea.ToDisplayMessageArray();
+            cursor.ToSavePosition();
+            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
+            messageArea.ToDisplaySeparator();
+        }
+        void ToSetCursorInUserInputPlace()
+        {
+            cursor.ToSetInPosition(mainMenuCursorPositionStore.userInputPosition);
+        }
     }
 }

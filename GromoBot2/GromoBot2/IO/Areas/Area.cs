@@ -9,7 +9,7 @@ namespace GromoBot2.IO.Areas
     public abstract class Area
     {
         // Indents Of Area's Parts
-        public const int indentOfAreaTitle = 10;
+        public const int indentOfAreaTitle = 15;
         public const int indentOfAreaContent = 5;
         public const int indentOfAreaSeparator = indentOfAreaContent;
         // Colors Area's Objects

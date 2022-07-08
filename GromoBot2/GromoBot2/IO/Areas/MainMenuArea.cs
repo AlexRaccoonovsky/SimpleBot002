@@ -8,7 +8,7 @@ namespace GromoBot2.IO.Areas
 {
     public class MainMenuArea:Area
     {
-        string titleName = "MainMenuArea";
+        string titleName = "Main Menu Area";
         string areaSeparator = "*************************************";
         public override string areaTitleName
         {

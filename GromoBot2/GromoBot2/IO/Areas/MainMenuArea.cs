@@ -30,15 +30,13 @@ namespace GromoBot2.IO.Areas
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.WriteLine(areaSeparator);
         }
-        public void ToDisplayIems()
+        public void ToDisplayItems()
         {
             string[] itemsArray = StoreSignsForAreas.mainMenuAreaItems;
             foreach (string item in itemsArray)
             {
                 Console.WriteLine(item);
             }
-
-
         }
     }
 }

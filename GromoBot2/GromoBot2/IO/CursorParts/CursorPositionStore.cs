@@ -11,6 +11,12 @@ namespace GromoBot2.IO.CursorParts
         // TODO: Need to refactor?
         CursorPosition lastPos;
         CursorPosition userInputPos;
+        CursorPosition bufferPos;
+        public CursorPositionStore()
+        {
+            lastPosition = new CursorPosition(0, 0);
+            userInputPosition = new CursorPosition(0, 0);
+        }
         public CursorPosition lastPosition
         {
             get => lastPos;
@@ -21,11 +27,12 @@ namespace GromoBot2.IO.CursorParts
             get => userInputPos;
             set => userInputPos = value;
         }
-        public CursorPositionStore()
+        public CursorPosition bufferMessagPosition
         {
-            lastPosition = new CursorPosition(0, 0);
-            userInputPosition = new CursorPosition(0, 0);
+            get { return bufferPos; }
+            set { bufferPos = value; }
         }
+
 
 
     }

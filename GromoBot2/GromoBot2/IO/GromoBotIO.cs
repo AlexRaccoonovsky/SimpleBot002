@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO.Screens;
+using GromoBot2.IO.GromoMessages;
+
 
 namespace GromoBot2.IO
 {
     public class GromoBotIO
     {
+        MainMenuScreen mainMenuScreen;
         public Screen? currentScreen;
         public GromoBotIO()
         { 
@@ -24,11 +27,20 @@ namespace GromoBot2.IO
             Console.WindowHeight = Console.BufferHeight - 1;
             return;
         }
+        void ToInitializeMainMenuScreen()
+        {
+            mainMenuScreen = new MainMenuScreen();
+        }
         public void ToShowMainMenuScreen()
         {
-            MainMenuScreen mainMenuScreen = new MainMenuScreen();
+            ToInitializeMainMenuScreen();
             mainMenuScreen.ToShow();
-
         }
+        // Test method for check of displaying
+        public void ToDisplayNewMessage(GromoMessage msg)
+        {
+            mainMenuScreen.ToShowNewMessage(msg);
+        }
+            
     }
 }

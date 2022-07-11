@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GromoBot2.IO.GromoMessages;
 
 namespace GromoBot2.IO.Areas
 {
@@ -10,9 +11,12 @@ namespace GromoBot2.IO.Areas
     {
         string titleName = "Message Area";
         string areaSeparator = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-        int rowsNumOfArea = 10;
-        string[] messageArray = new string[3];
-        string[] messageArrayTest = { "Hello", "From", "GromoBot!" };
+        int rowsNumOfArea = 4;
+        Queue<GromoMessage> bufferOfMessages;
+        public MessageArea()
+        { 
+            ToInitializeBufferOfMessage();
+        }
         public override string areaTitleName
         {
             get => titleName;
@@ -44,9 +48,27 @@ namespace GromoBot2.IO.Areas
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.WriteLine(areaSeparatorType);
         }
-        public void ToDisplayMessageArray()
+        void ToInitializeBufferOfMessage()
         {
-            Console.WriteLine("MessageArray");
+            bufferOfMessages = new Queue<GromoMessage>(rowsNumberOfArea);
+            Notice emptyNotice = new Notice(" ");
+            for (int i = 0; i < rowsNumberOfArea; i++)
+            {
+                bufferOfMessages.Enqueue(emptyNotice);
+            }
+        }
+        public void AddUpToBuffer(GromoMessage msg)
+        {
+            bufferOfMessages.Enqueue(msg);
+            bufferOfMessages.Dequeue();
+        }
+        public void ToShowBuffer()
+        {
+            //for (int i = rowsNumberOfArea;i>0;i--)
+            foreach (GromoMessage message in bufferOfMessages)
+            {
+                Console.WriteLine(message.textMessage);
+            }
         }
     }
 }

@@ -30,11 +30,13 @@ namespace GromoBot2.Controller
             string text1 = "Hello!";
             string text2 = "World";
             string text3 = "from Gromobot)";
+            string text4 = "1";
+            string text5 = "2";
             Notice notice1 = new Notice(text1);
             Notice notice2 = new Notice(text2);
             Notice notice3 = new Notice(text3);
-            Notice notice4 = new Notice(text1);
-            Notice notice5 = new Notice(text2);
+            Notice notice4 = new Notice(text4);
+            Notice notice5 = new Notice(text5);
             gromoIO.ToDisplayNewMessage(notice1);
             gromoIO.ToDisplayNewMessage(notice2);
             gromoIO.ToDisplayNewMessage(notice3);

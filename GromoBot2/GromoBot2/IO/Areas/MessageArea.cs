@@ -13,6 +13,7 @@ namespace GromoBot2.IO.Areas
         string areaSeparator = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
         int rowsNumOfArea = 4;
         Queue<GromoMessage> bufferOfMessages;
+        GromoMessage[] arrayForDisplay;
         public MessageArea()
         { 
             ToInitializeBufferOfMessage();
@@ -51,24 +52,35 @@ namespace GromoBot2.IO.Areas
         void ToInitializeBufferOfMessage()
         {
             bufferOfMessages = new Queue<GromoMessage>(rowsNumberOfArea);
+            arrayForDisplay = new GromoMessage[rowsNumberOfArea];
             Notice emptyNotice = new Notice(" ");
             for (int i = 0; i < rowsNumberOfArea; i++)
             {
                 bufferOfMessages.Enqueue(emptyNotice);
             }
+            arrayForDisplay=bufferOfMessages.ToArray();
         }
         public void AddUpToBuffer(GromoMessage msg)
         {
             bufferOfMessages.Enqueue(msg);
             bufferOfMessages.Dequeue();
+            arrayForDisplay = bufferOfMessages.ToArray();
+            arrayForDisplay.Reverse();
         }
-        public void ToShowBuffer()
+        public void ToShowArrayForDisplay()
         {
-            //for (int i = rowsNumberOfArea;i>0;i--)
-            foreach (GromoMessage message in bufferOfMessages)
+            for (int i = rowsNumberOfArea - 1; i >= 0; i--)
             {
-                Console.WriteLine(message.textMessage);
+                Console.WriteLine(arrayForDisplay[i].textMessage);
             }
+        }
+        public void ToCleanUp()
+        {
+            for (int i = 0; i < rowsNumberOfArea; i++)
+            {
+                Console.Write(new String(' ', Console.BufferWidth));
+            }
+
         }
     }
 }

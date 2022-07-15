@@ -17,6 +17,13 @@ namespace GromoBot2.Controller
         { 
             gromoIO = new GromoBotIO();
         }
+        #region "Definition delegates for Gromo Events"
+        public delegate void GromoStateChangedHandler(Gromo sender, GromoStateEventArgs args);
+        #endregion
+
+        #region #Definition events for Gromo Controller
+        public event GromoStateChangedHandler GromoStateChanged;
+        #endregion
 
         public void ToStartUp()
         {
@@ -47,5 +54,6 @@ namespace GromoBot2.Controller
             //notice1.ToDisplay()
 
         }
+        // Test
     }
 }

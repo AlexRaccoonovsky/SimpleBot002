@@ -13,5 +13,9 @@ namespace GromoBot2.Controller
         public ConnectionStates connectionState { get; set; } = ConnectionStates.Disconnected;
         public Portfolio? selectedPortfolio { get; set; } = null;
         public Security? selectedSecurity { set; get; } = null;
+        public StateOfGromo()
+        {
+
+        }
     }
 }

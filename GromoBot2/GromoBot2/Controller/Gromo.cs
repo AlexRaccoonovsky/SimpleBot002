@@ -12,24 +12,23 @@ namespace GromoBot2.Controller
     public class Gromo
     {
         GromoBotIO gromoIO;
-        public StateOfGromo currentState { get; private set; }
+        StateOfGromo currentState;
         public Gromo()
         { 
             gromoIO = new GromoBotIO();
+            currentState = new StateOfGromo();
+            currentState.GromoStateChanged += ToNotifyUser;
         }
-        #region "Definition delegates for Gromo Events"
-        public delegate void GromoStateChangedHandler(Gromo sender, GromoStateEventArgs args);
-        #endregion
-
-        #region #Definition events for Gromo Controller
-        public event GromoStateChangedHandler GromoStateChanged;
-        #endregion
+        
+        
 
         public void ToStartUp()
         {
             MainMenuMode mainMenuMode = new MainMenuMode();
             mainMenuMode.ToStart(ref gromoIO);
+            // To Test Message Area
             this.ToShowMessage();
+            this.ToChangeGromoState();
         }
         // Test method for MessageArea work
         void ToShowMessage()
@@ -54,6 +53,18 @@ namespace GromoBot2.Controller
             //notice1.ToDisplay()
 
         }
-        // Test
+        // Test method for GromoStateChanged
+        void ToNotifyUser(StateOfGromo state, GromoStateChangedEventArgs arg)
+        { 
+            gromoIO.ToDisplayNewMessage(arg.gromoMessage);
+
+        }
+        // Test changing of GromoState
+        void ToChangeGromoState()
+        {
+            Thread.Sleep(1000);
+            currentState.ToSetConnectionState(StockSharp.Messages.ConnectionStates.Connected);
+        }
+
     }
 }

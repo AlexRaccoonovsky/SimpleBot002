@@ -7,16 +7,14 @@ using GromoBot2.IO.GromoMessages;
 
 namespace GromoBot2.Controller
 {
-    public class GromoStateEventArgs:EventArgs
+    public class GromoStateChangedEventArgs:EventArgs
     {
         public GromoMessage gromoMessage { get; private set; }
         public DateTime currentTime { get; private set; }
-
-        public GromoStateEventArgs(GromoMessage msg)
+        public GromoStateChangedEventArgs(GromoMessage msg)
         { 
             gromoMessage = msg;
             currentTime = DateTime.Now;
         }
-
     }
 }

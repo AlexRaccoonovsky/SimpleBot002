@@ -110,7 +110,7 @@ namespace GromoBot2.IO.Screens
             messageArea.ToDisplaySeparator();
             cursor.ToSavePosition();
             mainMenuCursorPositionStore.bufferMessagPosition = cursor.currentPosition;
-            messageArea.ToShowArrayForDisplay();
+            messageArea.ToDisplayBuffer();
             cursor.ToSavePosition();
             cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
             messageArea.ToDisplaySeparator();
@@ -124,8 +124,8 @@ namespace GromoBot2.IO.Screens
             cursor.ToSetInPosition(0, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
             messageArea.ToCleanUp();
             cursor.ToSetInPosition(0, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
-            messageArea.AddUpToBuffer(newMessage);
-            messageArea.ToShowArrayForDisplay();
+            messageArea.ToAddUpBuffer(newMessage);
+            messageArea.ToS
             //cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
 
             //cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));

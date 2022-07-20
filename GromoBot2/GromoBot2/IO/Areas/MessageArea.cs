@@ -60,14 +60,14 @@ namespace GromoBot2.IO.Areas
             }
             arrayForDisplay=bufferOfMessages.ToArray();
         }
-        public void AddUpToBuffer(GromoMessage msg)
+        public void ToAddUpBuffer(GromoMessage msg)
         {
             bufferOfMessages.Enqueue(msg);
             bufferOfMessages.Dequeue();
             arrayForDisplay = bufferOfMessages.ToArray();
             arrayForDisplay.Reverse();
         }
-        public void ToShowArrayForDisplay()
+        public void ToDisplayBuffer()
         {
             for (int i = rowsNumberOfArea - 1; i >= 0; i--)
             {

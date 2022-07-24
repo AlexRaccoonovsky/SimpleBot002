@@ -11,7 +11,7 @@ namespace GromoBot2.IO.Areas
     {
         string titleName = "Message Area";
         string areaSeparator = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-        int rowsNumOfArea = 4;
+        byte rowsNumOfArea = 4;
         Queue<GromoMessage> bufferOfMessages;
         GromoMessage[] arrayForDisplay;
         public MessageArea()
@@ -26,7 +26,7 @@ namespace GromoBot2.IO.Areas
         {
             get => areaSeparator;
         }
-        public int rowsNumberOfArea 
+        public byte rowsNumberOfArea 
         { 
             get
             {
@@ -71,7 +71,24 @@ namespace GromoBot2.IO.Areas
         {
             for (int i = rowsNumberOfArea - 1; i >= 0; i--)
             {
-                Console.WriteLine(arrayForDisplay[i].textMessage);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("> ");
+                if (arrayForDisplay[i] is Alert)
+                {
+                    Console.ForegroundColor = GromoMessage.alertColor;
+                    Console.WriteLine(arrayForDisplay[i].textMessage);
+                }
+                if (arrayForDisplay[i] is Notice)
+                {
+                    Console.ForegroundColor = GromoMessage.noticeColor;
+                    Console.WriteLine(arrayForDisplay[i].textMessage);
+                }
+                if (arrayForDisplay[i] is Query)
+                {
+                    Console.ForegroundColor = GromoMessage.queryColor;
+                    Console.WriteLine(arrayForDisplay[i].textMessage);
+                }
+
             }
         }
         public void ToCleanUp()

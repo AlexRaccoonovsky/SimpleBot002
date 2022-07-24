@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GromoBot2.IO.CursorParts
 {
-    internal class CursorPositionStore
+    public class CursorPositionStore
     {
         // TODO: Need to refactor?
         CursorPosition lastPos;

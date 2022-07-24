@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime;
 using GromoBot2.IO.CursorParts;
 
 namespace GromoBot2.IO.CursorParts
 {
-    internal class Cursor
+    public class Cursor
     {
         CursorPosition position;
         public Cursor()
@@ -23,8 +24,8 @@ namespace GromoBot2.IO.CursorParts
             }
         public void ToSavePosition()
         {
-            int numRow = (Console.GetCursorPosition()).Top;
-            int numCol = (Console.GetCursorPosition()).Left;
+            byte numRow = (byte)Console.GetCursorPosition().Top;
+            byte numCol = (byte)Console.GetCursorPosition().Left;
             position = new CursorPosition(numCol,numRow);
         }
         public void ToSetInPosition(CursorPosition position)
@@ -37,10 +38,15 @@ namespace GromoBot2.IO.CursorParts
         { 
             Console.SetCursorPosition(column,row);
         }
-        public int ToGetRowNumber(CursorPosition cursorPosition)
+        public void ToSetInPosition(byte column, byte row)
         {
-            int rowNumber = cursorPosition.numberOfRow;
+            Console.SetCursorPosition(column, row);
+        }
+        public byte ToGetRowNumber(CursorPosition cursorPosition)
+        {
+            byte rowNumber = cursorPosition.numberOfRow;
             return rowNumber;
         }
+
     }
 }

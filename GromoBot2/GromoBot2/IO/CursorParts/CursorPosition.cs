@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace GromoBot2.IO.CursorParts
 {
-    internal class CursorPosition
+    public class CursorPosition
     {
-        int numOfColumn { get; set; }
-        int numOfRow { get; set; }
+        byte numOfColumn { get; set; }
+        byte numOfRow { get; set; }
         public CursorPosition() 
         { 
             numOfColumn = 0;
             numOfRow = 0;
         }
-        public CursorPosition(int column, int row)
+        public CursorPosition(byte column, byte row)
         {   
             numOfColumn = column;
             numOfRow = row;
         }
-        public int numberOfColumn
+        public byte numberOfColumn
         { 
             get => numOfColumn; 
             set => numOfColumn = value;
         }
-        public int numberOfRow
+        public byte numberOfRow
         {
             get => numOfRow;
             set => numOfRow = value;

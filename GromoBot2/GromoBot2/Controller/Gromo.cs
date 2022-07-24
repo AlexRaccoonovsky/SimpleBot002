@@ -43,11 +43,13 @@ namespace GromoBot2.Controller
             Notice notice3 = new Notice(text3);
             Notice notice4 = new Notice(text4);
             Notice notice5 = new Notice(text5);
+            Query query6 = new Query(text5);
             gromoIO.ToDisplayNewMessage(notice1);
             gromoIO.ToDisplayNewMessage(notice2);
             gromoIO.ToDisplayNewMessage(notice3);
             gromoIO.ToDisplayNewMessage(notice4);
             gromoIO.ToDisplayNewMessage(notice5);
+            gromoIO.ToDisplayNewMessage(query6);
             // Need to realize
             //notice1.AddToBuffer();
             //notice1.ToDisplay()

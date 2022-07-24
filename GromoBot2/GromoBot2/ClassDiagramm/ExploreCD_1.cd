@@ -136,18 +136,18 @@
       <FileName>IO\GromoMessages\StoreTextsOfMessages.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GromoBot2.IO.Screens.MainMenuScreen">
-    <Position X="1" Y="10.25" Width="4.75" />
-    <TypeIdentifier>
-      <HashCode>AABAAEIQAAAQAAEAAQCAAAAAAQAAQAEAQAAgAAEAACQ=</HashCode>
-      <FileName>IO\Screens\MainMenuScreen.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="GromoBot2.IO.Screens.Screen">
     <Position X="0.5" Y="6.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAgQAAAAAABAAAAgAAAAAAAAQAEAAAAAAAAAAAA=</HashCode>
       <FileName>IO\Screens\Screen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GromoBot2.IO.Screens.MainMenuScreen">
+    <Position X="1" Y="10.25" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAEIQAAAQAAEAAQCAAAAAAQAAQAEAQAAgAAEAACQ=</HashCode>
+      <FileName>IO\Screens\MainMenuScreen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="GromoBot2.IO.Screens.IScreen">

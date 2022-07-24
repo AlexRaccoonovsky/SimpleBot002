@@ -9,16 +9,16 @@ namespace GromoBot2.IO.GromoMessages
 {
     public class Notice:GromoMessage
     {
-        string msgText = "EmptyText";
+        string noticeText = "EmptyNotice";
         ConsoleColor fontColor = GromoMessage.noticeColor;
         public Notice(string txt)
         { 
-            this.msgText = txt;
+            this.noticeText = txt;
         }
         public override string textMessage
         {
-            get { return msgText; }
-            set { msgText = value; }
+            get { return noticeText; }
+            set { noticeText = value; }
         }
 
     }

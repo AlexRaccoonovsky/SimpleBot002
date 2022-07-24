@@ -12,7 +12,7 @@ namespace GromoBot2.IO.Screens
     internal class MainMenuScreen : Screen
     {
         string titleName;
-        Cursor cursor;
+        Cursor mainMenuScreenCursor;
         CursorPositionStore mainMenuCursorPositionStore;
         MainMenuArea mainMenuArea;
         StateParameterArea stateParametersArea;
@@ -23,7 +23,7 @@ namespace GromoBot2.IO.Screens
         public MainMenuScreen()
         {
             titleName = "MainMenuScreen";
-            cursor = new Cursor();
+            mainMenuScreenCursor = new Cursor();
             mainMenuCursorPositionStore = new CursorPositionStore();
             ToInitializeAreas();
         }
@@ -39,6 +39,14 @@ namespace GromoBot2.IO.Screens
         {
             get => titleName;
         }
+        public override CursorPositionStore cursorPositionStore
+        {
+            get => mainMenuCursorPositionStore;
+        }
+        public override Cursor cursor
+        { 
+            get => mainMenuScreenCursor;
+        }
         public override void ToShow()
         {
             cursor.ToSetInPosition(Screen.indentOfScreenTitle, cursor.currentPosition.numberOfRow);
@@ -53,7 +61,7 @@ namespace GromoBot2.IO.Screens
             Console.ForegroundColor = Screen.titleScreenColorFront;
             Console.WriteLine(titleName);
         }
-        public void ToDispayInheritedAreas()
+        void ToDispayInheritedAreas()
         {
             ToShowMainMenuArea();
             ToShowStateParametersArea();
@@ -121,15 +129,17 @@ namespace GromoBot2.IO.Screens
         }
         public void ToShowNewMessage(GromoMessage newMessage)
         {
-            cursor.ToSetInPosition(0, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
+            cursor.ToSetInPosition(Screen.indentOfScreenString, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
             messageArea.ToCleanUp();
-            cursor.ToSetInPosition(0, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
+            cursor.ToSetInPosition(Screen.indentOfScreenString, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
             messageArea.ToAddUpBuffer(newMessage);
-            messageArea.ToS
+            messageArea.ToDisplayBuffer();
             //cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
 
             //cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
             //messageArea.ToShowBuffer();
         }
+        // TODO: Dispose objects & CLS - operator info
+        //public override void ToClose();
     }
 }

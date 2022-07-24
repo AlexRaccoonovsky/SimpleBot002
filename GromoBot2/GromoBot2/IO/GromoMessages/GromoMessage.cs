@@ -11,7 +11,7 @@ namespace GromoBot2.IO.GromoMessages
         public byte limitOfMessageSymbols = 50;
         public const ConsoleColor noticeColor = ConsoleColor.Green;
         public const ConsoleColor queryColor = ConsoleColor.Yellow;
-        public const ConsoleColor alertColot = ConsoleColor.Red;
+        public const ConsoleColor alertColor = ConsoleColor.Red;
         public abstract string textMessage { get; set; }
         //public abstract GromoMessage ToCreate(string txtMessage);
 

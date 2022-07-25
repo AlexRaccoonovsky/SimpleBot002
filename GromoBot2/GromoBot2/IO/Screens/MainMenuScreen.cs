@@ -99,17 +99,22 @@ namespace GromoBot2.IO.Screens
         }
         void ToShowUserInputArea()
         {
-            cursor.ToSetInPosition(Area.indentOfAreaTitle,cursor.ToGetRowNumber(cursor.currentPosition)); 
-            userInputArea.ToDisplayTitle();
-            cursor.ToSavePosition();
-            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
-            userInputArea.ToDisplaySeparator();
-            userInputArea.ToDisplayUserInputString();
-            cursor.ToSavePosition();
-            mainMenuCursorPositionStore.userInputPosition = cursor.currentPosition;
-            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition)+1);
-            userInputArea.ToDisplaySeparator();
-            cursor.ToSavePosition();
+            userInputArea.areaCursor = mainMenuScreenCursor;
+            userInputArea.areaCursorPositionStore= mainMenuCursorPositionStore;
+            userInputArea.ToShow();
+            mainMenuScreenCursor = userInputArea.areaCursor;
+            mainMenuCursorPositionStore = userInputArea.areaCursorPositionStore;
+        //   cursor.ToSetInPosition(Area.indentOfAreaTitle,cursor.ToGetRowNumber(cursor.currentPosition)); 
+        //   userInputArea.ToDisplayTitle();
+        //   cursor.ToSavePosition();
+        //   cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
+        //   userInputArea.ToDisplaySeparator();
+        //   userInputArea.ToDisplayUserInputString();
+        //   cursor.ToSavePosition();
+        //   mainMenuCursorPositionStore.userInputPosition = cursor.currentPosition;
+        //   cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition)+1);
+        //   userInputArea.ToDisplaySeparator();
+        //   cursor.ToSavePosition();
         }
         void ToShowMessageArea()
         {

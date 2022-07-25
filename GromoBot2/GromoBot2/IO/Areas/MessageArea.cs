@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO.GromoMessages;
+using GromoBot2.IO.CursorParts;
 
 namespace GromoBot2.IO.Areas
 {
@@ -12,12 +13,24 @@ namespace GromoBot2.IO.Areas
         string titleName = "Message Area";
         string areaSeparator = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
         byte rowsNumOfArea = 4;
+        Cursor messageAreaCursor;
+        CursorPositionStore messageAreaCursorPositionStore;
         Queue<GromoMessage> bufferOfMessages;
         GromoMessage[] arrayForDisplay;
         public MessageArea()
         { 
+            messageAreaCursor = new Cursor();
+            messageAreaCursorPositionStore = new CursorPositionStore();
             ToInitializeBufferOfMessage();
         }
+        public override Cursor areaCursor
+        {
+            get { return messageAreaCursor; }
+            set { messageAreaCursor = value; }
+        }
+        public override CursorPositionStore areaCursorPositionStore {
+            get { return messageAreaCursorPositionStore; }
+            set { messageAreaCursorPositionStore = value; } }
         public override string areaTitleName
         {
             get => titleName;
@@ -39,15 +52,22 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplayTitle()
         {
+            byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+            messageAreaCursor.ToSetInPosition(Area.indentOfAreaTitle, lastRow);
             Console.ForegroundColor = Area.titleAreaColorFront;
             Console.BackgroundColor = Area.titleAreaColorBack;
             Console.WriteLine(titleName);
+            messageAreaCursor.ToSavePosition();
         }
         public override void ToDisplaySeparator()
         {
+            byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+            messageAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator,lastRow);
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.WriteLine(areaSeparatorType);
+            messageAreaCursor.ToSavePosition();
+            messageAreaCursorPositionStore.bufferMessagPosition = messageAreaCursor.currentPosition;
         }
         void ToInitializeBufferOfMessage()
         {

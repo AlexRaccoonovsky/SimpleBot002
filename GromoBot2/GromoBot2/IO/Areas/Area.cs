@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GromoBot2.IO.CursorParts;
 
 namespace GromoBot2.IO.Areas
 {
@@ -18,6 +19,8 @@ namespace GromoBot2.IO.Areas
         public const ConsoleColor separatorAreaColorFront = titleAreaColorBack;
         public const ConsoleColor separatorAreaColorBack = ConsoleColor.Black;
         // Parameters Of Area's members
+        public abstract Cursor areaCursor {get;set;}
+        public abstract CursorPositionStore areaCursorPositionStore { get;set;}
         public abstract string areaTitleName { get; }
         public abstract string areaSeparatorType { get; }
         public abstract void ToDisplayTitle();

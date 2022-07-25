@@ -71,32 +71,31 @@ namespace GromoBot2.IO.Screens
         }
         void ToShowMainMenuArea()
         {
-            mainMenuArea.ToDesignateCursorParts(mainMenuScreenCursor, mainMenuCursorPositionStore);
-            //cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
+            mainMenuArea.areaCursor = mainMenuScreenCursor;
+            mainMenuArea.areaCursorPositionStore = mainMenuCursorPositionStore;
+            //mainMenuArea.ToDesignateCursorParts(mainMenuScreenCursor, mainMenuCursorPositionStore);
             mainMenuArea.ToShow();
-          // mainMenuArea.ToDisplayTitle();
-          // //cursor.ToSavePosition();
-          // //cursor.ToSetInPosition(Area.indentOfAreaContent, cursor.ToGetRowNumber(cursor.currentPosition));
-          // mainMenuArea.ToDisplaySeparator();
-          // mainMenuArea.ToDisplayItems();
-          // //cursor.ToSavePosition();
-          // //cursor.ToSetInPosition(Area.indentOfAreaContent, cursor.ToGetRowNumber(cursor.currentPosition));
-          // mainMenuArea.ToDisplaySeparator();
-            //cursor.ToSavePosition();
+            mainMenuScreenCursor = mainMenuArea.areaCursor;
+            mainMenuCursorPositionStore = mainMenuArea.areaCursorPositionStore;
 
         }
         void ToShowStateParametersArea()
         {
-            cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
-            stateParametersArea.ToDisplayTitle();
-            cursor.ToSavePosition();
-            cursor.ToSetInPosition(Area.indentOfAreaSeparator,cursor.ToGetRowNumber(cursor.currentPosition));
-            stateParametersArea.ToDisplaySeparator();
-            stateParametersArea.ToDisplayStateParameters();
-            cursor.ToSavePosition();
-            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
-            stateParametersArea.ToDisplaySeparator();
-            cursor.ToSavePosition();
+            stateParametersArea.areaCursor = mainMenuScreenCursor;
+            stateParametersArea.areaCursorPositionStore = mainMenuCursorPositionStore;
+            stateParametersArea.ToShow();
+            mainMenuScreenCursor = stateParametersArea.areaCursor;
+            mainMenuCursorPositionStore = stateParametersArea.areaCursorPositionStore;
+            //cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
+         // stateParametersArea.ToDisplayTitle();
+         // cursor.ToSavePosition();
+         // cursor.ToSetInPosition(Area.indentOfAreaSeparator,cursor.ToGetRowNumber(cursor.currentPosition));
+         // stateParametersArea.ToDisplaySeparator();
+         // stateParametersArea.ToDisplayStateParameters();
+         // cursor.ToSavePosition();
+         // cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
+         // stateParametersArea.ToDisplaySeparator();
+         // cursor.ToSavePosition();
         }
         void ToShowUserInputArea()
         {

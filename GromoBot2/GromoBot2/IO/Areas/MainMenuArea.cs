@@ -18,10 +18,10 @@ namespace GromoBot2.IO.Areas
             mainMenuAreaCursor = new Cursor();
             mainMenuAreaCursorPositionStore = new CursorPositionStore();
         }
-        public Cursor areaCursor { 
+        public override Cursor areaCursor { 
             get { return mainMenuAreaCursor; }
             set { mainMenuAreaCursor = value; } }
-        public CursorPositionStore areaCursorPositionStore {
+        public override CursorPositionStore areaCursorPositionStore {
             get { return mainMenuAreaCursorPositionStore; }
             set { mainMenuAreaCursorPositionStore = value; }
         }
@@ -35,7 +35,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplayTitle()
         {
-            byte lastRow = mainMenuAreaCursor.ToGetRowNumber(mainMenuAreaCursor.currentPosition);
+            byte lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
             mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaTitle, lastRow);
             Console.BackgroundColor = Area.titleAreaColorBack;
             Console.ForegroundColor = Area.titleAreaColorFront;
@@ -44,7 +44,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplaySeparator()
         {
-            byte lastRow = mainMenuAreaCursor.ToGetRowNumber(mainMenuAreaCursor.currentPosition);
+            byte lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
             mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator,lastRow);
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;

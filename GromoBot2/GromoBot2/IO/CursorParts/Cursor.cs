@@ -11,22 +11,15 @@ namespace GromoBot2.IO.CursorParts
     public class Cursor
     {
         CursorPosition position;
-    //    byte lastRow;
         public Cursor()
         {
             position = new CursorPosition(); 
-    //        lastRow = 0;
         }
         public CursorPosition currentPosition
         { 
             get { return position; }
             set { position = value; }
         }
-   //   public byte lastRow 
-   //   { 
-   //       get { return lastRow; }
-   //       set { lastRow = value; }
-   //   }
         public void ToSavePosition()
         {
             byte numRow = (byte)Console.GetCursorPosition().Top;

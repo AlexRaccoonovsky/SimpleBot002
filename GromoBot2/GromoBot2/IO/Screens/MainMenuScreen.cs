@@ -49,17 +49,17 @@ namespace GromoBot2.IO.Screens
         }
         public override void ToShow()
         {
-            cursor.ToSetInPosition(Screen.indentOfScreenTitle, cursor.currentPosition.numberOfRow);
             ToDisplayTitle();
-            cursor.ToSavePosition();
             this.ToDispayInheritedAreas();
         }
 
         public override void ToDisplayTitle()
-        {           
+        {
+            mainMenuScreenCursor.ToSetInPosition(Screen.indentOfScreenTitle, cursor.currentPosition.numberOfRow);
             Console.BackgroundColor = Screen.titleScreenColorBack;
             Console.ForegroundColor = Screen.titleScreenColorFront;
             Console.WriteLine(titleName);
+            mainMenuScreenCursor.ToSavePosition();
         }
         void ToDispayInheritedAreas()
         {
@@ -71,16 +71,19 @@ namespace GromoBot2.IO.Screens
         }
         void ToShowMainMenuArea()
         {
-            cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
-            mainMenuArea.ToDisplayTitle();
-            cursor.ToSavePosition();
-            cursor.ToSetInPosition(Area.indentOfAreaContent, cursor.ToGetRowNumber(cursor.currentPosition));
-            mainMenuArea.ToDisplaySeparator();
-            mainMenuArea.ToDisplayItems();
-            cursor.ToSavePosition();
-            cursor.ToSetInPosition(Area.indentOfAreaContent, cursor.ToGetRowNumber(cursor.currentPosition));
-            mainMenuArea.ToDisplaySeparator();
-            cursor.ToSavePosition();
+            mainMenuArea.ToDesignateCursorParts(mainMenuScreenCursor, mainMenuCursorPositionStore);
+            //cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
+            mainMenuArea.ToShow();
+          // mainMenuArea.ToDisplayTitle();
+          // //cursor.ToSavePosition();
+          // //cursor.ToSetInPosition(Area.indentOfAreaContent, cursor.ToGetRowNumber(cursor.currentPosition));
+          // mainMenuArea.ToDisplaySeparator();
+          // mainMenuArea.ToDisplayItems();
+          // //cursor.ToSavePosition();
+          // //cursor.ToSetInPosition(Area.indentOfAreaContent, cursor.ToGetRowNumber(cursor.currentPosition));
+          // mainMenuArea.ToDisplaySeparator();
+            //cursor.ToSavePosition();
+
         }
         void ToShowStateParametersArea()
         {

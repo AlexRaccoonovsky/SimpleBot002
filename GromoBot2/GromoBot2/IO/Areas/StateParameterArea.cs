@@ -64,7 +64,7 @@ namespace GromoBot2.IO.Areas
             this.ToDisplayTitle();
             this.ToDisplaySeparator();
             this.ToDisplayStateParameters();
-            this.ToDisplayStateParameters();
+            this.ToDisplaySeparator();
         }
 
     }

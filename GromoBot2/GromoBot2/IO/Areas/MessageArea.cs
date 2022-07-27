@@ -67,7 +67,6 @@ namespace GromoBot2.IO.Areas
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.WriteLine(areaSeparatorType);
             messageAreaCursor.ToSavePosition();
-            messageAreaCursorPositionStore.bufferMessagPosition = messageAreaCursor.currentPosition;
         }
         void ToInitializeBufferOfMessage()
         {
@@ -89,27 +88,52 @@ namespace GromoBot2.IO.Areas
         }
         public void ToDisplayBuffer()
         {
+            messageAreaCursor.ToSetInPosition(messageAreaCursorPositionStore.bufferMessagPosition);
+            messageAreaCursor.ToSavePosition();
+
             for (int i = rowsNumberOfArea - 1; i >= 0; i--)
             {
+                byte numRow = messageAreaCursor.ToGetLastRowNumber();
+                messageAreaCursor.ToSetInPosition(Area.indentOfAreaContent,numRow);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("> ");
                 if (arrayForDisplay[i] is Alert)
                 {
+                    byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+                    messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
                     Console.ForegroundColor = GromoMessage.alertColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
+                    messageAreaCursor.ToSavePosition();
                 }
                 if (arrayForDisplay[i] is Notice)
                 {
+                    byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+                    messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
                     Console.ForegroundColor = GromoMessage.noticeColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
+                    messageAreaCursor.ToSavePosition();
                 }
                 if (arrayForDisplay[i] is Query)
                 {
+                    byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+                    messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent,lastRow);
                     Console.ForegroundColor = GromoMessage.queryColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
+                    messageAreaCursor.ToSavePosition();
                 }
 
             }
+        }
+        public void ToShow()
+        { 
+            this.ToDisplaySeparator();
+            this.ToDisplayTitle();
+            this.ToDisplaySeparator();
+            messageAreaCursor.ToSetInPosition(Area.indentOfAreaContent, messageAreaCursor.ToGetLastRowNumber());
+            messageAreaCursor.ToSavePosition();
+            messageAreaCursorPositionStore.bufferMessagPosition = messageAreaCursor.currentPosition;
+            this.ToDisplayBuffer();
+            this.ToDisplaySeparator();
         }
         public void ToCleanUp()
         {

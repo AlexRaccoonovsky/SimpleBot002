@@ -12,6 +12,7 @@ namespace GromoBot2.IO.Areas
         // Indents Of Area's Parts
         public const byte indentOfAreaTitle = 15;
         public const byte indentOfAreaContent = 5;
+        public const byte indentOfMessageAreaContent = 7;
         public const byte indentOfAreaSeparator = indentOfAreaContent;
         // Colors Area's Objects
         public const ConsoleColor titleAreaColorFront = ConsoleColor.DarkMagenta;

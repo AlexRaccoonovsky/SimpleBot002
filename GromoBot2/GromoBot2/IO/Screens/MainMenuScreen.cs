@@ -51,6 +51,8 @@ namespace GromoBot2.IO.Screens
         {
             ToDisplayTitle();
             this.ToDispayInheritedAreas();
+            
+            this.ToSetCursorInUserInputPlace();
         }
 
         public override void ToDisplayTitle()
@@ -67,7 +69,6 @@ namespace GromoBot2.IO.Screens
             ToShowStateParametersArea();
             ToShowUserInputArea();
             ToShowMessageArea();
-            ToSetCursorInUserInputPlace();
         }
         void ToShowMainMenuArea()
         {
@@ -104,31 +105,14 @@ namespace GromoBot2.IO.Screens
             userInputArea.ToShow();
             mainMenuScreenCursor = userInputArea.areaCursor;
             mainMenuCursorPositionStore = userInputArea.areaCursorPositionStore;
-        //   cursor.ToSetInPosition(Area.indentOfAreaTitle,cursor.ToGetRowNumber(cursor.currentPosition)); 
-        //   userInputArea.ToDisplayTitle();
-        //   cursor.ToSavePosition();
-        //   cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
-        //   userInputArea.ToDisplaySeparator();
-        //   userInputArea.ToDisplayUserInputString();
-        //   cursor.ToSavePosition();
-        //   mainMenuCursorPositionStore.userInputPosition = cursor.currentPosition;
-        //   cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition)+1);
-        //   userInputArea.ToDisplaySeparator();
-        //   cursor.ToSavePosition();
         }
         void ToShowMessageArea()
         {
-            cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
-            messageArea.ToDisplayTitle();
-            cursor.ToSavePosition();
-            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
-            messageArea.ToDisplaySeparator();
-            cursor.ToSavePosition();
-            mainMenuCursorPositionStore.bufferMessagPosition = cursor.currentPosition;
-            messageArea.ToDisplayBuffer();
-            cursor.ToSavePosition();
-            cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
-            messageArea.ToDisplaySeparator();
+            messageArea.areaCursor= mainMenuScreenCursor;
+            messageArea.areaCursorPositionStore= mainMenuCursorPositionStore;
+            messageArea.ToShow();
+            mainMenuScreenCursor = messageArea.areaCursor;
+            mainMenuCursorPositionStore = messageArea.areaCursorPositionStore;
         }
         void ToSetCursorInUserInputPlace()
         {
@@ -136,15 +120,12 @@ namespace GromoBot2.IO.Screens
         }
         public void ToShowNewMessage(GromoMessage newMessage)
         {
-            cursor.ToSetInPosition(Screen.indentOfScreenString, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
-            messageArea.ToCleanUp();
-            cursor.ToSetInPosition(Screen.indentOfScreenString, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
             messageArea.ToAddUpBuffer(newMessage);
+            mainMenuScreenCursor.ToSetInPosition(mainMenuCursorPositionStore.bufferMessagPosition);
+            messageArea.ToCleanUp();
+            mainMenuScreenCursor.ToSetInPosition(mainMenuCursorPositionStore.bufferMessagPosition);
             messageArea.ToDisplayBuffer();
-            //cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
-
-            //cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(mainMenuCursorPositionStore.bufferMessagPosition));
-            //messageArea.ToShowBuffer();
+            this.ToSetCursorInUserInputPlace();
         }
         // TODO: Dispose objects & CLS - operator info
         //public override void ToClose();

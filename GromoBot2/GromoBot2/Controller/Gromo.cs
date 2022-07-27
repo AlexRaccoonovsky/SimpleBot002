@@ -19,16 +19,11 @@ namespace GromoBot2.Controller
             currentState = new StateOfGromo();
             currentState.GromoStateChanged += ToNotifyUser;
         }
-        
-        
-
         public void ToStartUp()
         {
             MainMenuMode mainMenuMode = new MainMenuMode();
             mainMenuMode.ToStart(ref gromoIO);
-            // To Test Message Area
-            this.ToShowMessage();
-            this.ToChangeGromoState();
+
         }
         // Test method for MessageArea work
         void ToShowMessage()

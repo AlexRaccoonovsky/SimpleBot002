@@ -62,6 +62,7 @@ namespace GromoBot2.IO.Areas
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("User Input:");
+            userInputAreaCursor.ToSavePosition();
             userInputAreaCursorPositionStore.userInputPosition = userInputAreaCursor.currentPosition;
             Console.WriteLine();
             userInputAreaCursor.ToSavePosition();

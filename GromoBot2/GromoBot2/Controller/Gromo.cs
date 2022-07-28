@@ -22,7 +22,7 @@ namespace GromoBot2.Controller
         public void ToStartUp()
         {
             MainMenuMode mainMenuMode = new MainMenuMode();
-            mainMenuMode.ToStart(ref gromoIO);
+            mainMenuMode.ToStart(ref gromoIO, ref currentState);
 
         }
         // Test method for MessageArea work

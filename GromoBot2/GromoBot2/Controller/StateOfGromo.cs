@@ -12,7 +12,7 @@ namespace GromoBot2.Controller
     {
         public ConnectionStates connectionState { get; private set; }
         public Portfolio? selectedPortfolio { get; set; }
-        public Security? selectedSecurity { set; get; }
+        public Security? selectedSecurity { get; set; }
 
         #region "Definition delegates for Gromo Events"
         public delegate void GromoStateChangedHandler(StateOfGromo sender, GromoStateChangedEventArgs args);

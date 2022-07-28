@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GromoBot2.IO.Areas;
 using GromoBot2.IO.CursorParts;
 using GromoBot2.IO.GromoMessages;
+using GromoBot2.Controller;
 
 namespace GromoBot2.IO.Screens
 {
@@ -74,7 +75,6 @@ namespace GromoBot2.IO.Screens
         {
             mainMenuArea.areaCursor = mainMenuScreenCursor;
             mainMenuArea.areaCursorPositionStore = mainMenuCursorPositionStore;
-            //mainMenuArea.ToDesignateCursorParts(mainMenuScreenCursor, mainMenuCursorPositionStore);
             mainMenuArea.ToShow();
             mainMenuScreenCursor = mainMenuArea.areaCursor;
             mainMenuCursorPositionStore = mainMenuArea.areaCursorPositionStore;
@@ -87,16 +87,6 @@ namespace GromoBot2.IO.Screens
             stateParametersArea.ToShow();
             mainMenuScreenCursor = stateParametersArea.areaCursor;
             mainMenuCursorPositionStore = stateParametersArea.areaCursorPositionStore;
-            //cursor.ToSetInPosition(Area.indentOfAreaTitle, cursor.ToGetRowNumber(cursor.currentPosition));
-         // stateParametersArea.ToDisplayTitle();
-         // cursor.ToSavePosition();
-         // cursor.ToSetInPosition(Area.indentOfAreaSeparator,cursor.ToGetRowNumber(cursor.currentPosition));
-         // stateParametersArea.ToDisplaySeparator();
-         // stateParametersArea.ToDisplayStateParameters();
-         // cursor.ToSavePosition();
-         // cursor.ToSetInPosition(Area.indentOfAreaSeparator, cursor.ToGetRowNumber(cursor.currentPosition));
-         // stateParametersArea.ToDisplaySeparator();
-         // cursor.ToSavePosition();
         }
         void ToShowUserInputArea()
         {
@@ -125,6 +115,12 @@ namespace GromoBot2.IO.Screens
             messageArea.ToCleanUp();
             mainMenuScreenCursor.ToSetInPosition(mainMenuCursorPositionStore.bufferMessagPosition);
             messageArea.ToDisplayBuffer();
+            this.ToSetCursorInUserInputPlace();
+        }
+        // Temporary method for display Gromo state
+        public void ToRefreshGromoState(StateOfGromo state)
+        {
+            stateParametersArea.ToRefreshStateParameters(state);
             this.ToSetCursorInUserInputPlace();
         }
         // TODO: Dispose objects & CLS - operator info

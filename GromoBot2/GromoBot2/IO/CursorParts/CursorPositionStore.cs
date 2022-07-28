@@ -12,28 +12,33 @@ namespace GromoBot2.IO.CursorParts
         CursorPosition lastPos;
         CursorPosition userInputPos;
         CursorPosition bufferPos;
+        CursorPosition gromoStatePos;
         public CursorPositionStore()
         {
             lastPosition = new CursorPosition(0, 0);
             userInputPosition = new CursorPosition(0, 0);
+            bufferPos = new CursorPosition(0,0);
+            gromoStatePos = new CursorPosition(0, 0);
         }
         public CursorPosition lastPosition
         {
-            get => lastPos;
-            set => lastPos = value;
+            get { return lastPos; }
+            set { lastPos = value; }
         }
         public CursorPosition userInputPosition
         {
-            get => userInputPos;
-            set => userInputPos = value;
+            get { return userInputPos; }
+            set { userInputPos = value; }
         }
         public CursorPosition bufferMessagPosition
         {
             get { return bufferPos; }
             set { bufferPos = value; }
         }
-
-
-
+        public CursorPosition gromoStatePosition
+        {
+            get { return gromoStatePos; }
+            set { gromoStatePos = value; }
+        }
     }
 }

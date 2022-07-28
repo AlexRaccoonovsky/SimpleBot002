@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO.Screens;
 using GromoBot2.IO.GromoMessages;
+using GromoBot2.Controller;
 
 
 namespace GromoBot2.IO
@@ -40,6 +41,12 @@ namespace GromoBot2.IO
         public void ToDisplayNewMessage(GromoMessage msg)
         {
             mainMenuScreen.ToShowNewMessage(msg);
+        }
+
+        // Temporary method for display GromoState
+        public void ToDisplayGromoState(StateOfGromo state) 
+        { 
+            mainMenuScreen.ToRefreshGromoState(state);
         }
             
     }

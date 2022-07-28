@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO.CursorParts;
+using GromoBot2.Controller;
 
 namespace GromoBot2.IO.Areas
 {
@@ -55,6 +56,8 @@ namespace GromoBot2.IO.Areas
         {
             byte lastRow = stateParameterAreaCursor.ToGetLastRowNumber() ;
             stateParameterAreaCursor.ToSetInPosition(Area.indentOfAreaContent, lastRow);
+            stateParameterAreaCursor.ToSavePosition();
+            stateParametersAreaCursorPositionStore.gromoStatePosition = stateParameterAreaCursor.currentPosition;
             Console.WriteLine("+++STATEOFGROMO+++");
             stateParameterAreaCursor.ToSavePosition() ;
         }
@@ -66,6 +69,17 @@ namespace GromoBot2.IO.Areas
             this.ToDisplayStateParameters();
             this.ToDisplaySeparator();
         }
-
+        // Temporary method for display state
+        public void ToRefreshStateParameters(StateOfGromo state)
+        {
+            string connectionState;
+            string portfolio;
+            string security;
+            connectionState = state.connectionState.ToString();
+            portfolio = state.selectedPortfolio.ToString();
+            security = state.selectedSecurity.ToString();
+            stateParameterAreaCursor.ToSetInPosition(stateParametersAreaCursorPositionStore.gromoStatePosition);
+            Console.WriteLine($"|ConnectionState:{connectionState}|SelectedPortfolio:{portfolio}|SelectedSecurity:{security}|");
+        }
     }
 }

@@ -34,11 +34,17 @@ namespace GromoBot2.Controller.Mode
         { 
             this.ToInitializeEnvironment(gromoIO,currentGromoState);
             gromoIO.ToShowMainMenuScreen();
+            
+            Notice Welcome = new Notice(StoreTextsOfMessages.Welcome);
+            gromoIO.ToDisplayNewMessage(Welcome);
+            gromoIO.ToDisplayGromoState(stateGromo);
             // Test duplicate in a MessageArea
-            UserInput userInput = new UserInput();
-            userInput.inputText = Console.ReadLine();
-            Notice doubleToMessageArea = new Notice(userInput.inputText);
-            gromoIO.ToDisplayNewMessage(doubleToMessageArea);
+         // UserInput userInput = new UserInput();
+         // userInput.inputText = Console.ReadLine();
+         // 
+         // Notice doubleToMessageArea = new Notice(userInput.inputText);
+         // gromoIO.ToDisplayNewMessage(doubleToMessageArea);
+         // gromoIO.ToDisplayGromoState(stateGromo);
 
         }
          public override void ToInitializeEnvironment(GromoBotIO gromoIO,StateOfGromo currentGromoState)

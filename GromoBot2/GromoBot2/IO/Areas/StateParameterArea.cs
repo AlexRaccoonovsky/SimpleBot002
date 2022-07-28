@@ -79,6 +79,8 @@ namespace GromoBot2.IO.Areas
             portfolio = state.selectedPortfolio.ToString();
             security = state.selectedSecurity.ToString();
             stateParameterAreaCursor.ToSetInPosition(stateParametersAreaCursorPositionStore.gromoStatePosition);
+            Console.Write(new String(' ', Console.BufferWidth));
+            stateParameterAreaCursor.ToSetInPosition(stateParametersAreaCursorPositionStore.gromoStatePosition);
             Console.WriteLine($"|ConnectionState:{connectionState}|SelectedPortfolio:{portfolio}|SelectedSecurity:{security}|");
         }
     }

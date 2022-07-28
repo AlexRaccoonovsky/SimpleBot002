@@ -23,7 +23,7 @@ namespace GromoBot2.Controller
         {
             MainMenuMode mainMenuMode = new MainMenuMode();
             mainMenuMode.ToStart(ref gromoIO, ref currentState);
-
+            //this.ToChangeGromoState();
         }
         // Test method for MessageArea work
         void ToShowMessage()
@@ -54,12 +54,13 @@ namespace GromoBot2.Controller
         void ToNotifyUser(StateOfGromo state, GromoStateChangedEventArgs arg)
         { 
             gromoIO.ToDisplayNewMessage(arg.gromoMessage);
+            gromoIO.ToDisplayGromoState(currentState);
 
         }
         // Test changing of GromoState
         void ToChangeGromoState()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             currentState.ToSetConnectionState(StockSharp.Messages.ConnectionStates.Connected);
         }
 

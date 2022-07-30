@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GromoBot2.IO.Screens;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
+using GromoBot2.IO.Areas;
 
 
 namespace GromoBot2.IO
@@ -47,6 +48,10 @@ namespace GromoBot2.IO
         public void ToDisplayGromoState(StateOfGromo state) 
         { 
             mainMenuScreen.ToRefreshGromoState(state);
+        }
+        public void ToSetTemplateForMainMenuScreen(MenuItemsState[] template)
+        {
+            mainMenuScreen.templateOfMenuItems = template;
         }
             
     }

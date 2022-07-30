@@ -49,6 +49,11 @@ namespace GromoBot2.IO.Screens
         { 
             get => mainMenuScreenCursor;
         }
+        public MenuItemsState[] templateOfMenuItems
+        {
+            get { return templateOfItems; }
+            set { templateOfItems = value; }
+        }
         public override void ToShow()
         {
             ToDisplayTitle();
@@ -75,6 +80,7 @@ namespace GromoBot2.IO.Screens
         {
             mainMenuArea.areaCursor = mainMenuScreenCursor;
             mainMenuArea.areaCursorPositionStore = mainMenuCursorPositionStore;
+            mainMenuArea.currentTemplate = templateOfItems;
             mainMenuArea.ToShow();
             mainMenuScreenCursor = mainMenuArea.areaCursor;
             mainMenuCursorPositionStore = mainMenuArea.areaCursorPositionStore;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GromoBot2.IO;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
+using GromoBot2.IO.Areas;
 
 
 namespace GromoBot2.Controller.Mode
@@ -55,8 +56,9 @@ namespace GromoBot2.Controller.Mode
           gromoIO.ToDisplayGromoState(stateGromo);
 
         }
-        void ToDesignateMenuItemsTemplate()
+        void ToDesignateMenuItemsTemplate(MenuItemsState[] template)
         { 
+             forModeIO.ToSetTemplateForMainMenuScreen(template);
         }
 
     }

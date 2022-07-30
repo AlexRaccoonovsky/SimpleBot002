@@ -20,7 +20,7 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Enabled,            // 7. Exit"
             };
         public static MenuItemsState[] TemplateOfConnected = new MenuItemsState[]
-           {
+            {
                 MenuItemsState.Disabled,           // 1. Connect",
                 MenuItemsState.Enabled,            // 2. Set Portfolio",
                 MenuItemsState.Enabled,            // 3. Set Security",

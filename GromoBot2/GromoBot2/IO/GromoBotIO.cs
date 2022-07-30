@@ -37,13 +37,13 @@ namespace GromoBot2.IO
             ToInitializeMainMenuScreen();
             mainMenuScreen.ToShow();
         }
-        // Test method for check of displaying
+        // TODO: ???Temporary method for displayNewMessage
         public void ToDisplayNewMessage(GromoMessage msg)
         {
             mainMenuScreen.ToShowNewMessage(msg);
         }
 
-        // Temporary method for display GromoState
+        // TODO: ???Temporary method for display GromoState
         public void ToDisplayGromoState(StateOfGromo state) 
         { 
             mainMenuScreen.ToRefreshGromoState(state);

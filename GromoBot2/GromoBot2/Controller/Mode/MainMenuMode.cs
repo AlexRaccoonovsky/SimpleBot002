@@ -25,6 +25,13 @@ namespace GromoBot2.Controller.Mode
             get { return forModeIO; }
             set { forModeIO = value; }
         }
+        public override void ToInitializeEnvironment(GromoBotIO gromoIO, StateOfGromo currentGromoState)
+        {
+            string nameOfMode = "MainMenuMode";
+            this.nameOfMode = nameOfMode;
+            this.gromoBotIO = gromoIO;
+            this.stateGromo = currentGromoState;
+        }
         public override StateOfGromo stateOfGromo
         {
             get { return stateGromo; }
@@ -33,26 +40,24 @@ namespace GromoBot2.Controller.Mode
         public override void ToStart(ref GromoBotIO gromoIO,ref StateOfGromo currentGromoState)
         { 
             this.ToInitializeEnvironment(gromoIO,currentGromoState);
-            gromoIO.ToShowMainMenuScreen();
+            forModeIO.ToShowMainMenuScreen();
             
             Notice Welcome = new Notice(StoreTextsOfMessages.Welcome);
-            gromoIO.ToDisplayNewMessage(Welcome);
-            gromoIO.ToDisplayGromoState(stateGromo);
+            forModeIO.ToDisplayNewMessage(Welcome);
+            forModeIO.ToDisplayGromoState(stateGromo);
+            
             // Test duplicate in a MessageArea
-         // UserInput userInput = new UserInput();
-         // userInput.inputText = Console.ReadLine();
-         // 
-         // Notice doubleToMessageArea = new Notice(userInput.inputText);
-         // gromoIO.ToDisplayNewMessage(doubleToMessageArea);
-         // gromoIO.ToDisplayGromoState(stateGromo);
+          UserInput userInput = new UserInput();
+          userInput.inputText = userInput.ToTake();
+     
+          Notice doubleToMessageArea = new Notice(userInput.inputText);
+          gromoIO.ToDisplayNewMessage(doubleToMessageArea);
+          gromoIO.ToDisplayGromoState(stateGromo);
 
         }
-         public override void ToInitializeEnvironment(GromoBotIO gromoIO,StateOfGromo currentGromoState)
-         {
-            string nameOfMode = "MainMenuMode";
-            this.nameOfMode = nameOfMode;
-            this.gromoBotIO = gromoIO;
-            this.stateGromo = currentGromoState;
-         }
+        void ToDesignateMenuItemsTemplate()
+        { 
+        }
+
     }
 }

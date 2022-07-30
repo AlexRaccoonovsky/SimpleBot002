@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GromoBot2.IO.Areas
 {
-    internal enum MenuItemsState
+    public enum MenuItemsState
     {
         Disabled = 0,
         Enabled = 1,

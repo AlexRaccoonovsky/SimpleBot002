@@ -14,6 +14,17 @@ namespace GromoBot2.Controller
             get { return textOfInput; }
             set { textOfInput = value;}
         }
-
+        public string ToTake()
+        {
+            string input = Console.ReadLine();
+            input = this.ToTreatUserInput(input);
+            return input;
+        }
+        private string ToTreatUserInput(string input)
+        {
+            string inputTrimmed = input.Trim();
+            string inputPure = inputTrimmed.ToLower();
+            return inputPure;
+        }
     }
 }

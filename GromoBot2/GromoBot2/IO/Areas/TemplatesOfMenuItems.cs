@@ -9,7 +9,7 @@ namespace GromoBot2.IO.Areas
 {
     internal static class TemplatesOfMenuItems
     {
-        static MenuItemsState[] TemplateOfStartUp = new MenuItemsState[]
+        public static MenuItemsState[] StartUpTemplate = new MenuItemsState[]
             { 
                 MenuItemsState.Enabled,             // 1. Connect",
                 MenuItemsState.Disabled,            // 2. Set Portfolio",
@@ -19,7 +19,7 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Disabled,            // 6. Disconnect",
                 MenuItemsState.Enabled,            // 7. Exit"
             };
-        static MenuItemsState[] TemplateOfConnected = new MenuItemsState[]
+        public static MenuItemsState[] TemplateOfConnected = new MenuItemsState[]
            {
                 MenuItemsState.Disabled,           // 1. Connect",
                 MenuItemsState.Enabled,            // 2. Set Portfolio",
@@ -29,7 +29,7 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Enabled,            // 6. Disconnect",
                 MenuItemsState.Disabled,           // 7. Exit"
            };
-        static MenuItemsState[] TemplatePortfolioSelected = new MenuItemsState[]
+        public static MenuItemsState[] TemplatePortfolioSelected = new MenuItemsState[]
             { 
                 MenuItemsState.Disabled,            // 1. Connect",
                 MenuItemsState.Enabled,             // 2. Set Portfolio",

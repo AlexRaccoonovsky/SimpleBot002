@@ -13,6 +13,7 @@ namespace GromoBot2.IO.Areas
         string areaSeparator = "*************************************";
         Cursor mainMenuAreaCursor;
         CursorPositionStore mainMenuAreaCursorPositionStore;
+        MenuItemsState[] currTemplate;
         public MainMenuArea()
         {
             mainMenuAreaCursor = new Cursor();
@@ -73,10 +74,10 @@ namespace GromoBot2.IO.Areas
             this.ToDisplayItems();
             this.ToDisplaySeparator();
         }
-        public void ToDesignateCursorParts(Cursor cursor, CursorPositionStore curPosStore)
-        {
-            areaCursor = cursor;
-            areaCursorPositionStore = curPosStore;
+        public MenuItemsState[] currentTemplate
+        { 
+            get { return currTemplate; }
+            set { currTemplate = value; }
         }
     }
 }

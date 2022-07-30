@@ -10,7 +10,7 @@ using GromoBot2.Controller;
 
 namespace GromoBot2.IO.Screens
 {
-    internal class MainMenuScreen : Screen
+    public class MainMenuScreen : Screen
     {
         string titleName;
         Cursor mainMenuScreenCursor;
@@ -19,7 +19,7 @@ namespace GromoBot2.IO.Screens
         StateParameterArea stateParametersArea;
         UserInputArea userInputArea;
         MessageArea messageArea;
-
+        MenuItemsState[] templateOfItems;
 
         public MainMenuScreen()
         {
@@ -27,6 +27,7 @@ namespace GromoBot2.IO.Screens
             mainMenuScreenCursor = new Cursor();
             mainMenuCursorPositionStore = new CursorPositionStore();
             ToInitializeAreas();
+            templateOfItems = TemplatesOfMenuItems.StartUpTemplate;
         }
         void ToInitializeAreas()
         {
@@ -52,7 +53,6 @@ namespace GromoBot2.IO.Screens
         {
             ToDisplayTitle();
             this.ToDispayInheritedAreas();
-            
             this.ToSetCursorInUserInputPlace();
         }
 

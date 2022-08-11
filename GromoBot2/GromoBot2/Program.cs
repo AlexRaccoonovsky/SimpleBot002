@@ -1,6 +1,6 @@
 ﻿using System;
 using GromoBot2.Controller;
-using GromoBot2.IO;
+using GromoBot2.Controller.Mode;
 
 namespace GromoBot2
 {
@@ -8,8 +8,9 @@ namespace GromoBot2
     {
         static void Main(string[] args)
         {
-            Gromo gromo = new Gromo();
-            gromo.ToStartUp();
+            GromoBot gromo = new GromoBot();
+            MainMenuMode mainMenuMode = new MainMenuMode();
+            mainMenuMode.ToStart(gromo);
             Console.ReadKey();
         }
     }

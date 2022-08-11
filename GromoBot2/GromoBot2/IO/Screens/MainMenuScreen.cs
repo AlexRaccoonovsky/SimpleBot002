@@ -124,7 +124,7 @@ namespace GromoBot2.IO.Screens
             this.ToSetCursorInUserInputPlace();
         }
         // Temporary method for display Gromo state
-        public void ToRefreshGromoState(StateOfGromo state)
+        public void ToRefreshGromoStateArea(StateOfGromo state)
         {
             stateParametersArea.ToRefreshStateParameters(state);
             this.ToSetCursorInUserInputPlace();

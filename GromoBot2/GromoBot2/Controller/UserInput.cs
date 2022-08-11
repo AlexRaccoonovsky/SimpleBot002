@@ -12,13 +12,14 @@ namespace GromoBot2.Controller
         public string inputText 
         {
             get { return textOfInput; }
-            set { textOfInput = value;}
+            private set { textOfInput = value;}
         }
-        public string ToTake()
+        public UserInput ToTake()
         {
             string input = Console.ReadLine();
             input = this.ToTreatUserInput(input);
-            return input;
+            textOfInput = input;
+            return this;
         }
         private string ToTreatUserInput(string input)
         {

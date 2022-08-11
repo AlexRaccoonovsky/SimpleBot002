@@ -13,53 +13,69 @@ namespace GromoBot2.Controller.Mode
 {
     public class MainMenuMode:Mode
     {
-        GromoBotIO forModeIO;
-        StateOfGromo stateGromo;
         string nameOfMode;
+        GromoBotIO IO;
+        StateOfGromo stateGromo;
+        
         public override string Name 
         {
             get { return nameOfMode; }
-            set { nameOfMode = value; }
+
         }
-        public override GromoBotIO gromoBotIO
-        {
-            get { return forModeIO; }
-            set { forModeIO = value; }
-        }
-        public override void ToInitializeEnvironment(GromoBotIO gromoIO, StateOfGromo currentGromoState)
+        void ToInitializeEnvironment(GromoBot bot)
         {
             string nameOfMode = "MainMenuMode";
             this.nameOfMode = nameOfMode;
-            this.gromoBotIO = gromoIO;
-            this.stateGromo = currentGromoState;
+            this.IO = bot.gromoBotIO;
+            this.stateGromo = bot.gromoState;
         }
-        public override StateOfGromo stateOfGromo
+        public override void ToStart(GromoBot gromo)
+        { 
+            ToInitializeEnvironment(gromo);
+            IO.ToShowMainMenuScreen();
+            IO.ToDisplayGromoState(stateGromo);
+            Notice Welcome = new Notice(StoreTextsOfMessages.welcome);
+            IO.ToDisplayNewMessage(Welcome);
+            
+            int numOfInput = this.ToTakeMainMenuInput();
+
+            if (IsValidInput(numOfInput))
+            {
+                Notice validInput = new Notice("input is Valid");
+                IO.ToDisplayNewMessage(validInput);
+            }
+            else
+            {
+                Alert invalidInput = new Alert("Invalid Input!!!");
+                IO.ToDisplayNewMessage(invalidInput);
+            }
+        }
+        int ToTakeMainMenuInput()
         {
-            get { return stateGromo; }
-            set { stateGromo = value; }
+            int numOfUserInput = 0;
+            try
+            {
+                UserInput userInput = new UserInput();
+                userInput.ToTake();
+                numOfUserInput = Int32.Parse(userInput.inputText);
+            }
+            catch (Exception ex)
+            {
+                Alert errorOfInput = new Alert(StoreTextsOfMessages.errorOfInputMainMenu);
+                IO.ToDisplayNewMessage(errorOfInput);
+            }
+            finally 
+            { 
+            }
+            return numOfUserInput;
         }
-        public override void ToStart(ref GromoBotIO gromoIO,ref StateOfGromo currentGromoState)
-        { 
-            this.ToInitializeEnvironment(gromoIO,currentGromoState);
-            forModeIO.ToShowMainMenuScreen();
-            
-            Notice Welcome = new Notice(StoreTextsOfMessages.Welcome);
-            forModeIO.ToDisplayNewMessage(Welcome);
-            forModeIO.ToDisplayGromoState(stateGromo);
-            
-            // Test duplicate in a MessageArea
-          UserInput userInput = new UserInput();
-          userInput.inputText = userInput.ToTake();
-     
-          Notice doubleToMessageArea = new Notice(userInput.inputText);
-          gromoIO.ToDisplayNewMessage(doubleToMessageArea);
-          gromoIO.ToDisplayGromoState(stateGromo);
-
+        bool IsValidInput(int input)
+        {
+            MenuItemsState[] currentTemplate = IO.ToGetTemplateForMainMenuScreen();
+            if (currentTemplate[input-1] == MenuItemsState.Enabled )
+               return true;
+            else
+               return false;
         }
-        void ToDesignateMenuItemsTemplate(MenuItemsState[] template)
-        { 
-             forModeIO.ToSetTemplateForMainMenuScreen(template);
-        }
-
     }
 }

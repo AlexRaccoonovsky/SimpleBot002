@@ -4,27 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO;
-using GromoBot2.Controller.Mode;
 using GromoBot2.IO.GromoMessages;
 
 namespace GromoBot2.Controller
 {
-    public class Gromo
+    public class GromoBot
     {
         GromoBotIO gromoIO;
         StateOfGromo currentState;
-        public Gromo()
+        public GromoBot()
         { 
             gromoIO = new GromoBotIO();
             currentState = new StateOfGromo();
             currentState.GromoStateChanged += ToNotifyUser;
         }
-        public void ToStartUp()
-        {
-            MainMenuMode mainMenuMode = new MainMenuMode();
-            mainMenuMode.ToStart(ref gromoIO, ref currentState);
-            this.ToChangeGromoState();
+        public GromoBotIO gromoBotIO
+        { 
+            get { return gromoIO; }
         }
+        public StateOfGromo gromoState
+        { 
+            get { return currentState; }
+            set { currentState = value; }
+        }
+        //   public void ToStartUp()
+        //   {
+        //       MainMenuMode mainMenuMode = new MainMenuMode();
+        //       mainMenuMode.ToStart(ref gromoIO, ref currentState);
+        //       //this.ToChangeGromoState();
+        //   }
         // Test method for MessageArea work
         void ToShowMessage()
         {

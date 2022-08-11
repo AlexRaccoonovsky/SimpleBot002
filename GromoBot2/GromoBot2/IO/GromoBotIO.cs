@@ -38,20 +38,21 @@ namespace GromoBot2.IO
             ToInitializeMainMenuScreen();
             mainMenuScreen.ToShow();
         }
-        // TODO: ???Temporary method for displayNewMessage
         public void ToDisplayNewMessage(GromoMessage msg)
         {
             mainMenuScreen.ToShowNewMessage(msg);
         }
-
-        // TODO: ???Temporary method for display GromoState
-        public void ToDisplayGromoState(StateOfGromo state) 
-        { 
-            mainMenuScreen.ToRefreshGromoState(state);
+        public void ToDisplayGromoState(StateOfGromo state)
+        {
+            mainMenuScreen.ToRefreshGromoStateArea(state);
         }
         public void ToSetTemplateForMainMenuScreen(MenuItemsState[] template)
         {
             mainMenuScreen.templateOfMenuItems = template;
+        }
+        public MenuItemsState[] ToGetTemplateForMainMenuScreen()
+        { 
+            return mainMenuScreen.templateOfMenuItems;
         }
             
     }

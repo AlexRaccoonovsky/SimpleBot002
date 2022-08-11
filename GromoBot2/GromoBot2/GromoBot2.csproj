@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Ecng.Collections">
       <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\Ecng.Collections.dll</HintPath>
     </Reference>

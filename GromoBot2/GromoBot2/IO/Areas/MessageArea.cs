@@ -12,7 +12,7 @@ namespace GromoBot2.IO.Areas
     {
         string titleName = "Message Area";
         string areaSeparator = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-        byte rowsNumOfArea = 4;
+        byte rowsNumOfArea = 9;
         Cursor messageAreaCursor;
         CursorPositionStore messageAreaCursorPositionStore;
         Queue<GromoMessage> bufferOfMessages;

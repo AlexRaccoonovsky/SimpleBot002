@@ -70,21 +70,20 @@ namespace GromoBot2.IO.Areas
                        mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaContent, lastRowNum);
                        
                         if (currentTemplate[i] == MenuItemsState.Enabled)
-                            {
-                              Console.ForegroundColor = activeColorOfItem;
-                              Console.WriteLine(itemsArray[i]);
-                              mainMenuAreaCursor.ToSavePosition();
+                             {
+                                   Console.ForegroundColor = activeColorOfItem;
+                                   Console.WriteLine(itemsArray[i]);
+                                   mainMenuAreaCursor.ToSavePosition();
                              }
                         else
-                            {
-                               Console.ForegroundColor = inactiveColorOfItem;
-                               Console.WriteLine(itemsArray[i]);
-                               mainMenuAreaCursor.ToSavePosition();
-                              }
+                             {
+                                   Console.ForegroundColor = inactiveColorOfItem;
+                                   Console.WriteLine(itemsArray[i]);
+                                   mainMenuAreaCursor.ToSavePosition();
+                             }
                       }
-                         
             }
-           else
+            else
             {
                 throw new Exception("ItemsArray&Template has a different sizes!");
             }

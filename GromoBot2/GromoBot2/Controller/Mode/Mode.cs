@@ -9,10 +9,10 @@ namespace GromoBot2.Controller.Mode
 {
     public abstract class Mode
     {
-        public abstract GromoBotIO gromoBotIO { get; set; }
-        public abstract string Name { get; set; }
-        public abstract StateOfGromo stateOfGromo { get; set; }
-        public abstract void ToStart(ref GromoBotIO gromoIO, ref StateOfGromo currentGromoState);
-        public abstract void ToInitializeEnvironment(GromoBotIO gromoIO, StateOfGromo currentGromoState);
+        //public abstract GromoBotIO gromoBotIO { get; set; }
+        public abstract string Name { get; }
+       // public abstract StateOfGromo stateOfGromo { get; set; }
+        public abstract void ToStart(GromoBot bot);
+        //public abstract void ToInitializeEnvironment(GromoBotIO gromoIO, StateOfGromo currentGromoState);
     }
 }

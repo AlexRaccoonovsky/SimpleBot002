@@ -17,7 +17,7 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Disabled,            // 4. ObserverMode",
                 MenuItemsState.Disabled,            // 5. TraderMode",
                 MenuItemsState.Disabled,            // 6. Disconnect",
-                MenuItemsState.Enabled,            // 7. Exit"
+                MenuItemsState.Enabled,             // 7. Exit"
             };
         public static MenuItemsState[] TemplateOfConnected = new MenuItemsState[]
             {

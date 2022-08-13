@@ -29,7 +29,7 @@ namespace GromoBot2.Controller.Mode
             this.IO = bot.gromoBotIO;
             this.stateGromo = bot.gromoState;
         }
-        public override void ToStart(GromoBot gromo)
+        public void ToStartFirstTime(GromoBot gromo)
         { 
             ToInitializeEnvironment(gromo);
             IO.ToShowMainMenuScreen();
@@ -49,7 +49,11 @@ namespace GromoBot2.Controller.Mode
                 Alert invalidInput = new Alert("Invalid Input!!!");
                 IO.ToDisplayNewMessage(invalidInput);
             }
+            if (numOfInput == 2)
+            { }
         }
+        public override void ToStart(GromoBot gromo)
+        { }
         int ToTakeMainMenuInput()
         {
             int numOfUserInput = 0;

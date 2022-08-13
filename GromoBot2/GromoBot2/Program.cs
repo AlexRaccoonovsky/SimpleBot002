@@ -10,7 +10,7 @@ namespace GromoBot2
         {
             GromoBot gromo = new GromoBot();
             MainMenuMode mainMenuMode = new MainMenuMode();
-            mainMenuMode.ToStart(gromo);
+            mainMenuMode.ToStartFirstTime(gromo);
             Console.ReadKey();
         }
     }

@@ -14,6 +14,7 @@ namespace GromoBot2.IO
     public class GromoBotIO
     {
         MainMenuScreen mainMenuScreen;
+        PortfolioDefinitionScreen portfolioDefinitionScreen;
         public Screen? currentScreen;
         public GromoBotIO()
         { 

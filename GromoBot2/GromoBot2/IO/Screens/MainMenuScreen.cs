@@ -26,8 +26,8 @@ namespace GromoBot2.IO.Screens
             titleName = "MainMenuScreen";
             mainMenuScreenCursor = new Cursor();
             mainMenuCursorPositionStore = new CursorPositionStore();
-            ToInitializeAreas();
             templateOfItems = TemplatesOfMenuItems.StartUpTemplate;
+            ToInitializeAreas();
         }
         void ToInitializeAreas()
         {
@@ -35,19 +35,18 @@ namespace GromoBot2.IO.Screens
             stateParametersArea = new StateParameterArea();
             userInputArea = new UserInputArea();
             messageArea = new MessageArea();
-
         }
         public override string screenTitleName
         {
-            get => titleName;
+            get { return titleName; }
         }
         public override CursorPositionStore cursorPositionStore
         {
-            get => mainMenuCursorPositionStore;
+            get { return mainMenuCursorPositionStore; }
         }
         public override Cursor cursor
-        { 
-            get => mainMenuScreenCursor;
+        {
+            get { return mainMenuScreenCursor; }
         }
         public MenuItemsState[] templateOfMenuItems
         {

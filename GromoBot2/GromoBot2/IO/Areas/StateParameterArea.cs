@@ -69,8 +69,8 @@ namespace GromoBot2.IO.Areas
             this.ToDisplayStateParameters();
             this.ToDisplaySeparator();
         }
-        // Temporary method for display state
         public void ToRefreshStateParameters(StateOfGromo state)
+        // ??? Temporary method for display state
         {
             string connectionState;
             string portfolio;

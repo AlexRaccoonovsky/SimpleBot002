@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO;
 using GromoBot2.IO.GromoMessages;
+using GromoBot2.Controller.GromoCommand;
 
 namespace GromoBot2.Controller
 {
@@ -27,13 +28,6 @@ namespace GromoBot2.Controller
             get { return currentState; }
             set { currentState = value; }
         }
-        //   public void ToStartUp()
-        //   {
-        //       MainMenuMode mainMenuMode = new MainMenuMode();
-        //       mainMenuMode.ToStart(ref gromoIO, ref currentState);
-        //       //this.ToChangeGromoState();
-        //   }
-        // Test method for MessageArea work
         void ToShowMessage()
         {
             string text1 = "Hello!";
@@ -70,6 +64,13 @@ namespace GromoBot2.Controller
         {
             Thread.Sleep(2000);
             currentState.ToSetConnectionState(StockSharp.Messages.ConnectionStates.Connected);
+        }
+        public void ToConnect()
+        {
+        }
+        public CommandForGromo ToConvertIntoCommand(int numOfInput)
+        { 
+            return null;
         }
 
     }

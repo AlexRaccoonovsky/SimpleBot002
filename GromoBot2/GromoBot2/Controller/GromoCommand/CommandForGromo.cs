@@ -8,6 +8,6 @@ namespace GromoBot2.Controller.GromoCommand
 {
     public abstract class CommandForGromo
     {
-        public abstract void Execute();
+        public abstract void ToExecute();
     }
 }

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GromoBot2.Controller;
 
 namespace GromoBot2.Controller.GromoCommand.MainMenuModeCommands
 {
-    public class CommandConnect:CommandForGromo
+    public class CommandToDefinePortfolio:CommandForGromo
     {
         GromoBot receiver;
-        public CommandConnect(GromoBot gromoBot)
-        {
-            receiver = gromoBot;
+        public CommandToDefinePortfolio(GromoBot gromobot)
+        { 
+            receiver = gromobot;
         }
         public override void ToExecute()
         {
-            receiver.ToConnect();
+            receiver.ToDefinitePortfolio();
         }
+
     }
 }

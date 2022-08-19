@@ -34,10 +34,19 @@ namespace GromoBot2.IO
         {
             mainMenuScreen = new MainMenuScreen();
         }
+        void ToInitializePortfolioDefinitionScreen()
+        {
+            portfolioDefinitionScreen = new PortfolioDefinitionScreen();
+        }
         public void ToShowMainMenuScreen()
         {
             ToInitializeMainMenuScreen();
             mainMenuScreen.ToShow();
+        }
+        public void ToShowPortfolioDefinitionScreen()
+        {
+            ToInitializePortfolioDefinitionScreen();
+            portfolioDefinitionScreen.ToShow();
         }
         public void ToDisplayNewMessage(GromoMessage msg)
         {
@@ -54,6 +63,14 @@ namespace GromoBot2.IO
         public MenuItemsState[] ToGetTemplateForMainMenuScreen()
         { 
             return mainMenuScreen.templateOfMenuItems;
+        }
+        public void ToCloseMainMenuScreen()
+        {
+           mainMenuScreen.ToHide();
+        }
+        public void ToClosePortfolioDefinitionScreen()
+        { 
+            portfolioDefinitionScreen.ToHide();
         }
 
             

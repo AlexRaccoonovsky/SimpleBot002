@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using GromoBot2.IO;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller.GromoCommand;
+using GromoBot2.Controller.GromoCommand.MainMenuModeCommands;
+using GromoBot2.Controller.Mode;
 
 namespace GromoBot2.Controller
 {
@@ -13,10 +15,12 @@ namespace GromoBot2.Controller
     {
         GromoBotIO gromoIO;
         StateOfGromo currentState;
+        Modes currentMode;
         public GromoBot()
         { 
             gromoIO = new GromoBotIO();
             currentState = new StateOfGromo();
+            currentMode = new MainMenuMode();
             currentState.GromoStateChanged += ToNotifyUser;
         }
         public GromoBotIO gromoBotIO
@@ -27,6 +31,11 @@ namespace GromoBot2.Controller
         { 
             get { return currentState; }
             set { currentState = value; }
+        }
+        public Modes CurrentMode
+        {
+            get { return currentMode; }
+            set { currentMode = value; }
         }
         void ToShowMessage()
         {
@@ -65,12 +74,36 @@ namespace GromoBot2.Controller
             Thread.Sleep(2000);
             currentState.ToSetConnectionState(StockSharp.Messages.ConnectionStates.Connected);
         }
+
+        public CommandForGromo ToConvertIntoCommand(int numOfInput)
+        {
+            CommandForGromo command;
+            command = new CommandEmpty(this);
+            #region "MainMenuMode: Transformation UserInput to GromoCommand"
+
+            if (currentMode is MainMenuMode)
+            {
+                if (numOfInput == 1)
+                { command = new CommandConnect(this); }
+                if (numOfInput == 2)
+                { command = new CommandToDefinePortfolio(this); }
+            }
+            #endregion
+
+
+            return command;
+        }
+        public void ToEmptyAction()
+        { }
+
         public void ToConnect()
         {
+            gromoBotIO.ToCloseMainMenuScreen();
+            gromoBotIO.ToShowPortfolioDefinitionScreen();
         }
-        public CommandForGromo ToConvertIntoCommand(int numOfInput)
-        { 
-            return null;
+        public void ToDefinitePortfolio()
+        {
+            gromoBotIO.ToCloseMainMenuScreen();
         }
 
     }

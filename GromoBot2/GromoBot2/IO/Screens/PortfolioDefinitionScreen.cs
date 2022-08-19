@@ -55,6 +55,12 @@ namespace GromoBot2.IO.Screens
             this.ToDisplayInheritedAreas();
             this.ToSetCursorInUserInputPlace();
         }
+        public override void ToRefreshStateArea()
+        { }
+        public override void ToHide()
+        {
+            Console.Clear();
+        }
         void ToDisplayInheritedAreas()
         {
             ToShowStateParametersArea();
@@ -89,5 +95,7 @@ namespace GromoBot2.IO.Screens
         {
             cursor.ToSetInPosition(portfolioDefinitionPositionStore.userInputPosition);
         }
+
+
     }
 }

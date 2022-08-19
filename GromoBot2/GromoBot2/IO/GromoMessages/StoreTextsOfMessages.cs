@@ -14,5 +14,6 @@ namespace GromoBot2.IO.GromoMessages
         public static string selectedSecurityChanged = "Selected Security is changed!";
         public static string welcome = "Hi, I am a GromoBot(Gromo)!";
         public static string errorOfInputMainMenu = "Please choose item from Main Menu!!!";
+        public static string alertInvalidInput = "Invalid input! Try again.";
     }
 }

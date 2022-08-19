@@ -12,7 +12,7 @@ using GromoBot2.Controller.GromoCommand;
 
 namespace GromoBot2.Controller.Mode
 {
-    public class MainMenuMode:Mode
+    public class MainMenuMode:Modes
     {
         string nameOfMode;
         GromoBot gromoBot;
@@ -28,13 +28,14 @@ namespace GromoBot2.Controller.Mode
         void ToInitializeEnvironment(GromoBot bot)
         {
             string nameOfMode = "MainMenuMode";
-            this.gromoBot = bot;
             this.nameOfMode = nameOfMode;
+            this.gromoBot = bot;
             this.IO = bot.gromoBotIO;
             this.stateGromo = bot.gromoState;
         }
         public void ToStartFirstTime(GromoBot gromo)
         { 
+            gromo.CurrentMode = new MainMenuMode();
             ToInitializeEnvironment(gromo);
             IO.ToShowMainMenuScreen();
             IO.ToDisplayGromoState(stateGromo);
@@ -45,16 +46,15 @@ namespace GromoBot2.Controller.Mode
 
             if (IsValidInput(numOfInput))
             {
-                Notice validInput = new Notice("input is Valid");
-                IO.ToDisplayNewMessage(validInput);
+               command = gromoBot.ToConvertIntoCommand(numOfInput);
             }
             else
             {
-                Alert invalidInput = new Alert("Invalid Input!!!");
+                Alert invalidInput = new Alert(StoreTextsOfMessages.alertInvalidInput);
                 IO.ToDisplayNewMessage(invalidInput);
             }
-            if (numOfInput == 2)
-            { }
+            command.ToExecute();
+
         }
         public override void ToStart(GromoBot gromo)
         { }

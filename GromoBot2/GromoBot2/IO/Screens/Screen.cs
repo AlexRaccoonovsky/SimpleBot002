@@ -18,6 +18,8 @@ namespace GromoBot2.IO.Screens
         public abstract Cursor cursor { get; }
         public abstract void ToDisplayTitle();
         public abstract void ToShow();
+        public abstract void ToHide();
+        public abstract void ToRefreshStateArea();
         // TODO: Dispose objects & CLS - operator info
         //public abstract void ToClose();
         

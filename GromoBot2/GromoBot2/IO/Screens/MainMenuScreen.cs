@@ -59,6 +59,12 @@ namespace GromoBot2.IO.Screens
             this.ToDispayInheritedAreas();
             this.ToSetCursorInUserInputPlace();
         }
+        public override void ToRefreshStateArea()
+        { }
+        public override void ToHide()
+        {
+            Console.Clear();
+        }
 
         public override void ToDisplayTitle()
         {
@@ -128,7 +134,8 @@ namespace GromoBot2.IO.Screens
             stateParametersArea.ToRefreshStateParameters(state);
             this.ToSetCursorInUserInputPlace();
         }
-        // TODO: Dispose objects & CLS - operator info
-        //public override void ToClose();
+
+        
+
     }
 }

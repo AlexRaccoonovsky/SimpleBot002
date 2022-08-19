@@ -7,7 +7,7 @@ using GromoBot2.IO;
 
 namespace GromoBot2.Controller.Mode
 {
-    public abstract class Mode
+    public abstract class Modes
     {
         //public abstract GromoBotIO gromoBotIO { get; set; }
         public abstract string Name { get; }

@@ -25,6 +25,7 @@ namespace GromoBot2.Controller
             gromoIO = new GromoBotIO();
             currentState = new StateOfGromo();
             currentMode = new MainMenuMode();
+            gromoConnector = new GromoConnector();
             currentState.GromoStateChanged += ToNotifyUser;
         }
         public GromoBotIO gromoBotIO
@@ -72,8 +73,9 @@ namespace GromoBot2.Controller
             gromoIO.ToDisplayGromoState(currentState);
 
         }
-        // Test changing of GromoState
+        
         void ToChangeGromoState()
+        // Test changing of GromoState
         {
             Thread.Sleep(2000);
             currentState.ToSetConnectionState(StockSharp.Messages.ConnectionStates.Connected);
@@ -98,20 +100,34 @@ namespace GromoBot2.Controller
             return command;
         }
         public void ToEmptyAction()
-        { }
+        {
+            Thread.Sleep(2000);
+            gromoIO.ToDisplayGromoState(currentState);
+        }
 
         public void ToConnect()
         {
-            gromoConnector = new GromoConnector();
-            gromoConnector.ToConnect();
-            currentState.ToSetConnectionState(gromoConnector.ToGetConnectionState());
+            try
+            {
+                gromoConnector.ToConnect();
+                currentState.ToSetConnectionState(gromoConnector.ToGetConnectionState());
+            }
+            catch (Exception ex)
+            {
+            // TODO: !Need to create Exceptions class    
+
+            }
+            finally
+            {
+                gromoIO.ToDisplayGromoState(currentState);
+            }
         }
         public void ToDefinitePortfolio()
         {
             gromoBotIO.ToCloseMainMenuScreen();
             gromoBotIO.ToShowPortfolioDefinitionScreen();
-
         }
+
 
     }
 }

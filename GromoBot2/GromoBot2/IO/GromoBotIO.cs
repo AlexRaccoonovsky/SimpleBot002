@@ -68,6 +68,7 @@ namespace GromoBot2.IO
         public void ToCloseMainMenuScreen()
         {
            mainMenuScreen.ToHide();
+            // TODO: Need to delete object
         }
         public void ToClosePortfolioDefinitionScreen()
         { 

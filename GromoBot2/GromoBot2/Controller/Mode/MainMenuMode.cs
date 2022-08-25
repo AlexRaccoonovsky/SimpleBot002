@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GromoBot2.IO;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
+using GromoBot2.Controller.GromoCommand;
 using GromoBot2.IO.Areas;
 using GromoBot2.Controller.GromoCommand;
 
@@ -23,15 +24,14 @@ namespace GromoBot2.Controller.Mode
         public override string Name 
         {
             get { return nameOfMode; }
-
         }
-        void ToInitializeEnvironment(GromoBot bot)
+        void ToInitializeEnvironment(GromoBot gromo)
         {
-            string nameOfMode = "MainMenuMode";
-            this.nameOfMode = nameOfMode;
-            this.gromoBot = bot;
-            this.IO = bot.gromoBotIO;
-            this.stateGromo = bot.gromoState;
+            nameOfMode = "MainMenuMode";
+            gromoBot = gromo;
+            IO = gromo.gromoBotIO;
+            stateGromo = gromo.gromoState;
+            command = new CommandEmpty();
         }
         public void ToStartFirstTime(GromoBot gromo)
         { 

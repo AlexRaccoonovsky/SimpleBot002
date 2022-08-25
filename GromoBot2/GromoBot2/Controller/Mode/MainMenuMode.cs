@@ -54,6 +54,7 @@ namespace GromoBot2.Controller.Mode
             command.ToExecute();
 
 
+
         }
         public override void ToStart(GromoBot gromo)
         { }

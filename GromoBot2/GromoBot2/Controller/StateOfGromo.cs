@@ -50,7 +50,7 @@ namespace GromoBot2.Controller
         {
             if (connectionState != connState)
             {
-                this.connectionState = connState;
+                connectionState = connState;
                 ToNotifyAboutChangedState();
             }
            

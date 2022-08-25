@@ -142,6 +142,12 @@ namespace GromoBot2.Controller
             }
 
         }
+        void ToSubscribeOnEvents()
+        {
+            #region "Subscribing on GromoConnector Events"
+            gromoConnector.
+            # endregion
+        }
 
 
     }

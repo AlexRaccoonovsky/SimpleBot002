@@ -41,9 +41,7 @@ namespace GromoBot2.Controller.Mode
             IO.ToDisplayGromoState(stateGromo);
             Notice Welcome = new Notice(StoreTextsOfMessages.welcome);
             IO.ToDisplayNewMessage(Welcome);
-            
             int numOfInput = this.ToTakeMainMenuInput();
-
             if (IsValidInput(numOfInput))
             {
                command = gromoBot.ToConvertIntoCommand(numOfInput);
@@ -54,6 +52,7 @@ namespace GromoBot2.Controller.Mode
                 IO.ToDisplayNewMessage(invalidInput);
             }
             command.ToExecute();
+
 
         }
         public override void ToStart(GromoBot gromo)

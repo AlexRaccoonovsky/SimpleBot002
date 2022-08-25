@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StockSharp.Algo;
 using GromoBot2.IO;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller.GromoCommand;
 using GromoBot2.Controller.GromoCommand.MainMenuModeCommands;
 using GromoBot2.Controller.Mode;
+using GromoBot2.Model;
 
 namespace GromoBot2.Controller
 {
@@ -16,6 +18,8 @@ namespace GromoBot2.Controller
         GromoBotIO gromoIO;
         StateOfGromo currentState;
         Modes currentMode;
+        GromoConnector gromoConnector;
+
         public GromoBot()
         { 
             gromoIO = new GromoBotIO();
@@ -98,12 +102,15 @@ namespace GromoBot2.Controller
 
         public void ToConnect()
         {
-            gromoBotIO.ToCloseMainMenuScreen();
-            gromoBotIO.ToShowPortfolioDefinitionScreen();
+            gromoConnector = new GromoConnector();
+            gromoConnector.ToConnect();
+            currentState.ToSetConnectionState(gromoConnector.ToGetConnectionState());
         }
         public void ToDefinitePortfolio()
         {
             gromoBotIO.ToCloseMainMenuScreen();
+            gromoBotIO.ToShowPortfolioDefinitionScreen();
+
         }
 
     }

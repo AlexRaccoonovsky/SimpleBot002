@@ -51,6 +51,7 @@ namespace GromoBot2.IO
         public void ToDisplayNewMessage(GromoMessage msg)
         {
             mainMenuScreen.ToShowNewMessage(msg);
+
         }
         public void ToDisplayGromoState(StateOfGromo state)
         {

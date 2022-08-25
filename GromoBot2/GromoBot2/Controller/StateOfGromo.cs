@@ -74,10 +74,8 @@ namespace GromoBot2.Controller
         }
         void ToNotifyAboutChangedState()
         {
-            // Testing Alert. Notice is switch off
-            Alert alertChangedState = new Alert(StoreTextsOfMessages.connStateChanged);
-            //Notice noticeChangedState = new Notice(StoreTextsOfMessages.connStateChanged);
-            GromoStateChangedEventArgs args = new GromoStateChangedEventArgs(alertChangedState);
+            Notice noticeChangedState = new Notice(StoreTextsOfMessages.connStateChanged);
+            GromoStateChangedEventArgs args = new GromoStateChangedEventArgs(noticeChangedState);
             GromoStateChanged?.Invoke(this, args);
         }
         void ToNotifyAboutChangedPortfolio()
@@ -92,7 +90,5 @@ namespace GromoBot2.Controller
             GromoStateChangedEventArgs arg = new GromoStateChangedEventArgs(noticeChangedSecurity);
             GromoStateChanged?.Invoke(this,arg);
         }
-
-            
     }
 }

@@ -112,6 +112,7 @@ namespace GromoBot2.IO.Screens
             messageArea.areaCursor= mainMenuScreenCursor;
             messageArea.areaCursorPositionStore= mainMenuCursorPositionStore;
             messageArea.ToShow();
+            this.ToSetCursorInUserInputPlace();
             mainMenuScreenCursor = messageArea.areaCursor;
             mainMenuCursorPositionStore = messageArea.areaCursorPositionStore;
         }

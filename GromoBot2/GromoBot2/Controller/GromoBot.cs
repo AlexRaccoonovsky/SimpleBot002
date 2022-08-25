@@ -119,13 +119,28 @@ namespace GromoBot2.Controller
             }
             finally
             {
+                // TODO: Subscribe on Connected, DisConnected Events
                 gromoIO.ToDisplayGromoState(currentState);
             }
         }
         public void ToDefinitePortfolio()
         {
-            gromoBotIO.ToCloseMainMenuScreen();
-            gromoBotIO.ToShowPortfolioDefinitionScreen();
+            try
+            {
+                currentMode = new PortfolioDefinitionMode();
+                gromoBotIO.ToCloseMainMenuScreen();
+                gromoBotIO.ToShowPortfolioDefinitionScreen();
+                currentMode.ToStart(this);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+
+            }
+
         }
 
 

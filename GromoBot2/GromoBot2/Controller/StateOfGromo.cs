@@ -74,19 +74,19 @@ namespace GromoBot2.Controller
         }
         void ToNotifyAboutChangedState()
         {
-            Notice noticeChangedState = new Notice(StoreTextsOfMessages.connStateChanged);
+            Notice noticeChangedState = new Notice(StoreTextsOfNotices.ConnectionStateChanged);
             GromoStateChangedEventArgs args = new GromoStateChangedEventArgs(noticeChangedState);
             GromoStateChanged?.Invoke(this, args);
         }
         void ToNotifyAboutChangedPortfolio()
         {
-            Notice noticeChangedPortfolio = new Notice(StoreTextsOfMessages.selectedPortfolioChanged);
+            Notice noticeChangedPortfolio = new Notice(StoreTextsOfNotices.SelectedPortfolioChanged);
             GromoStateChangedEventArgs arg = new GromoStateChangedEventArgs(noticeChangedPortfolio);
             GromoStateChanged?.Invoke(this, arg);
         }
         void ToNotifyAboutChangedSecurity()
         {
-            Notice noticeChangedSecurity = new Notice(StoreTextsOfMessages.selectedSecurityChanged);
+            Notice noticeChangedSecurity = new Notice(StoreTextsOfNotices.SelectedSecurityChanged);
             GromoStateChangedEventArgs arg = new GromoStateChangedEventArgs(noticeChangedSecurity);
             GromoStateChanged?.Invoke(this,arg);
         }

@@ -9,23 +9,51 @@ namespace GromoBot2.Controller
     public class UserInput
     {
         string textOfInput;
-        public string inputText 
+        public string InputText 
         {
             get { return textOfInput; }
             private set { textOfInput = value;}
         }
         public UserInput ToTake()
         {
-            string input = Console.ReadLine();
-            input = this.ToTreatUserInput(input);
-            textOfInput = input;
+            try
+            {
+                string input = Console.ReadLine();
+                string inputTreated = ToTreatUserInput(input);
+                InputText = inputTreated;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+
+            }
             return this;
         }
-        private string ToTreatUserInput(string input)
+        string ToTreatUserInput(string input)
         {
-            string inputTrimmed = input.Trim();
-            string inputPure = inputTrimmed.ToLower();
+            string inputPure = "EmptyString";
+            try
+            {
+                string inputTrimmed = input.Trim();
+                inputPure = inputTrimmed.ToLower();
+                return inputPure;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+
+                
+            }
+
             return inputPure;
+
+
         }
     }
 }

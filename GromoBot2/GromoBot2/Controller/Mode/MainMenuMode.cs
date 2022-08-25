@@ -31,7 +31,7 @@ namespace GromoBot2.Controller.Mode
             gromoBot = gromo;
             IO = gromo.gromoBotIO;
             stateGromo = gromo.gromoState;
-            command = new CommandEmpty();
+            command = new CommandEmpty(gromo);
         }
         public void ToStartFirstTime(GromoBot gromo)
         { 
@@ -39,7 +39,7 @@ namespace GromoBot2.Controller.Mode
             ToInitializeEnvironment(gromo);
             IO.ToShowMainMenuScreen();
             IO.ToDisplayGromoState(stateGromo);
-            Notice Welcome = new Notice(StoreTextsOfMessages.welcome);
+            Notice Welcome = new Notice(StoreTextsOfNotices.Welcome);
             IO.ToDisplayNewMessage(Welcome);
             int numOfInput = this.ToTakeMainMenuInput();
             if (IsValidInput(numOfInput))
@@ -48,7 +48,7 @@ namespace GromoBot2.Controller.Mode
             }
             else
             {
-                Alert invalidInput = new Alert(StoreTextsOfMessages.alertInvalidInput);
+                Alert invalidInput = new Alert(StoreTextsOfAlert.InvalidInput);
                 IO.ToDisplayNewMessage(invalidInput);
             }
             command.ToExecute();
@@ -64,25 +64,37 @@ namespace GromoBot2.Controller.Mode
             {
                 UserInput userInput = new UserInput();
                 userInput.ToTake();
-                numOfUserInput = Int32.Parse(userInput.inputText);
+                numOfUserInput = Int32.Parse(userInput.InputText);
             }
             catch (Exception ex)
             {
-                Alert errorOfInput = new Alert(StoreTextsOfMessages.errorOfInputMainMenu);
+                Alert errorOfInput = new Alert(StoreTextsOfAlert.ErrorOfInputMainMenu);
                 IO.ToDisplayNewMessage(errorOfInput);
             }
             finally 
             { 
+
             }
             return numOfUserInput;
         }
         bool IsValidInput(int input)
         {
+            try
+                // TODO: !!!Define validation procedure like a list
+            {
+
+            }
+            catch (Exception e)
+            {  }
+            finally
+            { }
+            
             MenuItemsState[] currentTemplate = IO.ToGetTemplateForMainMenuScreen();
-            if (currentTemplate[input-1] == MenuItemsState.Enabled )
-               return true;
+            if (currentTemplate[input - 1] == MenuItemsState.Enabled)
+                return true;
             else
-               return false;
+                return false;
+
         }
     }
 }

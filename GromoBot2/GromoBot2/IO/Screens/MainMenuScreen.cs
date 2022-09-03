@@ -26,7 +26,7 @@ namespace GromoBot2.IO.Screens
             titleName = "MainMenuScreen";
             mainMenuScreenCursor = new Cursor();
             mainMenuCursorPositionStore = new CursorPositionStore();
-            templateOfItems = TemplatesOfMenuItems.StartUpTemplate;
+            templateOfItems = TemplatesOfMenuItems.AwaitingTemplate;
             ToInitializeAreas();
         }
         void ToInitializeAreas()

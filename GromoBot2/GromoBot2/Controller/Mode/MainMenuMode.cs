@@ -8,7 +8,9 @@ using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
 using GromoBot2.Controller.GromoCommand;
 using GromoBot2.IO.Areas;
-using GromoBot2.Controller.GromoCommand;
+using GromoBot2.GromoExceptions.ControllerExceptions;
+
+
 
 
 namespace GromoBot2.Controller.Mode
@@ -39,45 +41,47 @@ namespace GromoBot2.Controller.Mode
             ToInitializeEnvironment(gromo);
             IO.ToShowMainMenuScreen();
             IO.ToDisplayGromoState(stateGromo);
+            MenuItemsState[] templateForMenuItems = ToDefineTemplateBy(stateGromo);
             Notice Welcome = new Notice(StoreTextsOfNotices.Welcome);
             IO.ToDisplayNewMessage(Welcome);
-            int numOfInput = this.ToTakeMainMenuInput();
-            if (IsValidInput(numOfInput))
-            {
-               command = gromoBot.ToConvertIntoCommand(numOfInput);
-            }
-            else
-            {
-                Alert invalidInput = new Alert(StoreTextsOfAlert.InvalidInput);
-                IO.ToDisplayNewMessage(invalidInput);
-            }
-            command.ToExecute();
 
 
-
+    //        int numOfInput = this.ToTakeMainMenuInput();
+   //     
+   //     if (IsValidInput(numOfInput))
+   //     {
+   //        command = gromoBot.ToConvertIntoCommand(numOfInput);
+   //     }
+   //     else
+   //     {
+   //         Alert invalidInput = new Alert(StoreTextsOfAlert.InvalidInput);
+   //         IO.ToDisplayNewMessage(invalidInput);
+   //     }
+   //     command.ToExecute();
         }
         public override void ToStart(GromoBot gromo)
         { }
-        int ToTakeMainMenuInput()
-        {
-            int numOfUserInput = 0;
-            try
-            {
-                UserInput userInput = new UserInput();
-                userInput.ToTake();
-                numOfUserInput = Int32.Parse(userInput.InputText);
-            }
-            catch (Exception ex)
-            {
-                Alert errorOfInput = new Alert(StoreTextsOfAlert.ErrorOfInputMainMenu);
-                IO.ToDisplayNewMessage(errorOfInput);
-            }
-            finally 
-            { 
-
-            }
-            return numOfUserInput;
-        }
+   // int ToTakeMainMenuInput()
+   // {
+   //     // TODO: Refactor this method
+   //     int numOfUserInput = 0;
+   //     try
+   //     {
+   //         MainMenuInputPrev userInput = new UserInputPrev();
+   //         userInput.ToTake();
+   //         numOfUserInput = Int32.Parse(userInput.InputText);
+   //     }
+   //     catch (Exception ex)
+   //     {
+   //         Alert errorOfInput = new Alert(StoreTextsOfAlert.ErrorOfInputMainMenu);
+   //         IO.ToDisplayNewMessage(errorOfInput);
+   //     }
+   //     finally 
+   //     { 
+   //
+   //     }
+   //     return numOfUserInput;
+   // }
         bool IsValidInput(int input)
         {
             try
@@ -96,6 +100,34 @@ namespace GromoBot2.Controller.Mode
             else
                 return false;
 
+        }
+        MenuItemsState[] ToDefineTemplateBy(StateOfGromo state)
+        {
+            MenuItemsState[] definedTemplate = TemplatesOfMenuItems.AwaitingTemplate; ;
+            try
+            {
+                if (stateGromo.ConnectionState == StockSharp.Messages.ConnectionStates.Disconnected)
+                {
+                    definedTemplate = TemplatesOfMenuItems.StartUpTemplate;
+                    return definedTemplate;
+                }
+                if (state.ConnectionState == StockSharp.Messages.ConnectionStates.Connecting)
+                {
+                    definedTemplate = TemplatesOfMenuItems.AwaitingTemplate;
+                    return definedTemplate;
+                }
+                if (state.ConnectionState == StockSharp.Messages.ConnectionStates.Connected)
+                {
+                    definedTemplate = TemplatesOfMenuItems.TemplateConnected;
+                    return definedTemplate;
+                }
+                // TODO: throw new MainMenuTemplateDefinitionException()
+            }
+            catch (Exception ex)
+            { }
+            finally
+            { }
+            return definedTemplate;
         }
     }
 }

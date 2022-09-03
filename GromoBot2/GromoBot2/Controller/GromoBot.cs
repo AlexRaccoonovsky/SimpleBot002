@@ -107,45 +107,19 @@ namespace GromoBot2.Controller
 
         public void ToConnect()
         {
-            try
-            {
-                gromoConnector.ToConnect();
-                currentState.ToSetConnectionState(gromoConnector.ToGetConnectionState());
-            }
-            catch (Exception ex)
-            {
-            // TODO: !Need to create Exceptions class    
-
-            }
-            finally
-            {
-                // TODO: Subscribe on Connected, DisConnected Events
-                gromoIO.ToDisplayGromoState(currentState);
-            }
+            gromoConnector.ToConnect();
         }
         public void ToDefinitePortfolio()
         {
-            try
-            {
-                currentMode = new PortfolioDefinitionMode();
-                gromoBotIO.ToCloseMainMenuScreen();
-                gromoBotIO.ToShowPortfolioDefinitionScreen();
-                currentMode.ToStart(this);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-
-            }
-
+            currentMode = new PortfolioDefinitionMode();
+            gromoBotIO.ToCloseMainMenuScreen();
+            gromoBotIO.ToShowPortfolioDefinitionScreen();
+            currentMode.ToStart(this);
         }
         void ToSubscribeOnEvents()
         {
             #region "Subscribing on GromoConnector Events"
-            gromoConnector.
+            //gromoConnector.
             # endregion
         }
 

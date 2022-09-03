@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StockSharp.Algo;
 using StockSharp.Messages;
+using GromoBot2.GromoExceptions.ModelExceptions;
 
 namespace GromoBot2.Model
 {

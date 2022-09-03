@@ -13,17 +13,17 @@ namespace GromoBot2.Controller
         ConnectionStates stateOfConnection;
         Portfolio gromoPortfolio;
         Security gromoSecurity;
-        public ConnectionStates connectionState 
+        public ConnectionStates ConnectionState 
         { 
             get { return stateOfConnection; }
             set { stateOfConnection = value; }
         }
-        public Portfolio selectedPortfolio
+        public Portfolio SelectedPortfolio
         {
             get { return gromoPortfolio; }
             set { gromoPortfolio = value; }
         }
-        public Security selectedSecurity
+        public Security SelectedSecurity
         {
             get { return gromoSecurity; }
             set { gromoSecurity = value; }
@@ -38,37 +38,37 @@ namespace GromoBot2.Controller
         #endregion
         public StateOfGromo()
         {
-            connectionState = ConnectionStates.Disconnected;
+            ConnectionState = ConnectionStates.Disconnected;
             Portfolio emptyPortfolio = new Portfolio();
             emptyPortfolio.Name = "EmptyPortfolio";
             Security emptySecurity = new Security();
             emptySecurity.Id = "EmptySecurity";
-            selectedPortfolio = emptyPortfolio;
-            selectedSecurity = emptySecurity;
+            SelectedPortfolio = emptyPortfolio;
+            SelectedSecurity = emptySecurity;
         }
         public void ToSetConnectionState(ConnectionStates connState)
         {
-            if (connectionState != connState)
+            if (ConnectionState != connState)
             {
-                connectionState = connState;
+                ConnectionState = connState;
                 ToNotifyAboutChangedState();
             }
            
         }
         public void ToSetPortfolio(Portfolio portfolio)
         {
-            if (selectedPortfolio != portfolio)
+            if (SelectedPortfolio != portfolio)
             {
-                this.selectedPortfolio = portfolio;
+                this.SelectedPortfolio = portfolio;
                 ToNotifyAboutChangedPortfolio();
             }
             
         }
         public void ToSetSecurity(Security security)
         {
-            if (selectedSecurity != security)
+            if (gromoSecurity != security)
             {
-                this.selectedSecurity = security;
+                gromoSecurity = security;
                 ToNotifyAboutChangedSecurity();
             }
         }

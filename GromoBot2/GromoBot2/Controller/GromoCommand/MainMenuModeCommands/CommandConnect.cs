@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GromoBot2.Controller;
+using GromoBot2.Controller.GromoCommand;
 
 namespace GromoBot2.Controller.GromoCommand.MainMenuModeCommands
 {

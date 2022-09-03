@@ -19,7 +19,7 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Disabled,            // 6. Disconnect",
                 MenuItemsState.Enabled,             // 7. Exit"
             };
-        public static MenuItemsState[] TemplateOfConnected = new MenuItemsState[]
+        public static MenuItemsState[] TemplateConnected = new MenuItemsState[]
             {
                 MenuItemsState.Disabled,           // 1. Connect",
                 MenuItemsState.Enabled,            // 2. Set Portfolio",
@@ -39,6 +39,16 @@ namespace GromoBot2.IO.Areas
                 MenuItemsState.Enabled,             // 6. Disconnect",
                 MenuItemsState.Disabled,            // 7. Exit"
             };
+        public static MenuItemsState[] AwaitingTemplate = new MenuItemsState[]
+    {
+                MenuItemsState.Disabled,             // 1. Connect",
+                MenuItemsState.Disabled,             // 2. Set Portfolio",
+                MenuItemsState.Disabled,             // 3. Set Security",
+                MenuItemsState.Disabled,             // 4. ObserverMode",
+                MenuItemsState.Disabled,             // 5. TraderMode",
+                MenuItemsState.Disabled,             // 6. Disconnect",
+                MenuItemsState.Disabled,             // 7. Exit"
+    };
 
     }
 }

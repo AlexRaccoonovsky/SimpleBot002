@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="StockSharp.Algo" Version="5.0.133" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Ecng.Collections">
       <HintPath>..\..\..\ResTes\SS\Quik8\Source20220123\Ecng.Collections.dll</HintPath>
     </Reference>

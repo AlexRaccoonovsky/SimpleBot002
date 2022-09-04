@@ -68,7 +68,7 @@ namespace GromoBot2.IO.Areas
                      {
                        byte lastRowNum = mainMenuAreaCursor.ToGetLastRowNumber();
                        mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaContent, lastRowNum);
-                       
+                       mainMenuAreaCursorPositionStore.MainMenuPosition = mainMenuAreaCursor.currentPosition; 
                         if (currentTemplate[i] == MenuItemsState.Enabled)
                              {
                                    Console.ForegroundColor = activeColorOfItem;
@@ -81,13 +81,42 @@ namespace GromoBot2.IO.Areas
                                    Console.WriteLine(itemsArray[i]);
                                    mainMenuAreaCursor.ToSavePosition();
                              }
-                      }
+                     }
             }
             else
             {
                 throw new Exception("ItemsArray&Template has a different sizes!");
             }
             mainMenuAreaCursor.ToSavePosition();
+        }
+        public void ToRefreshMenuTemplate()
+        {
+            string[] itemsArray = StoreSignsForAreas.mainMenuAreaItems;
+            if (IsEqualSize(itemsArray, currentTemplate))
+            {
+                for (int i = 0; i < itemsArray.Length; i++)
+                {
+                    mainMenuAreaCursor.ToSetInPosition(mainMenuAreaCursorPositionStore.MainMenuPosition);
+                    mainMenuAreaCursorPositionStore.MainMenuPosition = mainMenuAreaCursor.currentPosition;
+                    if (currentTemplate[i] == MenuItemsState.Enabled)
+                    {
+                        Console.ForegroundColor = activeColorOfItem;
+                        Console.WriteLine(itemsArray[i]);
+                        mainMenuAreaCursor.ToSavePosition();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = inactiveColorOfItem;
+                        Console.WriteLine(itemsArray[i]);
+                        mainMenuAreaCursor.ToSavePosition();
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("ItemsArray&Template has a different sizes!");
+            }
+
         }
         public void ToShow()
         {

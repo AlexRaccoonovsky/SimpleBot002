@@ -48,7 +48,7 @@ namespace GromoBot2.IO.Screens
         {
             get { return mainMenuScreenCursor; }
         }
-        public MenuItemsState[] templateOfMenuItems
+        public MenuItemsState[] TemplateOfMenuItems
         {
             get { return templateOfItems; }
             set { templateOfItems = value; }
@@ -134,6 +134,12 @@ namespace GromoBot2.IO.Screens
         {
             stateParametersArea.ToRefreshStateParameters(state);
             this.ToSetCursorInUserInputPlace();
+        }
+        public void ToRefreshMenuItemsTemplate()
+        {
+            mainMenuArea.currentTemplate = templateOfItems;
+            mainMenuArea.ToRefreshMenuTemplate();
+            ToSetCursorInUserInputPlace();
         }
 
         

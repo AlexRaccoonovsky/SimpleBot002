@@ -9,6 +9,7 @@ using GromoBot2.Controller;
 using GromoBot2.Controller.GromoCommand;
 using GromoBot2.IO.Areas;
 using GromoBot2.GromoExceptions.ControllerExceptions;
+using GromoBot2.GromoExceptions;
 
 
 
@@ -42,6 +43,9 @@ namespace GromoBot2.Controller.Mode
             IO.ToShowMainMenuScreen();
             IO.ToDisplayGromoState(stateGromo);
             MenuItemsState[] templateForMenuItems = ToDefineTemplateBy(stateGromo);
+            IO.ToRefreshMainMenuTemplateBy(templateForMenuItems);
+
+
             Notice Welcome = new Notice(StoreTextsOfNotices.Welcome);
             IO.ToDisplayNewMessage(Welcome);
 
@@ -121,10 +125,18 @@ namespace GromoBot2.Controller.Mode
                     definedTemplate = TemplatesOfMenuItems.TemplateConnected;
                     return definedTemplate;
                 }
-                // TODO: throw new MainMenuTemplateDefinitionException()
+                #region "Exception of StateOfGromo's recognition"
+                string message = StoreMessagesOfErrors.MainMenuTemplateDefinition;
+                string cause = "Unavailable GromoState for template's definition";
+                DateTime time = DateTime.Now;
+                throw new MainMenuTemplateDefinitionException(message,cause,time);
+                #endregion
             }
-            catch (Exception ex)
-            { }
+            catch (MainMenuTemplateDefinitionException ex)
+            { 
+                Alert MainMenuTemplateDefinitionError = new Alert(ex.Message);
+                IO.ToDisplayNewMessage(MainMenuTemplateDefinitionError);
+            }
             finally
             { }
             return definedTemplate;

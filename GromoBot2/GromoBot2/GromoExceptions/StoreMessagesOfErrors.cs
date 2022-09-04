@@ -9,5 +9,6 @@ namespace GromoBot2.GromoExceptions
    public class StoreMessagesOfErrors
     {
         public static string ConnectingErrorMessage = "Error of connecting!";
+        public static string MainMenuTemplateDefinition = "Impossible to define template for Main Menu Items";
     }
 }

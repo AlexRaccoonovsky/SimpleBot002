@@ -36,7 +36,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplayTitle()
         {
-            byte lastRow = stateParameterAreaCursor.ToGetLastRowNumber();
+            int lastRow = stateParameterAreaCursor.ToGetLastRowNumber();
             stateParameterAreaCursor.ToSetInPosition(Area.indentOfAreaTitle, lastRow);
             Console.BackgroundColor = Area.titleAreaColorBack;
             Console.ForegroundColor = Area.titleAreaColorFront;
@@ -45,7 +45,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplaySeparator()
         {
-            byte lastRow = stateParameterAreaCursor.ToGetLastRowNumber();
+            int lastRow = stateParameterAreaCursor.ToGetLastRowNumber();
             stateParameterAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator, lastRow);
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.ForegroundColor = Area.separatorAreaColorFront;
@@ -54,7 +54,7 @@ namespace GromoBot2.IO.Areas
         }
         public void ToDisplayStateParameters()
         {
-            byte lastRow = stateParameterAreaCursor.ToGetLastRowNumber() ;
+            int lastRow = stateParameterAreaCursor.ToGetLastRowNumber() ;
             stateParameterAreaCursor.ToSetInPosition(Area.indentOfAreaContent, lastRow);
             stateParameterAreaCursor.ToSavePosition();
             stateParametersAreaCursorPositionStore.gromoStatePosition = stateParameterAreaCursor.currentPosition;

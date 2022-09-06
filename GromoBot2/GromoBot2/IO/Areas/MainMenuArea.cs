@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO.CursorParts;
+using GromoBot2.GromoExceptions.IOExceptions;
+using GromoBot2.GromoExceptions;
 
 namespace GromoBot2.IO.Areas
 {
@@ -11,13 +13,24 @@ namespace GromoBot2.IO.Areas
     {
         string titleName = "Main Menu Area";
         string areaSeparator = "*************************************";
-        const ConsoleColor activeColorOfItem = ConsoleColor.Gray;
-        const ConsoleColor inactiveColorOfItem = ConsoleColor.DarkGray;
+
         Cursor mainMenuAreaCursor;
         CursorPositionStore mainMenuAreaCursorPositionStore;
+
+        string[] menuItemsArray;
+        int amountLinesOfArea;
         MenuItemsState[] currTemplate;
+
+        const ConsoleColor activeColorOfItem = ConsoleColor.Gray;
+        const ConsoleColor inactiveColorOfItem = ConsoleColor.DarkGray;
+
+        
+
         public MainMenuArea()
         {
+            menuItemsArray = StoreSignsForAreas.mainMenuAreaItems;
+            amountLinesOfArea = menuItemsArray.Length;
+            currentTemplate = TemplatesOfMenuItems.StartUpTemplate;
             mainMenuAreaCursor = new Cursor();
             mainMenuAreaCursorPositionStore = new CursorPositionStore();
         }
@@ -43,7 +56,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplayTitle()
         {
-            byte lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
+            int lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
             mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaTitle, lastRow);
             Console.BackgroundColor = Area.titleAreaColorBack;
             Console.ForegroundColor = Area.titleAreaColorFront;
@@ -52,7 +65,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplaySeparator()
         {
-            byte lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
+            int lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
             mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator,lastRow);
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;
@@ -61,78 +74,95 @@ namespace GromoBot2.IO.Areas
         }
         public void ToDisplayItems()
         {
-            string[] itemsArray = StoreSignsForAreas.mainMenuAreaItems;
-            if (IsEqualSize(itemsArray,currentTemplate))
-            { 
-                for (int i = 0; i < itemsArray.Length; i++)
-                     {
-                       byte lastRowNum = mainMenuAreaCursor.ToGetLastRowNumber();
-                       mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaContent, lastRowNum);
-                       mainMenuAreaCursorPositionStore.MainMenuPosition = mainMenuAreaCursor.currentPosition; 
-                        if (currentTemplate[i] == MenuItemsState.Enabled)
-                             {
-                                   Console.ForegroundColor = activeColorOfItem;
-                                   Console.WriteLine(itemsArray[i]);
-                                   mainMenuAreaCursor.ToSavePosition();
-                             }
-                        else
-                             {
-                                   Console.ForegroundColor = inactiveColorOfItem;
-                                   Console.WriteLine(itemsArray[i]);
-                                   mainMenuAreaCursor.ToSavePosition();
-                             }
-                     }
-            }
-            else
+            try
             {
-                throw new Exception("ItemsArray&Template has a different sizes!");
+                if (IsEqualArealLinesAndTemplateLength())
+                {
+                    ToSetInFirstLine();
+                    for (int counterOfLine = 1; counterOfLine <= amountLinesOfArea; counterOfLine++)
+                    {
+                        int indexOfItemsArray = counterOfLine - 1;
+                        int indexOfTemplateArray = indexOfItemsArray;
+
+                        if ( currTemplate[indexOfTemplateArray]== MenuItemsState.Enabled)
+                        {
+                            Console.ForegroundColor = activeColorOfItem;
+                            Console.WriteLine(menuItemsArray[indexOfItemsArray]);
+                        }
+                        if (currTemplate[indexOfTemplateArray]== MenuItemsState.Disabled)
+                        {
+                            Console.ForegroundColor = inactiveColorOfItem;
+                            Console.WriteLine(menuItemsArray[indexOfItemsArray]);
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    string message = StoreMessagesOfErrors.AmountArealLinesAndTemplateSizeDifferentError;
+                    string cause = "Attempt of Main Menu items presentation";
+                    DateTime time = DateTime.Now;
+                    throw new DifferentSizeException(message, cause, time);
+                }
+
             }
-            mainMenuAreaCursor.ToSavePosition();
+            catch (DifferentSizeException ex)
+            {
+                // TODO: Alert insert
+            }
+
+            finally 
+            {
+                // TODO: ?SavePosition?
+                mainMenuAreaCursor.ToSavePosition();
+            }
+           
+            
+        }
+        void ToClear()
+        {
+            int amountOfAreaLines = menuItemsArray.Length;
+            for (int counterLine = 1; counterLine <= amountOfAreaLines;counterLine++)
+            {
+                Console.Write(new String(' ', Console.BufferWidth));
+            }
         }
         public void ToRefreshMenuTemplate()
         {
-            string[] itemsArray = StoreSignsForAreas.mainMenuAreaItems;
-            if (IsEqualSize(itemsArray, currentTemplate))
-            {
-                for (int i = 0; i < itemsArray.Length; i++)
-                {
-                    mainMenuAreaCursor.ToSetInPosition(mainMenuAreaCursorPositionStore.MainMenuPosition);
-                    mainMenuAreaCursorPositionStore.MainMenuPosition = mainMenuAreaCursor.currentPosition;
-                    if (currentTemplate[i] == MenuItemsState.Enabled)
-                    {
-                        Console.ForegroundColor = activeColorOfItem;
-                        Console.WriteLine(itemsArray[i]);
-                        mainMenuAreaCursor.ToSavePosition();
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = inactiveColorOfItem;
-                        Console.WriteLine(itemsArray[i]);
-                        mainMenuAreaCursor.ToSavePosition();
-                    }
-                }
-            }
-            else
-            {
-                throw new Exception("ItemsArray&Template has a different sizes!");
-            }
-
+           ToDisplayItems();
         }
         public void ToShow()
         {
-            this.ToDisplaySeparator();
-            this.ToDisplayTitle();
-            this.ToDisplaySeparator();
-            this.ToDisplayItems();
-            this.ToDisplaySeparator();
+            ToDisplaySeparator();
+            ToDisplayTitle();
+            ToDisplaySeparator();
+            ToSaveFirstLineOfItems();
+            ToDisplayItems();
+            ToDisplaySeparator();
         }
-        bool IsEqualSize(string[] itemsArray, MenuItemsState[] currentTemplate)
+        bool IsEqualArealLinesAndTemplateLength()
         {
-            if (itemsArray.Length == currentTemplate.Length)
+            if (amountLinesOfArea == currentTemplate.Length)
                 return true;
             else 
                 return false;
         }
-        
+        void ToSaveFirstLineOfItems()
+        { 
+            int numRowOfFirstItem = mainMenuAreaCursor.ToGetLastRowNumber();
+            mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaContent, numRowOfFirstItem);
+            mainMenuAreaCursor.ToSavePosition();
+            mainMenuAreaCursorPositionStore.MainMenuPosition = mainMenuAreaCursor.currentPosition;
+        }
+        void ToSetInFirstLine()
+        {
+            mainMenuAreaCursor.ToSetInPosition(mainMenuAreaCursorPositionStore.MainMenuPosition);
+
+        }
+
+
+
+
     }
 }

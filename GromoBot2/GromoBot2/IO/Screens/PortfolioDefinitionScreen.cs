@@ -43,7 +43,7 @@ namespace GromoBot2.IO.Screens
         }
         public override void ToDisplayTitle()
         {
-            portfolioDefinitionCursor.ToSetInPosition(Screen.indentOfScreenTitle, cursor.currentPosition.numberOfRow);
+            portfolioDefinitionCursor.ToSetInPosition(Screen.indentOfScreenTitle, cursor.currentPosition.NumberOfRow);
             Console.BackgroundColor = Screen.titleScreenColorBack;
             Console.ForegroundColor = Screen.titleScreenColorFront;
             Console.WriteLine(titleName);

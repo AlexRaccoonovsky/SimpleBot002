@@ -22,6 +22,7 @@ namespace GromoBot2.IO.CursorParts
             userInputPosition = new CursorPosition(0, 0);
             bufferPos = new CursorPosition(0,0);
             gromoStatePos = new CursorPosition(0, 0);
+            mainMenuPos = new CursorPosition(0, 0);
         }
         public CursorPosition LastPosition
         {

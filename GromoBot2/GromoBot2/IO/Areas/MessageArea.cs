@@ -52,7 +52,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplayTitle()
         {
-            byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+            int lastRow = messageAreaCursor.ToGetLastRowNumber();
             messageAreaCursor.ToSetInPosition(Area.indentOfAreaTitle, lastRow);
             Console.ForegroundColor = Area.titleAreaColorFront;
             Console.BackgroundColor = Area.titleAreaColorBack;
@@ -61,7 +61,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplaySeparator()
         {
-            byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+            int lastRow = messageAreaCursor.ToGetLastRowNumber();
             messageAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator,lastRow);
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;
@@ -93,13 +93,13 @@ namespace GromoBot2.IO.Areas
 
             for (int i = rowsNumberOfArea - 1; i >= 0; i--)
             {
-                byte numRow = messageAreaCursor.ToGetLastRowNumber();
+                int numRow = messageAreaCursor.ToGetLastRowNumber();
                 messageAreaCursor.ToSetInPosition(Area.indentOfAreaContent,numRow);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("> ");
                 if (arrayForDisplay[i] is Alert)
                 {
-                    byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+                    int lastRow = messageAreaCursor.ToGetLastRowNumber();
                     messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
                     Console.ForegroundColor = GromoMessage.alertColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
@@ -107,7 +107,7 @@ namespace GromoBot2.IO.Areas
                 }
                 if (arrayForDisplay[i] is Notice)
                 {
-                    byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+                    int lastRow = messageAreaCursor.ToGetLastRowNumber();
                     messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
                     Console.ForegroundColor = GromoMessage.noticeColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
@@ -115,7 +115,7 @@ namespace GromoBot2.IO.Areas
                 }
                 if (arrayForDisplay[i] is Query)
                 {
-                    byte lastRow = messageAreaCursor.ToGetLastRowNumber();
+                    int lastRow = messageAreaCursor.ToGetLastRowNumber();
                     messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent,lastRow);
                     Console.ForegroundColor = GromoMessage.queryColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);

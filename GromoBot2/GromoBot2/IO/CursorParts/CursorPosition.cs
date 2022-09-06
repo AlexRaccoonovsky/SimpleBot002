@@ -8,27 +8,28 @@ namespace GromoBot2.IO.CursorParts
 {
     public class CursorPosition
     {
-        byte numOfColumn { get; set; }
-        byte numOfRow { get; set; }
+        int numOfColumn;
+        int numOfRow;
         public CursorPosition() 
         { 
             numOfColumn = 0;
             numOfRow = 0;
         }
-        public CursorPosition(byte column, byte row)
+        public CursorPosition(int column, int row)
         {   
             numOfColumn = column;
             numOfRow = row;
         }
-        public byte numberOfColumn
+        public int NumberOfColumn
         { 
-            get => numOfColumn; 
-            set => numOfColumn = value;
+            get { return numOfColumn; }
+            set { numOfColumn = value; }
         }
-        public byte numberOfRow
+        public int NumberOfRow
         {
-            get => numOfRow;
-            set => numOfRow = value;
+            get { return numOfRow; }
+            set { numOfRow = value; }
+
         }
     }
 }

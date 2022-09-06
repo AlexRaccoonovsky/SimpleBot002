@@ -42,6 +42,7 @@ namespace GromoBot2.Controller.Mode
             ToInitializeEnvironment(gromo);
             IO.ToShowMainMenuScreen();
             IO.ToDisplayGromoState(stateGromo);
+
             MenuItemsState[] templateForMenuItems = ToDefineTemplateBy(stateGromo);
             IO.ToRefreshMainMenuTemplateBy(templateForMenuItems);
 

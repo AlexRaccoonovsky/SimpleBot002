@@ -39,7 +39,7 @@ namespace GromoBot2.IO.Areas
         
         public override void ToDisplaySeparator()
         {
-            byte lastRow = userInputAreaCursor.ToGetLastRowNumber();
+            int lastRow = userInputAreaCursor.ToGetLastRowNumber();
             userInputAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator, lastRow);   
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;
@@ -48,7 +48,7 @@ namespace GromoBot2.IO.Areas
         }
         public override void ToDisplayTitle()
         {
-            byte lastRow = userInputAreaCursor.ToGetLastRowNumber();
+            int lastRow = userInputAreaCursor.ToGetLastRowNumber();
             userInputAreaCursor.ToSetInPosition(Area.indentOfAreaTitle,lastRow);
             Console.BackgroundColor = Area.titleAreaColorBack;
             Console.ForegroundColor = Area.titleAreaColorFront;
@@ -57,7 +57,7 @@ namespace GromoBot2.IO.Areas
         }
         void ToDisplayUserInputString()
         {
-            byte lastRow = userInputAreaCursor.ToGetLastRowNumber();
+            int lastRow = userInputAreaCursor.ToGetLastRowNumber();
             userInputAreaCursor.ToSetInPosition(Area.indentOfAreaContent, lastRow);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;

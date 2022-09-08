@@ -63,10 +63,9 @@ namespace GromoBot2.IO
         //  }
         public void ToRefreshMainMenuTemplateBy(MenuItemsState[] template)
         {
-            mainMenuScreen.TemplateOfMenuItems = template;
-            mainMenuScreen.ToRefreshMenuItemsTemplate();
+            mainMenuScreen.ToRefreshMenuByTemplate(template);
         }
-        public MenuItemsState[] ToGetTemplateForMainMenuScreen()
+        public MenuItemsState[] ToGetCurrentTemplate()
         { 
             return mainMenuScreen.TemplateOfMenuItems;
         }

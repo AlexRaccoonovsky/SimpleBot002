@@ -99,7 +99,7 @@ namespace GromoBot2.Controller.Mode
             finally
             { }
             
-            MenuItemsState[] currentTemplate = IO.ToGetTemplateForMainMenuScreen();
+            MenuItemsState[] currentTemplate = IO.ToGetCurrentTemplate();
             if (currentTemplate[input - 1] == MenuItemsState.Enabled)
                 return true;
             else

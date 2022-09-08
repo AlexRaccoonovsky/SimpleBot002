@@ -13,7 +13,7 @@ namespace GromoBot2.IO.CursorParts
         CursorPosition userInputPos;
         CursorPosition bufferPos;
         CursorPosition gromoStatePos;
-        CursorPosition mainMenuPos;
+        CursorPosition mainMenuContentFirstLine;
          
         public CursorPositionStore()
         {
@@ -22,7 +22,7 @@ namespace GromoBot2.IO.CursorParts
             userInputPosition = new CursorPosition(0, 0);
             bufferPos = new CursorPosition(0,0);
             gromoStatePos = new CursorPosition(0, 0);
-            mainMenuPos = new CursorPosition(0, 0);
+            mainMenuContentFirstLine = new CursorPosition(0, 0);
         }
         public CursorPosition LastPosition
         {
@@ -31,8 +31,8 @@ namespace GromoBot2.IO.CursorParts
         }
         public CursorPosition MainMenuPosition
         {
-            get { return mainMenuPos; }
-            set { mainMenuPos = value; }
+            get { return mainMenuContentFirstLine; }
+            set { mainMenuContentFirstLine = value; }
         }
         public CursorPosition userInputPosition
         {

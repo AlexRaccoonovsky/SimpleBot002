@@ -56,8 +56,8 @@ namespace GromoBot2.IO.Screens
         public override void ToShow()
         {
             ToDisplayTitle();
-            this.ToDispayInheritedAreas();
-            this.ToSetCursorInUserInputPlace();
+            ToDispayInheritedAreas();
+            ToSetCursorInUserInputPlace();
         }
         public override void ToRefreshStateArea()
         { }
@@ -74,6 +74,26 @@ namespace GromoBot2.IO.Screens
             Console.WriteLine(titleName);
             mainMenuScreenCursor.ToSavePosition();
         }
+        public void ToShowNewMessage(GromoMessage newMessage)
+        {
+            messageArea.ToAddUpBuffer(newMessage);
+            mainMenuScreenCursor.ToSetInPosition(mainMenuCursorPositionStore.bufferMessagPosition);
+            messageArea.ToCleanUp();
+            mainMenuScreenCursor.ToSetInPosition(mainMenuCursorPositionStore.bufferMessagPosition);
+            messageArea.ToDisplayBuffer();
+            this.ToSetCursorInUserInputPlace();
+        }
+        // Temporary method for display Gromo state
+        public void ToRefreshGromoStateArea(StateOfGromo state)
+        {
+            stateParametersArea.ToRefreshStateParameters(state);
+            this.ToSetCursorInUserInputPlace();
+        }
+        public void ToRefreshMenuByTemplate(MenuItemsState[] template)
+        {
+            mainMenuArea.ToRefreshMenuItemsByTemplate(template);
+            ToSetCursorInUserInputPlace();
+        }
         void ToDispayInheritedAreas()
         {
             ToShowMainMenuArea();
@@ -85,7 +105,6 @@ namespace GromoBot2.IO.Screens
         {
             mainMenuArea.areaCursor = mainMenuScreenCursor;
             mainMenuArea.areaCursorPositionStore = mainMenuCursorPositionStore;
-            mainMenuArea.currentTemplate = templateOfItems;
             mainMenuArea.ToShow();
             mainMenuScreenCursor = mainMenuArea.areaCursor;
             mainMenuCursorPositionStore = mainMenuArea.areaCursorPositionStore;
@@ -120,27 +139,7 @@ namespace GromoBot2.IO.Screens
         {
             cursor.ToSetInPosition(mainMenuCursorPositionStore.userInputPosition);
         }
-        public void ToShowNewMessage(GromoMessage newMessage)
-        {
-            messageArea.ToAddUpBuffer(newMessage);
-            mainMenuScreenCursor.ToSetInPosition(mainMenuCursorPositionStore.bufferMessagPosition);
-            messageArea.ToCleanUp();
-            mainMenuScreenCursor.ToSetInPosition(mainMenuCursorPositionStore.bufferMessagPosition);
-            messageArea.ToDisplayBuffer();
-            this.ToSetCursorInUserInputPlace();
-        }
-        // Temporary method for display Gromo state
-        public void ToRefreshGromoStateArea(StateOfGromo state)
-        {
-            stateParametersArea.ToRefreshStateParameters(state);
-            this.ToSetCursorInUserInputPlace();
-        }
-        public void ToRefreshMenuItemsTemplate()
-        {
-            mainMenuArea.currentTemplate = templateOfItems;
-            mainMenuArea.ToRefreshMenuTemplate();
-            ToSetCursorInUserInputPlace();
-        }
+
 
         
 

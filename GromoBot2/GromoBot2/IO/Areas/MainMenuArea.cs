@@ -30,7 +30,7 @@ namespace GromoBot2.IO.Areas
         {
             menuItemsArray = StoreSignsForAreas.mainMenuAreaItems;
             amountLinesOfArea = menuItemsArray.Length;
-            currentTemplate = TemplatesOfMenuItems.StartUpTemplate;
+            currentTemplate = TemplatesOfMenuItems.AwaitingTemplate;
             mainMenuAreaCursor = new Cursor();
             mainMenuAreaCursorPositionStore = new CursorPositionStore();
         }
@@ -49,7 +49,7 @@ namespace GromoBot2.IO.Areas
         {
             get => areaSeparator;
         }
-        public MenuItemsState[] currentTemplate
+        MenuItemsState[] currentTemplate
         {
             get { return currTemplate; }
             set { currTemplate = value; }
@@ -72,31 +72,45 @@ namespace GromoBot2.IO.Areas
             Console.WriteLine(areaSeparator);
             mainMenuAreaCursor.ToSavePosition();
         }
+        public void ToRefreshMenuItemsByTemplate(MenuItemsState[] template)
+        {
+            currentTemplate = template;
+            ToClearMenu();
+            ToDisplayItems();
+        }
+        public void ToShow()
+        {
+            ToDisplaySeparator();
+            ToDisplayTitle();
+            ToDisplaySeparator();
+            ToSaveFirstLineOfItems();
+            ToDisplayItems();
+            ToDisplaySeparator();
+        }
         public void ToDisplayItems()
         {
             try
             {
                 if (IsEqualArealLinesAndTemplateLength())
                 {
-                    ToSetInFirstLine();
                     for (int counterOfLine = 1; counterOfLine <= amountLinesOfArea; counterOfLine++)
                     {
                         int indexOfItemsArray = counterOfLine - 1;
-                        int indexOfTemplateArray = indexOfItemsArray;
-
-                        if ( currTemplate[indexOfTemplateArray]== MenuItemsState.Enabled)
-                        {
-                            Console.ForegroundColor = activeColorOfItem;
-                            Console.WriteLine(menuItemsArray[indexOfItemsArray]);
+                        
+                        if (counterOfLine == 1) 
+                        { 
+                            ToSetInFirstLineOfArea();
+                            ToPlotMenuItemByIndex(indexOfItemsArray);
+                            mainMenuAreaCursor.ToSavePosition();
                         }
-                        if (currTemplate[indexOfTemplateArray]== MenuItemsState.Disabled)
+                        else
                         {
-                            Console.ForegroundColor = inactiveColorOfItem;
-                            Console.WriteLine(menuItemsArray[indexOfItemsArray]);
+                            int numRowOfAreaLine = mainMenuAreaCursor.ToGetLastRowNumber();
+                            mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaContent, numRowOfAreaLine);
+                            ToPlotMenuItemByIndex(indexOfItemsArray);
+                            mainMenuAreaCursor.ToSavePosition();
                         }
                     }
-
-
                 }
                 else
                 {
@@ -105,7 +119,6 @@ namespace GromoBot2.IO.Areas
                     DateTime time = DateTime.Now;
                     throw new DifferentSizeException(message, cause, time);
                 }
-
             }
             catch (DifferentSizeException ex)
             {
@@ -117,29 +130,29 @@ namespace GromoBot2.IO.Areas
                 // TODO: ?SavePosition?
                 mainMenuAreaCursor.ToSavePosition();
             }
-           
-            
         }
-        void ToClear()
+        void ToClearMenu()
         {
+            ToSetInFirstLineOfArea();
             int amountOfAreaLines = menuItemsArray.Length;
             for (int counterLine = 1; counterLine <= amountOfAreaLines;counterLine++)
             {
                 Console.Write(new String(' ', Console.BufferWidth));
             }
         }
-        public void ToRefreshMenuTemplate()
+        void ToPlotMenuItemByIndex(int index)
         {
-           ToDisplayItems();
-        }
-        public void ToShow()
-        {
-            ToDisplaySeparator();
-            ToDisplayTitle();
-            ToDisplaySeparator();
-            ToSaveFirstLineOfItems();
-            ToDisplayItems();
-            ToDisplaySeparator();
+
+            if (currTemplate[index] == MenuItemsState.Enabled)
+            {
+                Console.ForegroundColor = activeColorOfItem;
+                Console.WriteLine(menuItemsArray[index]);
+            }
+            if (currTemplate[index] == MenuItemsState.Disabled)
+            {
+                Console.ForegroundColor = inactiveColorOfItem;
+                Console.WriteLine(menuItemsArray[index]);
+            }
         }
         bool IsEqualArealLinesAndTemplateLength()
         {
@@ -149,20 +162,15 @@ namespace GromoBot2.IO.Areas
                 return false;
         }
         void ToSaveFirstLineOfItems()
-        { 
-            int numRowOfFirstItem = mainMenuAreaCursor.ToGetLastRowNumber();
-            mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaContent, numRowOfFirstItem);
+        {
+            int numberOfRow = mainMenuAreaCursor.ToGetLastRowNumber();
+            mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaContent, numberOfRow);
             mainMenuAreaCursor.ToSavePosition();
             mainMenuAreaCursorPositionStore.MainMenuPosition = mainMenuAreaCursor.currentPosition;
         }
-        void ToSetInFirstLine()
+        void ToSetInFirstLineOfArea()
         {
             mainMenuAreaCursor.ToSetInPosition(mainMenuAreaCursorPositionStore.MainMenuPosition);
-
         }
-
-
-
-
     }
 }

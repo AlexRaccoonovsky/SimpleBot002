@@ -8,14 +8,15 @@ namespace GromoBot2.Controller.GromoCommand
 {
     public class CommandEmpty : CommandForGromo
     {
-        GromoBot receiver;
+        string nameCommand;
+        GromoBot executor;
         public CommandEmpty(GromoBot gromoBot)
         {
-            receiver = gromoBot;
+            executor = gromoBot;
         }
         public override void ToExecute()
         {
-            receiver.ToEmptyAction();
+            executor.ToEmptyAction();
         }
     }
 }

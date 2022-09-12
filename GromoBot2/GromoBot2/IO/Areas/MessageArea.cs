@@ -13,16 +13,19 @@ namespace GromoBot2.IO.Areas
         string titleName = "Message Area";
         string areaSeparator = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
         byte rowsNumOfArea = 9;
+
         Cursor messageAreaCursor;
         CursorPositionStore messageAreaCursorPositionStore;
         Queue<GromoMessage> bufferOfMessages;
         GromoMessage[] arrayForDisplay;
+
         public MessageArea()
         { 
             messageAreaCursor = new Cursor();
             messageAreaCursorPositionStore = new CursorPositionStore();
             ToInitializeBufferOfMessage();
         }
+
         public override Cursor areaCursor
         {
             get { return messageAreaCursor; }
@@ -31,24 +34,14 @@ namespace GromoBot2.IO.Areas
         public override CursorPositionStore areaCursorPositionStore {
             get { return messageAreaCursorPositionStore; }
             set { messageAreaCursorPositionStore = value; } }
+
         public override string areaTitleName
         {
             get => titleName;
         }
         public override string areaSeparatorType
         {
-            get => areaSeparator;
-        }
-        public byte rowsNumberOfArea 
-        { 
-            get
-            {
-                return rowsNumOfArea;
-            }
-            set
-            {
-                rowsNumOfArea = value;
-            }
+            get { return areaSeparator; } 
         }
         public override void ToDisplayTitle()
         {
@@ -62,23 +55,25 @@ namespace GromoBot2.IO.Areas
         public override void ToDisplaySeparator()
         {
             int lastRow = messageAreaCursor.ToGetLastRowNumber();
-            messageAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator,lastRow);
+            messageAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator, lastRow);
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.WriteLine(areaSeparatorType);
             messageAreaCursor.ToSavePosition();
         }
-        void ToInitializeBufferOfMessage()
-        {
-            bufferOfMessages = new Queue<GromoMessage>(rowsNumberOfArea);
-            arrayForDisplay = new GromoMessage[rowsNumberOfArea];
-            Notice emptyNotice = new Notice(" ");
-            for (int i = 0; i < rowsNumberOfArea; i++)
+
+        public byte rowsNumberOfArea 
+        { 
+            get
             {
-                bufferOfMessages.Enqueue(emptyNotice);
+                return rowsNumOfArea;
             }
-            arrayForDisplay=bufferOfMessages.ToArray();
+            set
+            {
+                rowsNumOfArea = value;
+            }
         }
+
         public void ToAddUpBuffer(GromoMessage msg)
         {
             bufferOfMessages.Enqueue(msg);
@@ -94,7 +89,7 @@ namespace GromoBot2.IO.Areas
             for (int i = rowsNumberOfArea - 1; i >= 0; i--)
             {
                 int numRow = messageAreaCursor.ToGetLastRowNumber();
-                messageAreaCursor.ToSetInPosition(Area.indentOfAreaContent,numRow);
+                messageAreaCursor.ToSetInPosition(Area.indentOfAreaContent, numRow);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("> ");
                 if (arrayForDisplay[i] is Alert)
@@ -116,7 +111,7 @@ namespace GromoBot2.IO.Areas
                 if (arrayForDisplay[i] is Query)
                 {
                     int lastRow = messageAreaCursor.ToGetLastRowNumber();
-                    messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent,lastRow);
+                    messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
                     Console.ForegroundColor = GromoMessage.queryColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
                     messageAreaCursor.ToSavePosition();
@@ -125,7 +120,7 @@ namespace GromoBot2.IO.Areas
             }
         }
         public void ToShow()
-        { 
+        {
             this.ToDisplaySeparator();
             this.ToDisplayTitle();
             this.ToDisplaySeparator();
@@ -143,5 +138,17 @@ namespace GromoBot2.IO.Areas
             }
 
         }
+        void ToInitializeBufferOfMessage()
+        {
+            bufferOfMessages = new Queue<GromoMessage>(rowsNumberOfArea);
+            arrayForDisplay = new GromoMessage[rowsNumberOfArea];
+            Notice emptyNotice = new Notice(" ");
+            for (int i = 0; i < rowsNumberOfArea; i++)
+            {
+                bufferOfMessages.Enqueue(emptyNotice);
+            }
+            arrayForDisplay=bufferOfMessages.ToArray();
+        }
+
     }
 }

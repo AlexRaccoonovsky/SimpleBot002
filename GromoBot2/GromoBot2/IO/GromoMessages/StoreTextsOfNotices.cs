@@ -12,6 +12,9 @@ namespace GromoBot2.IO.GromoMessages
         public static string ConnectionStateChanged = "Connection state is changed!";
         public static string SelectedPortfolioChanged = "Selected Portfolio is changed!";
         public static string SelectedSecurityChanged = "Selected Security is changed!";
+        public static string GromoDisconnected = "GromoBot is disconnected now.";
+        public static string AwaitingDirective = "Gromobot awaitng a next directive...";
+        public static string yourChoiseIs = "User choice is ";
 
     }
 }

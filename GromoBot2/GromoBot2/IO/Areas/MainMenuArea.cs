@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GromoBot2.IO.CursorParts;
 using GromoBot2.GromoExceptions.IOExceptions;
 using GromoBot2.GromoExceptions;
+using GromoBot2.IO.GromoMessages;
 
 namespace GromoBot2.IO.Areas
 {
@@ -19,21 +20,25 @@ namespace GromoBot2.IO.Areas
 
         string[] menuItemsArray;
         int amountLinesOfArea;
+
         MenuItemsState[] currTemplate;
 
         const ConsoleColor activeColorOfItem = ConsoleColor.Gray;
         const ConsoleColor inactiveColorOfItem = ConsoleColor.DarkGray;
 
-        
+        ErrorHandler errorHandler;
 
         public MainMenuArea()
         {
             menuItemsArray = StoreSignsForAreas.mainMenuAreaItems;
             amountLinesOfArea = menuItemsArray.Length;
-            currentTemplate = TemplatesOfMenuItems.AwaitingTemplate;
+            currTemplate = TemplatesOfMenuItems.AwaitingTemplate;
+
             mainMenuAreaCursor = new Cursor();
             mainMenuAreaCursorPositionStore = new CursorPositionStore();
+            //errorHandler = new ErrorHandler();
         }
+
         public override Cursor areaCursor { 
             get { return mainMenuAreaCursor; }
             set { mainMenuAreaCursor = value; } }
@@ -41,19 +46,16 @@ namespace GromoBot2.IO.Areas
             get { return mainMenuAreaCursorPositionStore; }
             set { mainMenuAreaCursorPositionStore = value; }
         }
+
         public override string areaTitleName
         {
             get => titleName;
         }
         public override string areaSeparatorType
         {
-            get => areaSeparator;
+            get { return areaSeparator;  }
         }
-        MenuItemsState[] currentTemplate
-        {
-            get { return currTemplate; }
-            set { currTemplate = value; }
-        }
+
         public override void ToDisplayTitle()
         {
             int lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
@@ -66,15 +68,21 @@ namespace GromoBot2.IO.Areas
         public override void ToDisplaySeparator()
         {
             int lastRow = mainMenuAreaCursor.ToGetLastRowNumber();
-            mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator,lastRow);
+            mainMenuAreaCursor.ToSetInPosition(Area.indentOfAreaSeparator, lastRow);
             Console.ForegroundColor = Area.separatorAreaColorFront;
             Console.BackgroundColor = Area.separatorAreaColorBack;
             Console.WriteLine(areaSeparator);
             mainMenuAreaCursor.ToSavePosition();
         }
+
+        void ToDisplayMessage(string msg)
+        { 
+
+        }
+
         public void ToRefreshMenuItemsByTemplate(MenuItemsState[] template)
         {
-            currentTemplate = template;
+            currTemplate = template;
             ToClearMenu();
             ToDisplayItems();
         }
@@ -122,15 +130,18 @@ namespace GromoBot2.IO.Areas
             }
             catch (DifferentSizeException ex)
             {
-                // TODO: Alert insert
+                errorHandler.ToShowAlert(ex);
             }
-
+            catch (Exception ex)
+            {
+                errorHandler.ToShowAlert(ex);
+            }
             finally 
             {
-                // TODO: ?SavePosition?
-                mainMenuAreaCursor.ToSavePosition();
+
             }
         }
+
         void ToClearMenu()
         {
             ToSetInFirstLineOfArea();
@@ -156,7 +167,7 @@ namespace GromoBot2.IO.Areas
         }
         bool IsEqualArealLinesAndTemplateLength()
         {
-            if (amountLinesOfArea == currentTemplate.Length)
+            if (amountLinesOfArea == currTemplate.Length)
                 return true;
             else 
                 return false;

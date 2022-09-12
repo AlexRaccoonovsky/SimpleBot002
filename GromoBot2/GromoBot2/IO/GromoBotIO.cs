@@ -7,6 +7,8 @@ using GromoBot2.IO.Screens;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
 using GromoBot2.IO.Areas;
+using GromoBot2.GromoExceptions;
+using GromoBot2.GromoExceptions.IOExceptions;
 
 
 namespace GromoBot2.IO
@@ -16,28 +18,17 @@ namespace GromoBot2.IO
         MainMenuScreen mainMenuScreen;
         PortfolioDefinitionScreen portfolioDefinitionScreen;
         public Screen? currentScreen;
+        ErrorHandler errorHandler;
         public GromoBotIO()
         { 
-            this.ToInitializeWindow();
+            ToInitializeWindow();
+
         }
-        void ToInitializeWindow()
-        {
-            // TODO: Set width & Height by max value
-            Console.Title = "GromoBot";
-            Console.BufferWidth = 120;
-            Console.WindowWidth = Console.BufferWidth - 1;
-            Console.BufferHeight = 50;
-            Console.WindowHeight = Console.BufferHeight - 1;
-            return;
-        }
-        void ToInitializeMainMenuScreen()
-        {
-            mainMenuScreen = new MainMenuScreen();
-        }
-        void ToInitializePortfolioDefinitionScreen()
-        {
-            portfolioDefinitionScreen = new PortfolioDefinitionScreen();
-        }
+    //   internal ErrorHandler IOErrorHandler
+    //   { get { return errorHandler; }
+    //     set { errorHandler = value; }
+    //   }    
+
         public void ToShowMainMenuScreen()
         {
             ToInitializeMainMenuScreen();
@@ -78,7 +69,22 @@ namespace GromoBot2.IO
         { 
             portfolioDefinitionScreen.ToHide();
         }
-
-            
+        void ToInitializeMainMenuScreen()
+        {
+            mainMenuScreen = new MainMenuScreen();
+        }
+        void ToInitializePortfolioDefinitionScreen()
+        {
+            portfolioDefinitionScreen = new PortfolioDefinitionScreen();
+        }
+        void ToInitializeWindow()
+        {
+            // TODO: Set width & Height by max value
+            Console.Title = "GromoBot";
+            Console.BufferWidth = 120;
+            Console.WindowWidth = Console.BufferWidth - 1;
+            Console.BufferHeight = 50;
+            Console.WindowHeight = Console.BufferHeight - 1;
+        }
     }
 }

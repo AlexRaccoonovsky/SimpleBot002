@@ -7,6 +7,8 @@ using GromoBot2.IO.Areas;
 using GromoBot2.IO.CursorParts;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
+using GromoBot2.GromoExceptions;
+using GromoBot2.GromoExceptions.IOExceptions;
 
 namespace GromoBot2.IO.Screens
 {
@@ -20,6 +22,7 @@ namespace GromoBot2.IO.Screens
         UserInputArea userInputArea;
         MessageArea messageArea;
         MenuItemsState[] templateOfItems;
+        ErrorHandler errorHandler;
 
         public MainMenuScreen()
         {
@@ -35,6 +38,10 @@ namespace GromoBot2.IO.Screens
             stateParametersArea = new StateParameterArea();
             userInputArea = new UserInputArea();
             messageArea = new MessageArea();
+        }
+        void ToInitializeMainMenuUserInput()
+        { 
+
         }
         public override string screenTitleName
         {

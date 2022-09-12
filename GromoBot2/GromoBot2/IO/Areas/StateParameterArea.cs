@@ -20,19 +20,23 @@ namespace GromoBot2.IO.Areas
             stateParametersAreaCursorPositionStore = new CursorPositionStore();
         }
          
-        public override Cursor areaCursor {
-            get => stateParameterAreaCursor;
-            set => stateParameterAreaCursor = value;}
-        public override CursorPositionStore areaCursorPositionStore { 
-            get => stateParametersAreaCursorPositionStore;
-            set => stateParametersAreaCursorPositionStore = value;}
+        public override Cursor areaCursor
+        {
+            get { return stateParameterAreaCursor; }
+            set { stateParameterAreaCursor = value; }
+        }
+        public override CursorPositionStore areaCursorPositionStore
+        {
+            get { return stateParametersAreaCursorPositionStore; }
+            set { stateParametersAreaCursorPositionStore = value; }
+        }
         public override string areaTitleName 
         {
-            get => titleName;
+            get { return titleName; }
         }
         public override string areaSeparatorType
         {
-            get => areaSeparator;
+            get { return areaSeparator; }
         }
         public override void ToDisplayTitle()
         {
@@ -63,11 +67,11 @@ namespace GromoBot2.IO.Areas
         }
         public void ToShow()
         { 
-            this.ToDisplaySeparator();
-            this.ToDisplayTitle();
-            this.ToDisplaySeparator();
-            this.ToDisplayStateParameters();
-            this.ToDisplaySeparator();
+            ToDisplaySeparator();
+            ToDisplayTitle();
+            ToDisplaySeparator();
+            ToDisplayStateParameters();
+            ToDisplaySeparator();
         }
         public void ToRefreshStateParameters(StateOfGromo state)
         // ??? Temporary method for display state

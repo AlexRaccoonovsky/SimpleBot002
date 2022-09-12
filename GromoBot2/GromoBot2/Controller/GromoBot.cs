@@ -10,6 +10,9 @@ using GromoBot2.Controller.GromoCommand;
 using GromoBot2.Controller.GromoCommand.MainMenuModeCommands;
 using GromoBot2.Controller.Mode;
 using GromoBot2.Model;
+using GromoBot2.GromoExceptions;
+
+
 
 namespace GromoBot2.Controller
 {
@@ -19,10 +22,14 @@ namespace GromoBot2.Controller
         StateOfGromo currentState;
         Modes currentMode;
         GromoConnector gromoConnector;
+        ErrorHandler errorHandler;
+
 
         public GromoBot()
         { 
             gromoIO = new GromoBotIO();
+            //gromoIO.IOErrorHandler = errorHandler;
+            errorHandler = new ErrorHandler(gromoIO);
             currentState = new StateOfGromo();
             currentMode = new MainMenuMode();
             gromoConnector = new GromoConnector();
@@ -31,6 +38,10 @@ namespace GromoBot2.Controller
         public GromoBotIO gromoBotIO
         { 
             get { return gromoIO; }
+        }
+        internal ErrorHandler ErrorsHandler
+        { 
+            get { return errorHandler; }
         }
         public StateOfGromo gromoState
         { 

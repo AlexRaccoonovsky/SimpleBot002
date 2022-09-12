@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GromoBot2.IO;
+using GromoBot2.IO.UserInput;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
 using GromoBot2.Controller.GromoCommand;
@@ -21,8 +22,14 @@ namespace GromoBot2.Controller.Mode
         string nameOfMode;
         GromoBot gromoBot;
         GromoBotIO IO;
+
+        MainMenuUserInput userInput;
+        ErrorHandler errorHandler;
+
+
         StateOfGromo stateGromo;
         CommandForGromo command;
+
         
         public override string Name 
         {
@@ -35,35 +42,51 @@ namespace GromoBot2.Controller.Mode
             IO = gromo.gromoBotIO;
             stateGromo = gromo.gromoState;
             command = new CommandEmpty(gromo);
+            gromo.CurrentMode = new MainMenuMode();
+            errorHandler = gromo.ErrorsHandler;
         }
         public void ToStartFirstTime(GromoBot gromo)
         { 
-            gromo.CurrentMode = new MainMenuMode();
+            
             ToInitializeEnvironment(gromo);
             IO.ToShowMainMenuScreen();
+            
             IO.ToDisplayGromoState(stateGromo);
 
             MenuItemsState[] templateForMenuItems = ToDefineTemplateBy(stateGromo);
             IO.ToRefreshMainMenuTemplateBy(templateForMenuItems);
 
+            Notice welcome = new Notice(StoreTextsOfNotices.Welcome);
+            IO.ToDisplayNewMessage(welcome);
+            Notice gromoDisconnected = new Notice(StoreTextsOfNotices.GromoDisconnected);
+            IO.ToDisplayNewMessage(gromoDisconnected);
+            Notice awaitingDirective = new Notice(StoreTextsOfNotices.AwaitingDirective);
+            IO.ToDisplayNewMessage(awaitingDirective);
 
-            Notice Welcome = new Notice(StoreTextsOfNotices.Welcome);
-            IO.ToDisplayNewMessage(Welcome);
-
-
-    //        int numOfInput = this.ToTakeMainMenuInput();
-   //     
-   //     if (IsValidInput(numOfInput))
-   //     {
-   //        command = gromoBot.ToConvertIntoCommand(numOfInput);
-   //     }
-   //     else
-   //     {
-   //         Alert invalidInput = new Alert(StoreTextsOfAlert.InvalidInput);
-   //         IO.ToDisplayNewMessage(invalidInput);
-   //     }
-   //     command.ToExecute();
         }
+
+        CommandForGromo ToTakeCommand()
+        {
+
+            return command;
+        }
+
+
+
+
+        //        int numOfInput = this.ToTakeMainMenuInput();
+        //     
+        //     if (IsValidInput(numOfInput))
+        //     {
+        //        command = gromoBot.ToConvertIntoCommand(numOfInput);
+        //     }
+        //     else
+        //     {
+        //         Alert invalidInput = new Alert(StoreTextsOfAlert.InvalidInput);
+        //         IO.ToDisplayNewMessage(invalidInput);
+        //     }
+        //     command.ToExecute();
+
         public override void ToStart(GromoBot gromo)
         { }
    // int ToTakeMainMenuInput()
@@ -90,7 +113,7 @@ namespace GromoBot2.Controller.Mode
         bool IsValidInput(int input)
         {
             try
-                // TODO: !!!Define validation procedure like a list
+               // TODO: !!!Define validation procedure by Template
             {
 
             }

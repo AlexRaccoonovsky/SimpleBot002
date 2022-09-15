@@ -10,6 +10,6 @@ namespace GromoBot2.GromoExceptions
     {
         public static string ConnectingErrorMessage = "Error of connecting!";
         public static string MainMenuTemplateDefinition = "Impossible to define template for Main Menu Items";
-        public static string AmountArealLinesAndTemplateSizeDifferentError = "Amount of Area's lines and Template Of MainMenuArea have a different sizes!";
+        public static string AmountAreaLinesAndTemplateSizeDifferentError = "Amount of Area's lines and Template Of MainMenuArea have a different sizes!";
     }
 }

@@ -31,9 +31,10 @@ namespace GromoBot2.Controller
       
 
         #region "Definition delegates for Gromo Events"
-        public delegate void GromoStateChangedHandler(StateOfGromo sender, GromoStateChangedEventArgs args);
+        // TODO: sender is StateOfGromo?
+        public delegate void GromoStateChangedHandler(object sender, GromoStateChangedEventArgs args);
         #endregion
-        #region #Definition events for Gromo Controller
+        #region "Definition events for Gromo Controller"
         public event GromoStateChangedHandler GromoStateChanged;
         #endregion
         public StateOfGromo()

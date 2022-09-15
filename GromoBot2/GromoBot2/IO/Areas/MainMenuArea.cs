@@ -74,12 +74,6 @@ namespace GromoBot2.IO.Areas
             Console.WriteLine(areaSeparator);
             mainMenuAreaCursor.ToSavePosition();
         }
-
-        void ToDisplayMessage(string msg)
-        { 
-
-        }
-
         public void ToRefreshMenuItemsByTemplate(MenuItemsState[] template)
         {
             currTemplate = template;
@@ -122,7 +116,7 @@ namespace GromoBot2.IO.Areas
                 }
                 else
                 {
-                    string message = StoreMessagesOfErrors.AmountArealLinesAndTemplateSizeDifferentError;
+                    string message = StoreMessagesOfErrors.AmountAreaLinesAndTemplateSizeDifferentError;
                     string cause = "Attempt of Main Menu items presentation";
                     DateTime time = DateTime.Now;
                     throw new DifferentSizeException(message, cause, time);

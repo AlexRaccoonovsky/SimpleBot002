@@ -26,7 +26,6 @@ namespace GromoBot2.Controller.Mode
         MainMenuUserInput userInput;
         ErrorHandler errorHandler;
 
-
         StateOfGromo stateGromo;
         CommandForGromo command;
 
@@ -62,12 +61,11 @@ namespace GromoBot2.Controller.Mode
             IO.ToDisplayNewMessage(gromoDisconnected);
             Notice awaitingDirective = new Notice(StoreTextsOfNotices.AwaitingDirective);
             IO.ToDisplayNewMessage(awaitingDirective);
-
+            IO.MainMenuUserInput.ToTakeCommandForGromo();
         }
 
         CommandForGromo ToTakeCommand()
         {
-
             return command;
         }
 

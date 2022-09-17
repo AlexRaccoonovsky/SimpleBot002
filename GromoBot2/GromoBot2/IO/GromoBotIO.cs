@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GromoBot2.IO.UserInput;
 using GromoBot2.IO.Screens;
 using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
@@ -19,16 +20,24 @@ namespace GromoBot2.IO
         PortfolioDefinitionScreen portfolioDefinitionScreen;
         public Screen? currentScreen;
         ErrorHandler errorHandler;
+        MainMenuUserInput mainMenuUserInput;
         public GromoBotIO()
         { 
             ToInitializeWindow();
-
+            
         }
-    //   internal ErrorHandler IOErrorHandler
-    //   { get { return errorHandler; }
-    //     set { errorHandler = value; }
-    //   }    
-
+        //   internal ErrorHandler IOErrorHandler
+        //   { get { return errorHandler; }
+        //     set { errorHandler = value; }
+        //   }    
+        public MainMenuUserInput MainMenuUserInput 
+        { 
+            get { return mainMenuUserInput; } 
+        }
+        void ToSubscribeOnMainMenuEvent()
+        {
+            mainMenuUserInput.UserInputIsNotNumberExcep += ToTreatException;
+        }
         public void ToShowMainMenuScreen()
         {
             ToInitializeMainMenuScreen();
@@ -72,6 +81,8 @@ namespace GromoBot2.IO
         void ToInitializeMainMenuScreen()
         {
             mainMenuScreen = new MainMenuScreen();
+            mainMenuUserInput = new MainMenuUserInput();
+            ToSubscribeOnMainMenuEvent();
         }
         void ToInitializePortfolioDefinitionScreen()
         {
@@ -85,6 +96,18 @@ namespace GromoBot2.IO
             Console.WindowWidth = Console.BufferWidth - 1;
             Console.BufferHeight = 50;
             Console.WindowHeight = Console.BufferHeight - 1;
+        }
+        void ToTreatException(object sender,GromoExceptionEventArgs args)
+        {
+            string nameOfSender = sender.ToString();
+            string strExceptionFrom = string.Concat(StoreTextsOfAlert.ErrorInModule,nameOfSender);
+            Alert exceprionFrom = new Alert(strExceptionFrom);
+            ToDisplayNewMessage(exceprionFrom);
+            
+            string messageOfError = args.msgArg;
+            string msgException = string.Concat(StoreTextsOfAlert.MessageIS, messageOfError);
+            Alert messageOfAlert = new Alert(msgException);
+            ToDisplayNewMessage(messageOfAlert);
         }
     }
 }

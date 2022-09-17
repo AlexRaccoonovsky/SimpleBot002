@@ -78,7 +78,7 @@ namespace GromoBot2.Controller
 
         }
         // Test method for GromoStateChanged
-        void ToNotifyUser(StateOfGromo state, GromoStateChangedEventArgs arg)
+        void ToNotifyUser(object state, GromoStateChangedEventArgs arg)
         { 
             gromoIO.ToDisplayNewMessage(arg.gromoMessage);
             gromoIO.ToDisplayGromoState(currentState);

@@ -23,14 +23,11 @@ namespace GromoBot2.IO
         public GromoBotIO()
         { 
             ToInitializeWindow();
-            
         }
-
         public MainMenuUserInput MainMenuUserInput 
         { 
             get { return mainMenuUserInput; } 
         }
-
         public void ToShowMainMenuScreen()
         {
             ToInitializeMainMenuScreen();

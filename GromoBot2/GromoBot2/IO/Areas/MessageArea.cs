@@ -34,6 +34,17 @@ namespace GromoBot2.IO.Areas
         public override CursorPositionStore areaCursorPositionStore {
             get { return messageAreaCursorPositionStore; }
             set { messageAreaCursorPositionStore = value; } }
+        void ToInitializeBufferOfMessage()
+        {
+            bufferOfMessages = new Queue<GromoMessage>(rowsNumberOfArea);
+            arrayForDisplay = new GromoMessage[rowsNumberOfArea];
+            Notice emptyNotice = new Notice(" ");
+            for (int i = 0; i < rowsNumberOfArea; i++)
+            {
+                bufferOfMessages.Enqueue(emptyNotice);
+            }
+            arrayForDisplay = bufferOfMessages.ToArray();
+        }
 
         public override string areaTitleName
         {
@@ -90,12 +101,12 @@ namespace GromoBot2.IO.Areas
             {
                 int numRow = messageAreaCursor.ToGetLastRowNumber();
                 messageAreaCursor.ToSetInPosition(Area.indentOfAreaContent, numRow);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("> ");
+                ToShowPrefixOfString();
                 if (arrayForDisplay[i] is Alert)
                 {
                     int lastRow = messageAreaCursor.ToGetLastRowNumber();
                     messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
+                    ToShowTimePrefixOfMessageString();
                     Console.ForegroundColor = GromoMessage.alertColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
                     messageAreaCursor.ToSavePosition();
@@ -104,6 +115,7 @@ namespace GromoBot2.IO.Areas
                 {
                     int lastRow = messageAreaCursor.ToGetLastRowNumber();
                     messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
+                    ToShowTimePrefixOfMessageString();
                     Console.ForegroundColor = GromoMessage.noticeColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
                     messageAreaCursor.ToSavePosition();
@@ -112,11 +124,11 @@ namespace GromoBot2.IO.Areas
                 {
                     int lastRow = messageAreaCursor.ToGetLastRowNumber();
                     messageAreaCursor.ToSetInPosition(Area.indentOfMessageAreaContent, lastRow);
+                    ToShowTimePrefixOfMessageString();
                     Console.ForegroundColor = GromoMessage.queryColor;
                     Console.WriteLine(arrayForDisplay[i].textMessage);
                     messageAreaCursor.ToSavePosition();
                 }
-
             }
         }
         public void ToShow()
@@ -138,16 +150,19 @@ namespace GromoBot2.IO.Areas
             }
 
         }
-        void ToInitializeBufferOfMessage()
+
+        void ToShowTimePrefixOfMessageString()
         {
-            bufferOfMessages = new Queue<GromoMessage>(rowsNumberOfArea);
-            arrayForDisplay = new GromoMessage[rowsNumberOfArea];
-            Notice emptyNotice = new Notice(" ");
-            for (int i = 0; i < rowsNumberOfArea; i++)
-            {
-                bufferOfMessages.Enqueue(emptyNotice);
-            }
-            arrayForDisplay=bufferOfMessages.ToArray();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            string timePrefix = DateTime.Now.ToString("HH:mm:ss");
+            string prefix = "| > ";
+            string timeMessagePrefix = string.Concat(timePrefix, prefix);
+            Console.Write(timeMessagePrefix);
+        }
+        void ToShowPrefixOfString()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("| ");
         }
 
     }

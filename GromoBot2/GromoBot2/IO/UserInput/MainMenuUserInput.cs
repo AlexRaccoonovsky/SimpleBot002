@@ -16,14 +16,12 @@ namespace GromoBot2.IO.UserInput
     {
         string inputText;
         int inputNumber;
-        ErrorHandler errorHandler;
         CommandForGromo command;
-        #region "Definition delegates & event for event_NewException"
+        #region "Definition delegates, events for ExceptionEvents & arguments for ExceptionEvent"
         public delegate void ExceptionEventHandler(object sender, GromoExceptionEventArgs args);
         public event ExceptionEventHandler UserInputIsNotNumberExcep;
-        #endregion
         GromoExceptionEventArgs excEventArg;
-        //GromoExceptionEventArgs gromoExceptionEventArgsEmpty = new GromoExceptionEventArgs();
+        #endregion
 
 
         public MainMenuUserInput()
@@ -31,16 +29,11 @@ namespace GromoBot2.IO.UserInput
             inputText = String.Empty;
             inputNumber = 0;
 
-            //errorHandler = new ErrorHandler(IO);
             excEventArg = new GromoExceptionEventArgs();
-
-            //command = new CommandEmpty();
- 
         }
         public string InputText
         {
             get { return inputText; }
-           // set { inputText = value; }
         }
         public  void ToTakeCommandForGromo()
         {
@@ -92,21 +85,15 @@ namespace GromoBot2.IO.UserInput
                     throw new UserInputNotNumberException(message,cause,time);
                 }
             }
-            catch (UserInputNotNumberException argumentOfException)
+            catch (UserInputNotNumberException argOfException)
             {
-                string msgEventArgOfError = argumentOfException.Message;
-                string causeEventArgOfError = argumentOfException.CauseOfError;
-                DateTime timeEventArgOfError = argumentOfException.ErrorTimeStamp;
+                string msgEventArgOfError = argOfException.Message;
+                string causeEventArgOfError = argOfException.CauseOfError;
+                DateTime timeEventArgOfError = argOfException.ErrorTimeStamp;
 
                 GromoExceptionEventArgs excEventArg = new GromoExceptionEventArgs(msgEventArgOfError, causeEventArgOfError, timeEventArgOfError);
                 UserInputIsNotNumberExcep?.Invoke(this, excEventArg);
             }
-            finally
-            {
-                
-            }
-            
-
         }
         public CommandForGromo ToConvertIntoCommandFor(GromoBot bot)
         {

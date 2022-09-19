@@ -24,7 +24,6 @@ namespace GromoBot2.Controller.Mode
         GromoBotIO IO;
 
         MainMenuUserInput userInput;
-        ErrorHandler errorHandler;
 
         StateOfGromo stateGromo;
         CommandForGromo command;
@@ -42,7 +41,6 @@ namespace GromoBot2.Controller.Mode
             stateGromo = gromo.gromoState;
             command = new CommandEmpty(gromo);
             gromo.CurrentMode = new MainMenuMode();
-            errorHandler = gromo.ErrorsHandler;
         }
         public void ToStartFirstTime(GromoBot gromo)
         { 

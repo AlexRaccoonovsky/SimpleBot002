@@ -9,6 +9,7 @@ using GromoBot2.IO.GromoMessages;
 using GromoBot2.Controller;
 using GromoBot2.GromoExceptions;
 using GromoBot2.GromoExceptions.IOExceptions;
+using GromoBot2.IO.UserInput;
 
 namespace GromoBot2.IO.Screens
 {
@@ -22,7 +23,8 @@ namespace GromoBot2.IO.Screens
         UserInputArea userInputArea;
         MessageArea messageArea;
         MenuItemsState[] templateOfItems;
-        ErrorHandler errorHandler;
+
+        MainMenuUserInput mainMenuUserInput;
 
         public MainMenuScreen()
         {
@@ -31,6 +33,8 @@ namespace GromoBot2.IO.Screens
             mainMenuCursorPositionStore = new CursorPositionStore();
             templateOfItems = TemplatesOfMenuItems.AwaitingTemplate;
             ToInitializeAreas();
+            mainMenuUserInput = new MainMenuUserInput();
+            ToSubscribeOnMainMenuScreenEvent();
         }
         void ToInitializeAreas()
         {
@@ -39,9 +43,9 @@ namespace GromoBot2.IO.Screens
             userInputArea = new UserInputArea();
             messageArea = new MessageArea();
         }
-        void ToInitializeMainMenuUserInput()
+        public MainMenuUserInput UserInput 
         { 
-
+            get { return mainMenuUserInput; }
         }
         public override string screenTitleName
         {
@@ -146,6 +150,25 @@ namespace GromoBot2.IO.Screens
         {
             cursor.ToSetInPosition(mainMenuCursorPositionStore.userInputPosition);
         }
+        void ToTreatException(object sender,GromoExceptionEventArgs args)
+        {
+            string nameOfSender = sender.ToString();
+            string strExceptionFrom = string.Concat(StoreTextsOfAlert.ErrorInModule, nameOfSender);
+            Alert exceprionFrom = new Alert(strExceptionFrom);
+            ToShowNewMessage(exceprionFrom);
+
+            string messageOfError = args.msgArg;
+            string msgException = string.Concat(StoreTextsOfAlert.MessageIS, messageOfError);
+            Alert messageOfAlert = new Alert(msgException);
+            ToShowNewMessage(messageOfAlert);
+        }
+        void ToSubscribeOnMainMenuScreenEvent()
+        {
+            mainMenuUserInput.UserInputIsNotNumberExcep += ToTreatException;
+            mainMenuArea.DifferentSizeOfItemsAndTemplateArraysExcep += ToTreatException;
+            mainMenuArea.GenerelException += ToTreatException;
+        }
+        
 
 
         

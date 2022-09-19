@@ -26,7 +26,12 @@ namespace GromoBot2.IO.Areas
         const ConsoleColor activeColorOfItem = ConsoleColor.Gray;
         const ConsoleColor inactiveColorOfItem = ConsoleColor.DarkGray;
 
-        ErrorHandler errorHandler;
+        #region "Definition delegates & event for Exception Events"
+        public delegate void ExceptionEventHandler(object sender, GromoExceptionEventArgs args);
+        public event ExceptionEventHandler DifferentSizeOfItemsAndTemplateArraysExcep;
+        public event ExceptionEventHandler GenerelException;
+        #endregion
+
 
         public MainMenuArea()
         {
@@ -36,7 +41,6 @@ namespace GromoBot2.IO.Areas
 
             mainMenuAreaCursor = new Cursor();
             mainMenuAreaCursorPositionStore = new CursorPositionStore();
-            //errorHandler = new ErrorHandler();
         }
 
         public override Cursor areaCursor { 
@@ -122,17 +126,24 @@ namespace GromoBot2.IO.Areas
                     throw new DifferentSizeException(message, cause, time);
                 }
             }
-            catch (DifferentSizeException ex)
+            catch (DifferentSizeException argOfException)
             {
-                errorHandler.ToShowAlert(ex);
-            }
-            catch (Exception ex)
-            {
-                errorHandler.ToShowAlert(ex);
-            }
-            finally 
-            {
+                string msgEventOfError = argOfException.Message;
+                string causeEventOfError = argOfException.CauseOfError;
+                DateTime timeEventArgOfError = argOfException.ErrorTimeStamp;
 
+                GromoExceptionEventArgs exceptionEventArgs = new GromoExceptionEventArgs(msgEventOfError, causeEventOfError, timeEventArgOfError);
+                DifferentSizeOfItemsAndTemplateArraysExcep?.Invoke(this, exceptionEventArgs);
+                
+            }
+            catch (Exception argOfException)
+            {
+                string msgEventOfError = argOfException.Message;
+                string causeEventOfError = argOfException.Source;
+                DateTime timeEventArgOfError = DateTime.Now;
+                
+                GromoExceptionEventArgs excEventArg = new GromoExceptionEventArgs(msgEventOfError,causeEventOfError,timeEventArgOfError);
+                GenerelException?.Invoke(this, excEventArg);
             }
         }
 

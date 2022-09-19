@@ -19,25 +19,18 @@ namespace GromoBot2.IO
         MainMenuScreen mainMenuScreen;
         PortfolioDefinitionScreen portfolioDefinitionScreen;
         public Screen? currentScreen;
-        ErrorHandler errorHandler;
         MainMenuUserInput mainMenuUserInput;
         public GromoBotIO()
         { 
             ToInitializeWindow();
             
         }
-        //   internal ErrorHandler IOErrorHandler
-        //   { get { return errorHandler; }
-        //     set { errorHandler = value; }
-        //   }    
+
         public MainMenuUserInput MainMenuUserInput 
         { 
             get { return mainMenuUserInput; } 
         }
-        void ToSubscribeOnMainMenuEvent()
-        {
-            mainMenuUserInput.UserInputIsNotNumberExcep += ToTreatException;
-        }
+
         public void ToShowMainMenuScreen()
         {
             ToInitializeMainMenuScreen();
@@ -51,7 +44,6 @@ namespace GromoBot2.IO
         public void ToDisplayNewMessage(GromoMessage msg)
         {
             mainMenuScreen.ToShowNewMessage(msg);
-
         }
         public void ToDisplayGromoState(StateOfGromo state)
         {
@@ -81,8 +73,8 @@ namespace GromoBot2.IO
         void ToInitializeMainMenuScreen()
         {
             mainMenuScreen = new MainMenuScreen();
-            mainMenuUserInput = new MainMenuUserInput();
-            ToSubscribeOnMainMenuEvent();
+            mainMenuUserInput = mainMenuScreen.UserInput;
+
         }
         void ToInitializePortfolioDefinitionScreen()
         {

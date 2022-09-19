@@ -22,14 +22,12 @@ namespace GromoBot2.Controller
         StateOfGromo currentState;
         Modes currentMode;
         GromoConnector gromoConnector;
-        ErrorHandler errorHandler;
+
 
 
         public GromoBot()
         { 
             gromoIO = new GromoBotIO();
-            //gromoIO.IOErrorHandler = errorHandler;
-            errorHandler = new ErrorHandler(gromoIO);
             currentState = new StateOfGromo();
             currentMode = new MainMenuMode();
             gromoConnector = new GromoConnector();
@@ -39,10 +37,7 @@ namespace GromoBot2.Controller
         { 
             get { return gromoIO; }
         }
-        internal ErrorHandler ErrorsHandler
-        { 
-            get { return errorHandler; }
-        }
+
         public StateOfGromo gromoState
         { 
             get { return currentState; }

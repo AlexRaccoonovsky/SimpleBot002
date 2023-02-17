@@ -17,7 +17,7 @@ using GromoBot2.GromoExceptions;
 
 namespace GromoBot2.Controller.Mode
 {
-    public class MainMenuMode:Modes
+    public class MainMenuMode:Mode
     {
         string nameOfMode;
         GromoBot gromoBot;

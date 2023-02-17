@@ -42,9 +42,10 @@ namespace GromoBot2.Controller
             ConnectionState = ConnectionStates.Disconnected;
             Portfolio emptyPortfolio = new Portfolio();
             emptyPortfolio.Name = "EmptyPortfolio";
+            SelectedPortfolio = emptyPortfolio;
+
             Security emptySecurity = new Security();
             emptySecurity.Id = "EmptySecurity";
-            SelectedPortfolio = emptyPortfolio;
             SelectedSecurity = emptySecurity;
         }
         public void ToSetConnectionState(ConnectionStates connState)

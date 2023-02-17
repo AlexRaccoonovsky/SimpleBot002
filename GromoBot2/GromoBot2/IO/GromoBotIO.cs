@@ -18,11 +18,15 @@ namespace GromoBot2.IO
     {
         MainMenuScreen mainMenuScreen;
         PortfolioDefinitionScreen portfolioDefinitionScreen;
-        public Screen? currentScreen;
+        Screen currentScreen;
         MainMenuUserInput mainMenuUserInput;
         public GromoBotIO()
         { 
             ToInitializeWindow();
+        }
+        public Screen CurrentScreen
+        { 
+            get { return currentScreen; } 
         }
         public MainMenuUserInput MainMenuUserInput 
         { 
@@ -70,8 +74,8 @@ namespace GromoBot2.IO
         void ToInitializeMainMenuScreen()
         {
             mainMenuScreen = new MainMenuScreen();
+            currentScreen = mainMenuScreen;
             mainMenuUserInput = mainMenuScreen.UserInput;
-
         }
         void ToInitializePortfolioDefinitionScreen()
         {

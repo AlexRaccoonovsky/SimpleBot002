@@ -20,11 +20,8 @@ namespace GromoBot2.Controller
     {
         GromoBotIO gromoIO;
         StateOfGromo currentState;
-        Modes currentMode;
+        Mode.Mode currentMode;
         GromoConnector gromoConnector;
-
-
-
         public GromoBot()
         { 
             gromoIO = new GromoBotIO();
@@ -37,13 +34,11 @@ namespace GromoBot2.Controller
         { 
             get { return gromoIO; }
         }
-
         public StateOfGromo gromoState
         { 
             get { return currentState; }
-            set { currentState = value; }
         }
-        public Modes CurrentMode
+        public Mode.Mode CurrentMode
         {
             get { return currentMode; }
             set { currentMode = value; }

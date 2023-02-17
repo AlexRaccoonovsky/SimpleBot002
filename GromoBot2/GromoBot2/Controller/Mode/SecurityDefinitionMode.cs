@@ -10,7 +10,7 @@ using GromoBot2.Controller.GromoCommand;
 
 namespace GromoBot2.Controller.Mode
 {
-    public class SecurityDefinitionMode:Modes
+    public class SecurityDefinitionMode:Mode
     {
         string nameOfMode;
         GromoBot gromoBot;

@@ -168,10 +168,5 @@ namespace GromoBot2.IO.Screens
             mainMenuArea.DifferentSizeOfItemsAndTemplateArraysExcep += ToTreatException;
             mainMenuArea.GenerelException += ToTreatException;
         }
-        
-
-
-        
-
     }
 }

@@ -9,7 +9,7 @@ using GromoBot2.Controller.GromoCommand;
 
 namespace GromoBot2.Controller.Mode
 {
-    public class PortfolioDefinitionMode:Modes
+    public class PortfolioDefinitionMode:Mode
     {
         string nameOfMode;
         GromoBot gromoBot;
